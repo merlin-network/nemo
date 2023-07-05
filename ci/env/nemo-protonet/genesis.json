@@ -1,6 +1,6 @@
 {
   "genesis_time": "2022-05-25T17:00:00Z",
-  "chain_id": "proto_2221-17000",
+  "chain_id": "proto_4200-17000",
   "initial_height": "1",
   "consensus_params": {
     "block": {

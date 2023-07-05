@@ -313,9 +313,9 @@ test-migrate:
 # This submits an AWS Batch job to run a lot of sims, each within a docker image. Results are uploaded to S3
 start-remote-sims:
 	# build the image used for running sims in, and tag it
-	docker build -f simulations/Dockerfile -t fanfury/nemo-sim:master .
+	docker build -f simulations/Dockerfile -t fanfury/nemo:nemo-sim .
 	# push that image to the hub
-	docker push fanfury/nemo-sim:master
+	docker push fanfury/nemo:nemo-sim
 	# submit an array job on AWS Batch, using 1000 seeds, spot instances
 	aws batch submit-job \
 		-—job-name "master-$(VERSION)" \

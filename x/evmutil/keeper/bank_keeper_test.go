@@ -383,7 +383,7 @@ func (suite *evmBankKeeperTestSuite) TestBurnCoins() {
 		name       string
 		burnCoins  sdk.Coins
 		expUnemo   sdkmath.Int
-		expAtfury   sdkmath.Int
+		expAtfury  sdkmath.Int
 		hasErr     bool
 		afuryStart sdkmath.Int
 	}{

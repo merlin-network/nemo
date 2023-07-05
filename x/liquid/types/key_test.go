@@ -34,7 +34,7 @@ func TestParseLiquidStakingTokenDenom(t *testing.T) {
 		},
 		{
 			name:        "invalid validator address",
-			giveDenom:   "bfury-||| furyvaloper1ze7y9qw"
+			giveDenom:   "bfury-||| furyvaloper1ze7y9qw",
 			wantAddress: sdk.ValAddress{},
 			wantErr:     fmt.Errorf("invalid denom validator address: decoding bech32 failed: invalid checksum"),
 		},
