@@ -3,4 +3,4 @@
 	url = https://github.com/merlin-network/nmtool
 [submodule "nmtool"]
 	path = nmtool
-	url = https://github.com/fanfury-sports/nmtool.git
+	url = https://github.com/merlin-network/nmtool.git
