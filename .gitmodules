@@ -1,0 +1,6 @@
+[submodule "tests/e2e/nmtool"]
+	path = tests/e2e/nmtool
+	url = https://github.com/merlin-network/nmtool
+[submodule "nmtool"]
+	path = nmtool
+	url = https://github.com/fanfury-sports/nmtool.git

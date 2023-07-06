@@ -1,0 +1,20 @@
+{
+  "base_req": {
+    "from": "fury1rjnv8ns2wvz9calje5pmcnpxm055pegp06n7h6",
+    "memo": "",
+    "chain_id": "nemo-internal",
+    "account_number": "12",
+    "sequence": "0",
+    "gas": "500000",
+    "gas_adjustment": "1.0",
+    "simulate": false
+  },
+  "owner": "fury1mzqz3jfs9nzfp6v7qp647rv0afxlu2csn3k57g",
+  "depositor": "fury1rjnv8ns2wvz9calje5pmcnpxm055pegp06n7h6",
+  "collateral": [
+    {
+      "denom": "xrp",
+      "amount": "110000000"
+    }
+  ]
+}

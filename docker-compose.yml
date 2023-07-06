@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  nmdnode0:
+    container_name: nmdnode0
+    image: "fanfury/nemonode"
+    ports:
+      - "26656-26657:26656-26657"
+    environment:
+      - ID=0
+      - LOG=${LOG:-nmd.log}
+    volumes:
+      - ./build:/nmd:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.2
+
+  nmdnode1:
+    container_name: nmdnode1
+    image: "fanfury/nemonode"
+    ports:
+      - "26659-26660:26656-26657"
+    environment:
+      - ID=1
+      - LOG=${LOG:-nmd.log}
+    volumes:
+      - ./build:/nmd:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.3
+
+  nmdnode2:
+    container_name: nmdnode2
+    image: "fanfury/nemonode"
+    environment:
+      - ID=2
+      - LOG=${LOG:-nmd.log}
+    ports:
+      - "26661-26662:26656-26657"
+    volumes:
+      - ./build:/nmd:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.4
+
+  nmdnode3:
+    container_name: nmdnode3
+    image: "fanfury/nemonode"
+    environment:
+      - ID=3
+      - LOG=${LOG:-nmd.log}
+    ports:
+      - "26663-26664:26656-26657"
+    volumes:
+      - ./build:/nmd:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.10.5
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 192.168.10.0/16

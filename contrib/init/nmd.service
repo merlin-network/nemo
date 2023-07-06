@@ -1,0 +1,15 @@
+[Unit]
+Description=Nemo daemon
+After=network-online.target
+
+[Service]
+
+# Run as nemo:nemo
+User=nemo
+ExecStart=/home/nemo/go/bin/nmd start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
