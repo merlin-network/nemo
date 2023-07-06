@@ -35,7 +35,7 @@ func TestMsgClaim_Validate(t *testing.T) {
 				sender: validAddress,
 				denomsToClaim: types.Selections{
 					{
-						Denom:          "hard",
+						Denom:          "jinx",
 						MultiplierName: "large",
 					},
 				},
@@ -50,7 +50,7 @@ func TestMsgClaim_Validate(t *testing.T) {
 				sender: validAddress,
 				denomsToClaim: types.Selections{
 					{
-						Denom:          "hard",
+						Denom:          "jinx",
 						MultiplierName: "",
 					},
 				},
@@ -85,7 +85,7 @@ func TestMsgClaim_Validate(t *testing.T) {
 				sender: "",
 				denomsToClaim: types.Selections{
 					{
-						Denom:          "hard",
+						Denom:          "jinx",
 						MultiplierName: "medium",
 					},
 				},
@@ -125,11 +125,11 @@ func TestMsgClaim_Validate(t *testing.T) {
 				sender: validAddress,
 				denomsToClaim: types.Selections{
 					{
-						Denom:          "hard",
+						Denom:          "jinx",
 						MultiplierName: "medium",
 					},
 					{
-						Denom:          "hard",
+						Denom:          "jinx",
 						MultiplierName: "large",
 					},
 				},

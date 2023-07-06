@@ -8,7 +8,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/incubus-network/nemo/app"
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	"github.com/incubus-network/nemo/x/incentive/types"
 	savingstypes "github.com/incubus-network/nemo/x/savings/types"
 )
@@ -216,7 +216,7 @@ func newZeroRewardIndexesFromCoins(coins ...sdk.Coin) types.RewardIndexes {
 	return ri
 }
 
-// HardGenesisBuilder is a tool for creating a hard genesis state.
+// HardGenesisBuilder is a tool for creating a jinx genesis state.
 // Helper methods add values onto a default genesis state.
 // All methods are immutable and return updated copies of the builder.
 type HardGenesisBuilder struct {

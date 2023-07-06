@@ -770,12 +770,12 @@ func TestMultiRewardIndexes(t *testing.T) {
 }
 
 var normalRewardIndexes = RewardIndexes{
-	NewRewardIndex("hard", sdk.MustNewDecFromStr("0.000001")),
+	NewRewardIndex("jinx", sdk.MustNewDecFromStr("0.000001")),
 	NewRewardIndex("ufury", sdk.MustNewDecFromStr("0.1")),
 }
 
 var invalidRewardIndexes = RewardIndexes{
-	RewardIndex{"hard", sdk.MustNewDecFromStr("-0.01")},
+	RewardIndex{"jinx", sdk.MustNewDecFromStr("-0.01")},
 }
 
 func appendUniqueRewardIndex(indexes RewardIndexes) RewardIndexes {

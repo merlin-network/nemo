@@ -5,7 +5,7 @@ import (
 
 	sdkmath "cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	pricefeedtypes "github.com/incubus-network/nemo/x/pricefeed/types"
 )
 
@@ -31,7 +31,7 @@ func (b lendGenesisBuilder) Build() (hardtypes.GenesisState, pricefeedtypes.Gene
 }
 
 func (b lendGenesisBuilder) WithMarket(denom, spotMarketId string, price sdk.Dec) lendGenesisBuilder {
-	// add hard money market
+	// add jinx money market
 	b.hardMarkets = append(b.hardMarkets,
 		hardtypes.NewMoneyMarket(
 			denom,

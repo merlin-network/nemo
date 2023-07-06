@@ -96,7 +96,7 @@ func queryTotalSupply() *cobra.Command {
 
 func queryCirculatingSupplyHARD() *cobra.Command {
 	return &cobra.Command{
-		Use:   "circulating-supply-hard",
+		Use:   "circulating-supply-jinx",
 		Short: "Get HARD circulating supply",
 		Long:  "Get the current circulating supply of HARD tokens",
 		Args:  cobra.NoArgs,
@@ -183,7 +183,7 @@ func queryCirculatingSupplySWP() *cobra.Command {
 
 func queryTotalSupplyHARD() *cobra.Command {
 	return &cobra.Command{
-		Use:   "total-supply-hard",
+		Use:   "total-supply-jinx",
 		Short: "Get HARD total supply",
 		Long:  "Get the current total supply of HARD tokens",
 		Args:  cobra.NoArgs,

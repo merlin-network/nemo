@@ -123,9 +123,9 @@ import (
 	evmutil "github.com/incubus-network/nemo/x/evmutil"
 	evmutilkeeper "github.com/incubus-network/nemo/x/evmutil/keeper"
 	evmutiltypes "github.com/incubus-network/nemo/x/evmutil/types"
-	"github.com/incubus-network/nemo/x/hard"
-	hardkeeper "github.com/incubus-network/nemo/x/hard/keeper"
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	"github.com/incubus-network/nemo/x/jinx"
+	hardkeeper "github.com/incubus-network/nemo/x/jinx/keeper"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	"github.com/incubus-network/nemo/x/incentive"
 	incentivekeeper "github.com/incubus-network/nemo/x/incentive/keeper"
 	incentivetypes "github.com/incubus-network/nemo/x/incentive/types"
@@ -205,7 +205,7 @@ var (
 		pricefeed.AppModuleBasic{},
 		swap.AppModuleBasic{},
 		cdp.AppModuleBasic{},
-		hard.AppModuleBasic{},
+		jinx.AppModuleBasic{},
 		committee.AppModuleBasic{},
 		incentive.AppModuleBasic{},
 		savings.AppModuleBasic{},
@@ -631,7 +631,7 @@ func NewApp(
 		&app.distrKeeper,
 	)
 
-	// x/community's deposit/withdraw to lend proposals depend on hard keeper.
+	// x/community's deposit/withdraw to lend proposals depend on jinx keeper.
 	app.communityKeeper = communitykeeper.NewKeeper(
 		app.accountKeeper,
 		app.bankKeeper,
@@ -779,7 +779,7 @@ func NewApp(
 		validatorvesting.NewAppModule(app.bankKeeper),
 		swap.NewAppModule(app.swapKeeper, app.accountKeeper),
 		cdp.NewAppModule(app.cdpKeeper, app.accountKeeper, app.pricefeedKeeper, app.bankKeeper),
-		hard.NewAppModule(app.hardKeeper, app.accountKeeper, app.bankKeeper, app.pricefeedKeeper),
+		jinx.NewAppModule(app.hardKeeper, app.accountKeeper, app.bankKeeper, app.pricefeedKeeper),
 		committee.NewAppModule(app.committeeKeeper, app.accountKeeper),
 		incentive.NewAppModule(app.incentiveKeeper, app.accountKeeper, app.bankKeeper, app.cdpKeeper),
 		evmutil.NewAppModule(app.evmutilKeeper, app.bankKeeper),

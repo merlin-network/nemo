@@ -46,7 +46,7 @@ import (
 	communitykeeper "github.com/incubus-network/nemo/x/community/keeper"
 	earnkeeper "github.com/incubus-network/nemo/x/earn/keeper"
 	evmutilkeeper "github.com/incubus-network/nemo/x/evmutil/keeper"
-	hardkeeper "github.com/incubus-network/nemo/x/hard/keeper"
+	hardkeeper "github.com/incubus-network/nemo/x/jinx/keeper"
 	incentivekeeper "github.com/incubus-network/nemo/x/incentive/keeper"
 	issuancekeeper "github.com/incubus-network/nemo/x/issuance/keeper"
 	liquidkeeper "github.com/incubus-network/nemo/x/liquid/keeper"

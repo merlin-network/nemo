@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	RewardTypeHard        = "hard"
+	RewardTypeHard        = "jinx"
 	RewardTypeUSDXMinting = "usdx_minting"
 	RewardTypeDelegator   = "delegator"
 	RewardTypeSwap        = "swap"

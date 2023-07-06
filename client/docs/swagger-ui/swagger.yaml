@@ -7496,7 +7496,7 @@ paths:
           type: string
       tags:
         - Earn
-  /nemo/hard/v1beta1/accounts:
+  /nemo/jinx/v1beta1/accounts:
     get:
       summary: Accounts queries module accounts.
       operationId: HardAccounts
@@ -7915,9 +7915,9 @@ paths:
                         }
       tags:
         - Hard
-  /nemo/hard/v1beta1/borrows:
+  /nemo/jinx/v1beta1/borrows:
     get:
-      summary: Borrows queries hard borrows.
+      summary: Borrows queries jinx borrows.
       operationId: HardBorrows
       responses:
         '200':
@@ -7965,7 +7965,7 @@ paths:
                           borrow interest factor.
                   description: >-
                     BorrowResponse defines an amount of coins borrowed from a
-                    hard module account.
+                    jinx module account.
               pagination:
                 type: object
                 properties:
@@ -8255,9 +8255,9 @@ paths:
           type: boolean
       tags:
         - Hard
-  /nemo/hard/v1beta1/deposits:
+  /nemo/jinx/v1beta1/deposits:
     get:
-      summary: Deposits queries hard deposits.
+      summary: Deposits queries jinx deposits.
       operationId: HardDeposits
       responses:
         '200':
@@ -8305,7 +8305,7 @@ paths:
                           borrow interest factor.
                   description: >-
                     DepositResponse defines an amount of coins deposited into a
-                    hard module account.
+                    jinx module account.
               pagination:
                 type: object
                 properties:
@@ -8595,9 +8595,9 @@ paths:
           type: boolean
       tags:
         - Hard
-  /nemo/hard/v1beta1/interest-factors:
+  /nemo/jinx/v1beta1/interest-factors:
     get:
-      summary: InterestFactors queries hard module interest factors.
+      summary: InterestFactors queries jinx module interest factors.
       operationId: HardInterestFactors
       responses:
         '200':
@@ -8822,9 +8822,9 @@ paths:
           type: string
       tags:
         - Hard
-  /nemo/hard/v1beta1/interest-rate:
+  /nemo/jinx/v1beta1/interest-rate:
     get:
-      summary: InterestRate queries the hard module interest rates.
+      summary: InterestRate queries the jinx module interest rates.
       operationId: HardInterestRate
       responses:
         '200':
@@ -9049,7 +9049,7 @@ paths:
           type: string
       tags:
         - Hard
-  /nemo/hard/v1beta1/params:
+  /nemo/jinx/v1beta1/params:
     get:
       summary: Params queries module params.
       operationId: HardParams
@@ -9104,7 +9104,7 @@ paths:
                       description: MoneyMarket is a money market for an individual asset.
                   minimum_borrow_usd_value:
                     type: string
-                description: Params defines the parameters for the hard module.
+                description: Params defines the parameters for the jinx module.
             description: >-
               QueryParamsResponse is the response type for the Query/Params RPC
               method.
@@ -9301,9 +9301,9 @@ paths:
                         }
       tags:
         - Hard
-  /nemo/hard/v1beta1/reserves:
+  /nemo/jinx/v1beta1/reserves:
     get:
-      summary: Reserves queries total hard reserve coins.
+      summary: Reserves queries total jinx reserve coins.
       operationId: HardReserves
       responses:
         '200':
@@ -9529,9 +9529,9 @@ paths:
           type: string
       tags:
         - Hard
-  /nemo/hard/v1beta1/total-borrowed:
+  /nemo/jinx/v1beta1/total-borrowed:
     get:
-      summary: TotalBorrowed queries total coins borrowed from hard liquidity pools.
+      summary: TotalBorrowed queries total coins borrowed from jinx liquidity pools.
       operationId: HardTotalBorrowed
       responses:
         '200':
@@ -9757,9 +9757,9 @@ paths:
           type: string
       tags:
         - Hard
-  /nemo/hard/v1beta1/total-deposited:
+  /nemo/jinx/v1beta1/total-deposited:
     get:
-      summary: TotalDeposited queries total coins deposited to hard liquidity pools.
+      summary: TotalDeposited queries total coins deposited to jinx liquidity pools.
       operationId: HardTotalDeposited
       responses:
         '200':
@@ -9985,7 +9985,7 @@ paths:
           type: string
       tags:
         - Hard
-  /nemo/hard/v1beta1/unsynced-borrows:
+  /nemo/jinx/v1beta1/unsynced-borrows:
     get:
       summary: UnsyncedBorrows queries unsynced borrows.
       operationId: HardUnsyncedBorrows
@@ -10035,7 +10035,7 @@ paths:
                           borrow interest factor.
                   description: >-
                     BorrowResponse defines an amount of coins borrowed from a
-                    hard module account.
+                    jinx module account.
               pagination:
                 type: object
                 properties:
@@ -10325,7 +10325,7 @@ paths:
           type: boolean
       tags:
         - Hard
-  /nemo/hard/v1beta1/unsynced-deposits:
+  /nemo/jinx/v1beta1/unsynced-deposits:
     get:
       summary: UnsyncedDeposits queries unsynced deposits.
       operationId: HardUnsyncedDeposits
@@ -10375,7 +10375,7 @@ paths:
                           borrow interest factor.
                   description: >-
                     DepositResponse defines an amount of coins deposited into a
-                    hard module account.
+                    jinx module account.
               pagination:
                 type: object
                 properties:
@@ -11326,7 +11326,7 @@ paths:
                           MultiRewardIndex stores reward accumulation
                           information on multiple reward types
                   title: >-
-                    HardLiquidityProviderClaim stores the hard liquidity
+                    HardLiquidityProviderClaim stores the jinx liquidity
                     provider rewards that can be claimed by owner
               delegator_claims:
                 type: array
@@ -11593,7 +11593,7 @@ paths:
           type: string
         - name: reward_type
           description: >-
-            reward_type is the type of reward to query rewards for, e.g. hard,
+            reward_type is the type of reward to query rewards for, e.g. jinx,
             earn,
 
             swap.
@@ -48756,7 +48756,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -49221,7 +49221,7 @@ paths:
                         RevisionNumber the same. However some consensus
                         algorithms may choose to
 
-                        reset the height in certain conditions e.g. hard forks,
+                        reset the height in certain conditions e.g. jinx forks,
                         state-machine
 
                         breaking changes In these cases, the RevisionNumber is
@@ -49734,7 +49734,7 @@ paths:
                     RevisionNumber the same. However some consensus algorithms
                     may choose to
 
-                    reset the height in certain conditions e.g. hard forks,
+                    reset the height in certain conditions e.g. jinx forks,
                     state-machine
 
                     breaking changes In these cases, the RevisionNumber is
@@ -50249,7 +50249,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -51499,7 +51499,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -51854,7 +51854,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -52245,7 +52245,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -52683,7 +52683,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -53103,7 +53103,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -53684,7 +53684,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -54054,7 +54054,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -54499,7 +54499,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -54924,7 +54924,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -55190,7 +55190,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -55496,7 +55496,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -55815,7 +55815,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -56129,7 +56129,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -56441,7 +56441,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -56705,7 +56705,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -56967,7 +56967,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -57234,7 +57234,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -57600,7 +57600,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. hard forks,
+                  reset the height in certain conditions e.g. jinx forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -62231,7 +62231,7 @@ definitions:
       amount:
         type: string
     description: VaultShare defines shares of a vault owned by a depositor.
-  nemo.hard.v1beta1.BorrowInterestFactorResponse:
+  nemo.jinx.v1beta1.BorrowInterestFactorResponse:
     type: object
     properties:
       denom:
@@ -62240,7 +62240,7 @@ definitions:
         type: string
         title: sdk.Dec as string
     description: BorrowInterestFactorResponse defines an individual borrow interest factor.
-  nemo.hard.v1beta1.BorrowLimit:
+  nemo.jinx.v1beta1.BorrowLimit:
     type: object
     properties:
       has_max_limit:
@@ -62250,7 +62250,7 @@ definitions:
       loan_to_value:
         type: string
     description: BorrowLimit enforces restrictions on a money market.
-  nemo.hard.v1beta1.BorrowResponse:
+  nemo.jinx.v1beta1.BorrowResponse:
     type: object
     properties:
       borrower:
@@ -62283,9 +62283,9 @@ definitions:
             BorrowInterestFactorResponse defines an individual borrow interest
             factor.
     description: >-
-      BorrowResponse defines an amount of coins borrowed from a hard module
+      BorrowResponse defines an amount of coins borrowed from a jinx module
       account.
-  nemo.hard.v1beta1.DepositResponse:
+  nemo.jinx.v1beta1.DepositResponse:
     type: object
     properties:
       depositor:
@@ -62318,9 +62318,9 @@ definitions:
             SupplyInterestFactorResponse defines an individual borrow interest
             factor.
     description: >-
-      DepositResponse defines an amount of coins deposited into a hard module
+      DepositResponse defines an amount of coins deposited into a jinx module
       account.
-  nemo.hard.v1beta1.InterestFactor:
+  nemo.jinx.v1beta1.InterestFactor:
     type: object
     properties:
       denom:
@@ -62332,7 +62332,7 @@ definitions:
         type: string
         title: sdk.Dec as String
     title: InterestFactor is a unique type returned by interest factor queries
-  nemo.hard.v1beta1.InterestRateModel:
+  nemo.jinx.v1beta1.InterestRateModel:
     type: object
     properties:
       base_rate_apy:
@@ -62344,7 +62344,7 @@ definitions:
       jump_multiplier:
         type: string
     description: InterestRateModel contains information about an asset's interest rate.
-  nemo.hard.v1beta1.MoneyMarket:
+  nemo.jinx.v1beta1.MoneyMarket:
     type: object
     properties:
       denom:
@@ -62380,7 +62380,7 @@ definitions:
       keeper_reward_percentage:
         type: string
     description: MoneyMarket is a money market for an individual asset.
-  nemo.hard.v1beta1.MoneyMarketInterestRate:
+  nemo.jinx.v1beta1.MoneyMarketInterestRate:
     type: object
     properties:
       denom:
@@ -62392,7 +62392,7 @@ definitions:
         type: string
         title: sdk.Dec as String
     title: MoneyMarketInterestRate is a unique type returned by interest rate queries
-  nemo.hard.v1beta1.Params:
+  nemo.jinx.v1beta1.Params:
     type: object
     properties:
       money_markets:
@@ -62437,8 +62437,8 @@ definitions:
           description: MoneyMarket is a money market for an individual asset.
       minimum_borrow_usd_value:
         type: string
-    description: Params defines the parameters for the hard module.
-  nemo.hard.v1beta1.QueryAccountsResponse:
+    description: Params defines the parameters for the jinx module.
+  nemo.jinx.v1beta1.QueryAccountsResponse:
     type: object
     properties:
       accounts:
@@ -62654,7 +62654,7 @@ definitions:
     description: >-
       QueryAccountsResponse is the response type for the Query/Accounts RPC
       method.
-  nemo.hard.v1beta1.QueryBorrowsResponse:
+  nemo.jinx.v1beta1.QueryBorrowsResponse:
     type: object
     properties:
       borrows:
@@ -62695,7 +62695,7 @@ definitions:
                   BorrowInterestFactorResponse defines an individual borrow
                   interest factor.
           description: >-
-            BorrowResponse defines an amount of coins borrowed from a hard
+            BorrowResponse defines an amount of coins borrowed from a jinx
             module account.
       pagination:
         type: object
@@ -62726,7 +62726,7 @@ definitions:
     description: >-
       QueryBorrowsResponse is the response type for the Query/Borrows RPC
       method.
-  nemo.hard.v1beta1.QueryDepositsResponse:
+  nemo.jinx.v1beta1.QueryDepositsResponse:
     type: object
     properties:
       deposits:
@@ -62767,7 +62767,7 @@ definitions:
                   SupplyInterestFactorResponse defines an individual borrow
                   interest factor.
           description: >-
-            DepositResponse defines an amount of coins deposited into a hard
+            DepositResponse defines an amount of coins deposited into a jinx
             module account.
       pagination:
         type: object
@@ -62798,7 +62798,7 @@ definitions:
     description: >-
       QueryDepositsResponse is the response type for the Query/Deposits RPC
       method.
-  nemo.hard.v1beta1.QueryInterestFactorsResponse:
+  nemo.jinx.v1beta1.QueryInterestFactorsResponse:
     type: object
     properties:
       interest_factors:
@@ -62818,7 +62818,7 @@ definitions:
     description: >-
       QueryInterestFactorsResponse is the response type for the
       Query/InterestFactors RPC method.
-  nemo.hard.v1beta1.QueryInterestRateResponse:
+  nemo.jinx.v1beta1.QueryInterestRateResponse:
     type: object
     properties:
       interest_rates:
@@ -62840,7 +62840,7 @@ definitions:
     description: >-
       QueryInterestRateResponse is the response type for the Query/InterestRate
       RPC method.
-  nemo.hard.v1beta1.QueryParamsResponse:
+  nemo.jinx.v1beta1.QueryParamsResponse:
     type: object
     properties:
       params:
@@ -62888,9 +62888,9 @@ definitions:
               description: MoneyMarket is a money market for an individual asset.
           minimum_borrow_usd_value:
             type: string
-        description: Params defines the parameters for the hard module.
+        description: Params defines the parameters for the jinx module.
     description: QueryParamsResponse is the response type for the Query/Params RPC method.
-  nemo.hard.v1beta1.QueryReservesResponse:
+  nemo.jinx.v1beta1.QueryReservesResponse:
     type: object
     properties:
       amount:
@@ -62910,7 +62910,7 @@ definitions:
     description: >-
       QueryReservesResponse is the response type for the Query/Reserves RPC
       method.
-  nemo.hard.v1beta1.QueryTotalBorrowedResponse:
+  nemo.jinx.v1beta1.QueryTotalBorrowedResponse:
     type: object
     properties:
       borrowed_coins:
@@ -62930,7 +62930,7 @@ definitions:
     description: >-
       QueryTotalBorrowedResponse is the response type for the
       Query/TotalBorrowed RPC method.
-  nemo.hard.v1beta1.QueryTotalDepositedResponse:
+  nemo.jinx.v1beta1.QueryTotalDepositedResponse:
     type: object
     properties:
       supplied_coins:
@@ -62950,7 +62950,7 @@ definitions:
     description: >-
       QueryTotalDepositedResponse is the response type for the
       Query/TotalDeposited RPC method.
-  nemo.hard.v1beta1.QueryUnsyncedBorrowsResponse:
+  nemo.jinx.v1beta1.QueryUnsyncedBorrowsResponse:
     type: object
     properties:
       borrows:
@@ -62991,7 +62991,7 @@ definitions:
                   BorrowInterestFactorResponse defines an individual borrow
                   interest factor.
           description: >-
-            BorrowResponse defines an amount of coins borrowed from a hard
+            BorrowResponse defines an amount of coins borrowed from a jinx
             module account.
       pagination:
         type: object
@@ -63022,7 +63022,7 @@ definitions:
     description: >-
       QueryUnsyncedBorrowsResponse is the response type for the
       Query/UnsyncedBorrows RPC method.
-  nemo.hard.v1beta1.QueryUnsyncedDepositsResponse:
+  nemo.jinx.v1beta1.QueryUnsyncedDepositsResponse:
     type: object
     properties:
       deposits:
@@ -63063,7 +63063,7 @@ definitions:
                   SupplyInterestFactorResponse defines an individual borrow
                   interest factor.
           description: >-
-            DepositResponse defines an amount of coins deposited into a hard
+            DepositResponse defines an amount of coins deposited into a jinx
             module account.
       pagination:
         type: object
@@ -63094,7 +63094,7 @@ definitions:
     description: >-
       QueryUnsyncedDepositsResponse is the response type for the
       Query/UnsyncedDeposits RPC method.
-  nemo.hard.v1beta1.SupplyInterestFactorResponse:
+  nemo.jinx.v1beta1.SupplyInterestFactorResponse:
     type: object
     properties:
       denom:
@@ -63321,7 +63321,7 @@ definitions:
             MultiRewardIndex stores reward accumulation information on multiple
             reward types
     title: >-
-      HardLiquidityProviderClaim stores the hard liquidity provider rewards that
+      HardLiquidityProviderClaim stores the jinx liquidity provider rewards that
       can be claimed by owner
   nemo.incentive.v1beta1.MultiRewardIndex:
     type: object
@@ -64205,7 +64205,7 @@ definitions:
                   MultiRewardIndex stores reward accumulation information on
                   multiple reward types
           title: >-
-            HardLiquidityProviderClaim stores the hard liquidity provider
+            HardLiquidityProviderClaim stores the jinx liquidity provider
             rewards that can be claimed by owner
       delegator_claims:
         type: array
@@ -90658,7 +90658,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -90846,7 +90846,7 @@ definitions:
     description: |-
       Normally the RevisionHeight is incremented at each height while keeping
       RevisionNumber the same. However some consensus algorithms may choose to
-      reset the height in certain conditions e.g. hard forks, state-machine
+      reset the height in certain conditions e.g. jinx forks, state-machine
       breaking changes In these cases, the RevisionNumber is incremented so that
       height continues to be monitonically increasing even as the RevisionHeight
       gets reset
@@ -91238,7 +91238,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -91506,7 +91506,7 @@ definitions:
             RevisionNumber the same. However some consensus algorithms may
             choose to
 
-            reset the height in certain conditions e.g. hard forks,
+            reset the height in certain conditions e.g. jinx forks,
             state-machine
 
             breaking changes In these cases, the RevisionNumber is incremented
@@ -91741,7 +91741,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -91789,7 +91789,7 @@ definitions:
                 RevisionNumber the same. However some consensus algorithms may
                 choose to
 
-                reset the height in certain conditions e.g. hard forks,
+                reset the height in certain conditions e.g. jinx forks,
                 state-machine
 
                 breaking changes In these cases, the RevisionNumber is
@@ -92592,7 +92592,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -92806,7 +92806,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93007,7 +93007,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93157,7 +93157,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93305,7 +93305,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93730,7 +93730,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93931,7 +93931,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94038,7 +94038,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94178,7 +94178,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94314,7 +94314,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94356,7 +94356,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94398,7 +94398,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94488,7 +94488,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94530,7 +94530,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94623,7 +94623,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94665,7 +94665,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94709,7 +94709,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94749,7 +94749,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. hard forks, state-machine
+          reset the height in certain conditions e.g. jinx forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that

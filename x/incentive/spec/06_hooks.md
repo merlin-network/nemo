@@ -7,7 +7,7 @@ order: 6
 This module implements the `Hooks` interface for the following modules:
 
 - cdp
-- hard
+- jinx
 - swap
 - staking (defined in cosmos-sdk)
 
@@ -29,7 +29,7 @@ func (h Hooks) BeforeCDPModified(ctx sdk.Context, cdp cdptypes.CDP) {
 }
 ```
 
-Hard module hooks manage the creation and synchronization of hard supply and borrow rewards.
+Hard module hooks manage the creation and synchronization of jinx supply and borrow rewards.
 
 ```go
 // ------------------- Hard Module Hooks -------------------
@@ -65,7 +65,7 @@ func (h Hooks) AfterBorrowModified(ctx sdk.Context, borrow hardtypes.Borrow) {
 }
 ```
 
-Staking module hooks manage the creation and synchronization of hard delegator rewards.
+Staking module hooks manage the creation and synchronization of jinx delegator rewards.
 
 ```go
 // ------------------- Staking Module Hooks -------------------

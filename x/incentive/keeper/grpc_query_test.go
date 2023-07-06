@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/incubus-network/nemo/app"
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	"github.com/incubus-network/nemo/x/incentive/keeper"
 	"github.com/incubus-network/nemo/x/incentive/types"
 	"github.com/stretchr/testify/suite"
@@ -71,12 +71,12 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 	suite.genesisState = types.NewGenesisState(
 		types.NewParams(
 			types.RewardPeriods{types.NewRewardPeriod(true, "bnb-a", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), c("ufury", 122354))},
-			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "bnb", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
-			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "bnb", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
-			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "ufury", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
+			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "bnb", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("jinx", 122354)))},
+			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "bnb", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("jinx", 122354)))},
+			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "ufury", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("jinx", 122354)))},
 			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "btcb/usdx", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("swp", 122354)))},
-			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "ufury", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
-			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "ufury", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
+			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "ufury", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("jinx", 122354)))},
+			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "ufury", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("jinx", 122354)))},
 			types.MultipliersPerDenoms{
 				{
 					Denom: "ufury",
@@ -85,7 +85,7 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 					},
 				},
 				{
-					Denom: "hard",
+					Denom: "jinx",
 					Multipliers: types.Multipliers{
 						types.NewMultiplier("small", 1, d("0.25")),
 						types.NewMultiplier("large", 12, d("1.0")),
@@ -114,7 +114,7 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 				types.NewAccumulationTime("bnb", suite.genesisTime.Add(-1*time.Hour)),
 			},
 			types.MultiRewardIndexes{
-				types.NewMultiRewardIndex("bnb", types.RewardIndexes{{CollateralType: "hard", RewardFactor: d("0.1")}}),
+				types.NewMultiRewardIndex("bnb", types.RewardIndexes{{CollateralType: "jinx", RewardFactor: d("0.1")}}),
 			},
 		),
 		types.NewGenesisRewardState(
@@ -122,7 +122,7 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 				types.NewAccumulationTime("bnb", suite.genesisTime.Add(-2*time.Hour)),
 			},
 			types.MultiRewardIndexes{
-				types.NewMultiRewardIndex("bnb", types.RewardIndexes{{CollateralType: "hard", RewardFactor: d("0.05")}}),
+				types.NewMultiRewardIndex("bnb", types.RewardIndexes{{CollateralType: "jinx", RewardFactor: d("0.05")}}),
 			},
 		),
 		types.NewGenesisRewardState(
@@ -130,7 +130,7 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 				types.NewAccumulationTime("ufury", suite.genesisTime.Add(-3*time.Hour)),
 			},
 			types.MultiRewardIndexes{
-				types.NewMultiRewardIndex("ufury", types.RewardIndexes{{CollateralType: "hard", RewardFactor: d("0.2")}}),
+				types.NewMultiRewardIndex("ufury", types.RewardIndexes{{CollateralType: "jinx", RewardFactor: d("0.2")}}),
 			},
 		),
 		types.NewGenesisRewardState(
@@ -172,22 +172,22 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 		types.HardLiquidityProviderClaims{
 			types.NewHardLiquidityProviderClaim(
 				suite.addrs[0],
-				cs(c("ufury", 1e9), c("hard", 1e9)),
-				types.MultiRewardIndexes{{CollateralType: "bnb", RewardIndexes: types.RewardIndexes{{CollateralType: "hard", RewardFactor: d("0.01")}}}},
-				types.MultiRewardIndexes{{CollateralType: "bnb", RewardIndexes: types.RewardIndexes{{CollateralType: "hard", RewardFactor: d("0.0")}}}},
+				cs(c("ufury", 1e9), c("jinx", 1e9)),
+				types.MultiRewardIndexes{{CollateralType: "bnb", RewardIndexes: types.RewardIndexes{{CollateralType: "jinx", RewardFactor: d("0.01")}}}},
+				types.MultiRewardIndexes{{CollateralType: "bnb", RewardIndexes: types.RewardIndexes{{CollateralType: "jinx", RewardFactor: d("0.0")}}}},
 			),
 			types.NewHardLiquidityProviderClaim(
 				suite.addrs[1],
-				cs(c("hard", 1)),
-				types.MultiRewardIndexes{{CollateralType: "bnb", RewardIndexes: types.RewardIndexes{{CollateralType: "hard", RewardFactor: d("0.1")}}}},
-				types.MultiRewardIndexes{{CollateralType: "bnb", RewardIndexes: types.RewardIndexes{{CollateralType: "hard", RewardFactor: d("0.0")}}}},
+				cs(c("jinx", 1)),
+				types.MultiRewardIndexes{{CollateralType: "bnb", RewardIndexes: types.RewardIndexes{{CollateralType: "jinx", RewardFactor: d("0.1")}}}},
+				types.MultiRewardIndexes{{CollateralType: "bnb", RewardIndexes: types.RewardIndexes{{CollateralType: "jinx", RewardFactor: d("0.0")}}}},
 			),
 		},
 		types.DelegatorClaims{
 			types.NewDelegatorClaim(
 				suite.addrs[2],
-				cs(c("hard", 5)),
-				types.MultiRewardIndexes{{CollateralType: "ufury", RewardIndexes: types.RewardIndexes{{CollateralType: "hard", RewardFactor: d("0.2")}}}},
+				cs(c("jinx", 5)),
+				types.MultiRewardIndexes{{CollateralType: "ufury", RewardIndexes: types.RewardIndexes{{CollateralType: "jinx", RewardFactor: d("0.2")}}}},
 			),
 		},
 		types.SwapClaims{

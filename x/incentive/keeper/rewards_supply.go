@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	"github.com/incubus-network/nemo/x/incentive/types"
 )
 
@@ -36,7 +36,7 @@ func (k Keeper) AccumulateHardSupplyRewards(ctx sdk.Context, rewardPeriod types.
 }
 
 // getHardSupplyTotalSourceShares fetches the sum of all source shares for a supply reward.
-// In the case of hard supply, this is the total supplied divided by the supply interest factor.
+// In the case of jinx supply, this is the total supplied divided by the supply interest factor.
 // This gives the "pre interest" value of the total supplied.
 func (k Keeper) getHardSupplyTotalSourceShares(ctx sdk.Context, denom string) sdk.Dec {
 	totalSuppliedCoins, found := k.hardKeeper.GetSuppliedCoins(ctx)
@@ -56,7 +56,7 @@ func (k Keeper) getHardSupplyTotalSourceShares(ctx sdk.Context, denom string) sd
 	return sdk.NewDecFromInt(totalSupplied).Quo(interestFactor)
 }
 
-// InitializeHardSupplyReward initializes the supply-side of a hard liquidity provider claim
+// InitializeHardSupplyReward initializes the supply-side of a jinx liquidity provider claim
 // by creating the claim and setting the supply reward factor index
 func (k Keeper) InitializeHardSupplyReward(ctx sdk.Context, deposit hardtypes.Deposit) {
 	claim, found := k.GetHardLiquidityProviderClaim(ctx, deposit.Depositor)
@@ -85,7 +85,7 @@ func (k Keeper) SynchronizeHardSupplyReward(ctx sdk.Context, deposit hardtypes.D
 		return
 	}
 
-	// Source shares for hard deposits is their normalized deposit amount
+	// Source shares for jinx deposits is their normalized deposit amount
 	normalizedDeposit, err := deposit.NormalizedDeposit()
 	if err != nil {
 		panic(fmt.Sprintf("during deposit reward sync, could not get normalized deposit for %s: %s", deposit.Depositor, err.Error()))
@@ -97,7 +97,7 @@ func (k Keeper) SynchronizeHardSupplyReward(ctx sdk.Context, deposit hardtypes.D
 	k.SetHardLiquidityProviderClaim(ctx, claim)
 }
 
-// synchronizeSingleHardSupplyReward synchronizes a single rewarded supply denom in a hard claim.
+// synchronizeSingleHardSupplyReward synchronizes a single rewarded supply denom in a jinx claim.
 // It returns the claim without setting in the store.
 // The public methods for accessing and modifying claims are preferred over this one. Direct modification of claims is easy to get wrong.
 func (k Keeper) synchronizeSingleHardSupplyReward(ctx sdk.Context, claim types.HardLiquidityProviderClaim, denom string, sourceShares sdk.Dec) types.HardLiquidityProviderClaim {
@@ -169,20 +169,20 @@ func (k Keeper) UpdateHardSupplyIndexDenoms(ctx sdk.Context, deposit hardtypes.D
 
 // SynchronizeHardLiquidityProviderClaim adds any accumulated rewards
 func (k Keeper) SynchronizeHardLiquidityProviderClaim(ctx sdk.Context, owner sdk.AccAddress) {
-	// Synchronize any hard liquidity supply-side rewards
+	// Synchronize any jinx liquidity supply-side rewards
 	deposit, foundDeposit := k.hardKeeper.GetDeposit(ctx, owner)
 	if foundDeposit {
 		k.SynchronizeHardSupplyReward(ctx, deposit)
 	}
 
-	// Synchronize any hard liquidity borrow-side rewards
+	// Synchronize any jinx liquidity borrow-side rewards
 	borrow, foundBorrow := k.hardKeeper.GetBorrow(ctx, owner)
 	if foundBorrow {
 		k.SynchronizeHardBorrowReward(ctx, borrow)
 	}
 }
 
-// SimulateHardSynchronization calculates a user's outstanding hard rewards by simulating reward synchronization
+// SimulateHardSynchronization calculates a user's outstanding jinx rewards by simulating reward synchronization
 func (k Keeper) SimulateHardSynchronization(ctx sdk.Context, claim types.HardLiquidityProviderClaim) types.HardLiquidityProviderClaim {
 	// 1. Simulate Hard supply-side rewards
 	for _, ri := range claim.SupplyRewardIndexes {

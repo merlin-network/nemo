@@ -4,10 +4,10 @@ package types
 const (
 	QueryCirculatingSupply     = "circulating-supply"
 	QueryTotalSupply           = "total-supply"
-	QueryCirculatingSupplyHARD = "circulating-supply-hard"
+	QueryCirculatingSupplyHARD = "circulating-supply-jinx"
 	QueryCirculatingSupplyUSDX = "circulating-supply-usdx"
 	QueryCirculatingSupplySWP  = "circulating-supply-swp"
-	QueryTotalSupplyHARD       = "total-supply-hard"
+	QueryTotalSupplyHARD       = "total-supply-jinx"
 	QueryTotalSupplyUSDX       = "total-supply-usdx"
 )
 

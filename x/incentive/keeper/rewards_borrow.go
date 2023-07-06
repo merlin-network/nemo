@@ -7,7 +7,7 @@ import (
 	sdkmath "cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	"github.com/incubus-network/nemo/x/incentive/types"
 )
 
@@ -39,7 +39,7 @@ func (k Keeper) AccumulateHardBorrowRewards(ctx sdk.Context, rewardPeriod types.
 
 // getHardBorrowTotalSourceShares fetches the sum of all source shares for a borrow reward.
 //
-// In the case of hard borrow, this is the total borrowed divided by the borrow interest factor (for a particular denom).
+// In the case of jinx borrow, this is the total borrowed divided by the borrow interest factor (for a particular denom).
 // This gives the "pre interest" or "normalized" value of the total borrowed. This is an amount, that if it was borrowed when
 // the interest factor was zero (ie at time 0), the current value of it with interest would be equal to the current total borrowed.
 //
@@ -64,7 +64,7 @@ func (k Keeper) getHardBorrowTotalSourceShares(ctx sdk.Context, denom string) sd
 	return sdk.NewDecFromInt(totalBorrowed).Quo(interestFactor)
 }
 
-// InitializeHardBorrowReward initializes the borrow-side of a hard liquidity provider claim
+// InitializeHardBorrowReward initializes the borrow-side of a jinx liquidity provider claim
 // by creating the claim and setting the borrow reward factor index
 func (k Keeper) InitializeHardBorrowReward(ctx sdk.Context, borrow hardtypes.Borrow) {
 	claim, found := k.GetHardLiquidityProviderClaim(ctx, borrow.Borrower)
@@ -93,7 +93,7 @@ func (k Keeper) SynchronizeHardBorrowReward(ctx sdk.Context, borrow hardtypes.Bo
 		return
 	}
 
-	// Source shares for hard borrows is their normalized borrow amount
+	// Source shares for jinx borrows is their normalized borrow amount
 	normalizedBorrows, err := borrow.NormalizedBorrow()
 	if err != nil {
 		panic(fmt.Sprintf("during borrow reward sync, could not get normalized borrow for %s: %s", borrow.Borrower, err.Error()))
@@ -105,7 +105,7 @@ func (k Keeper) SynchronizeHardBorrowReward(ctx sdk.Context, borrow hardtypes.Bo
 	k.SetHardLiquidityProviderClaim(ctx, claim)
 }
 
-// synchronizeSingleHardBorrowReward synchronizes a single rewarded borrow denom in a hard claim.
+// synchronizeSingleHardBorrowReward synchronizes a single rewarded borrow denom in a jinx claim.
 // It returns the claim without setting in the store.
 // The public methods for accessing and modifying claims are preferred over this one. Direct modification of claims is easy to get wrong.
 func (k Keeper) synchronizeSingleHardBorrowReward(ctx sdk.Context, claim types.HardLiquidityProviderClaim, denom string, sourceShares sdk.Dec) types.HardLiquidityProviderClaim {
@@ -175,10 +175,10 @@ func (k Keeper) UpdateHardBorrowIndexDenoms(ctx sdk.Context, borrow hardtypes.Bo
 	k.SetHardLiquidityProviderClaim(ctx, claim)
 }
 
-// CalculateRewards computes how much rewards should have accrued to a reward source (eg a user's hard borrowed btc amount)
+// CalculateRewards computes how much rewards should have accrued to a reward source (eg a user's jinx borrowed btc amount)
 // between two index values.
 //
-// oldIndex is normally the index stored on a claim, newIndex the current global value, and sourceShares a hard borrowed/supplied amount.
+// oldIndex is normally the index stored on a claim, newIndex the current global value, and sourceShares a jinx borrowed/supplied amount.
 //
 // It returns an error if newIndexes does not contain all CollateralTypes from oldIndexes, or if any value of oldIndex.RewardFactor > newIndex.RewardFactor.
 // This should never happen, as it would mean that a global reward index has decreased in value, or that a global reward index has been deleted from state.

@@ -19,8 +19,8 @@ import (
 
 func TestParams_UnmarshalJSON(t *testing.T) {
 	pools := types.NewAllowedPools(
-		types.NewAllowedPool("hard", "ufury"),
-		types.NewAllowedPool("hard", "usdx"),
+		types.NewAllowedPool("jinx", "ufury"),
+		types.NewAllowedPool("jinx", "usdx"),
 	)
 	poolData, err := json.Marshal(pools)
 	require.NoError(t, err)
@@ -45,8 +45,8 @@ func TestParams_UnmarshalJSON(t *testing.T) {
 
 func TestParams_MarshalYAML(t *testing.T) {
 	pools := types.NewAllowedPools(
-		types.NewAllowedPool("hard", "ufury"),
-		types.NewAllowedPool("hard", "usdx"),
+		types.NewAllowedPool("jinx", "ufury"),
+		types.NewAllowedPool("jinx", "usdx"),
 	)
 	fee, err := sdk.NewDecFromStr("0.5")
 	require.NoError(t, err)
@@ -212,7 +212,7 @@ func TestParams_Validation(t *testing.T) {
 func TestParams_String(t *testing.T) {
 	params := types.NewParams(
 		types.NewAllowedPools(
-			types.NewAllowedPool("hard", "ufury"),
+			types.NewAllowedPool("jinx", "ufury"),
 			types.NewAllowedPool("ufury", "usdx"),
 		),
 		sdk.MustNewDecFromStr("0.5"),
@@ -221,7 +221,7 @@ func TestParams_String(t *testing.T) {
 	require.NoError(t, params.Validate())
 
 	output := params.String()
-	assert.Contains(t, output, types.PoolID("hard", "ufury"))
+	assert.Contains(t, output, types.PoolID("jinx", "ufury"))
 	assert.Contains(t, output, types.PoolID("ufury", "usdx"))
 	assert.Contains(t, output, "0.5")
 }
@@ -292,7 +292,7 @@ func TestAllowedPool_TokenMatch_CaseSensitive(t *testing.T) {
 	err := allowedPool.Validate()
 	assert.NoError(t, err)
 
-	allowedPool = types.NewAllowedPool("haRd", "hard")
+	allowedPool = types.NewAllowedPool("haRd", "jinx")
 	err = allowedPool.Validate()
 	assert.NoError(t, err)
 
@@ -302,12 +302,12 @@ func TestAllowedPool_TokenMatch_CaseSensitive(t *testing.T) {
 }
 
 func TestAllowedPool_String(t *testing.T) {
-	allowedPool := types.NewAllowedPool("hard", "ufury")
+	allowedPool := types.NewAllowedPool("jinx", "ufury")
 	require.NoError(t, allowedPool.Validate())
 
 	output := `AllowedPool:
-  Name: hard:ufury
-	Token A: hard
+  Name: jinx:ufury
+	Token A: jinx
 	Token B: ufury
 `
 	assert.Equal(t, output, allowedPool.String())
@@ -335,12 +335,12 @@ func TestAllowedPool_Name(t *testing.T) {
 			name:   "a001:a002",
 		},
 		{
-			tokens: "hard ufury",
-			name:   "hard:ufury",
+			tokens: "jinx ufury",
+			name:   "jinx:ufury",
 		},
 		{
-			tokens: "bnb hard",
-			name:   "bnb:hard",
+			tokens: "bnb jinx",
+			name:   "bnb:jinx",
 		},
 		{
 			tokens: "bnb xrpb",
@@ -370,15 +370,15 @@ func TestAllowedPools_Validate(t *testing.T) {
 		{
 			name: "duplicate pool",
 			allowedPools: types.NewAllowedPools(
-				types.NewAllowedPool("hard", "ufury"),
-				types.NewAllowedPool("hard", "ufury"),
+				types.NewAllowedPool("jinx", "ufury"),
+				types.NewAllowedPool("jinx", "ufury"),
 			),
-			expectedErr: "duplicate pool: hard:ufury",
+			expectedErr: "duplicate pool: jinx:ufury",
 		},
 		{
 			name: "duplicate pools",
 			allowedPools: types.NewAllowedPools(
-				types.NewAllowedPool("hard", "ufury"),
+				types.NewAllowedPool("jinx", "ufury"),
 				types.NewAllowedPool("bnb", "usdx"),
 				types.NewAllowedPool("btcb", "xrpb"),
 				types.NewAllowedPool("bnb", "usdx"),

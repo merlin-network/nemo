@@ -7,7 +7,7 @@ import (
 
 	cdptypes "github.com/incubus-network/nemo/x/cdp/types"
 	earntypes "github.com/incubus-network/nemo/x/earn/types"
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	savingstypes "github.com/incubus-network/nemo/x/savings/types"
 	swaptypes "github.com/incubus-network/nemo/x/swap/types"
 )

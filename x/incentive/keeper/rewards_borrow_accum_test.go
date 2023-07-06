@@ -46,7 +46,7 @@ func (suite *AccumulateBorrowRewardsTests) TestStateUpdatedWhenBlockTimeHasIncre
 			CollateralType: denom,
 			RewardIndexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -67,7 +67,7 @@ func (suite *AccumulateBorrowRewardsTests) TestStateUpdatedWhenBlockTimeHasIncre
 		denom,
 		time.Unix(0, 0), // ensure the test is within start and end times
 		distantFuture,
-		cs(c("hard", 2000), c("ufury", 1000)), // same denoms as in global indexes
+		cs(c("jinx", 2000), c("ufury", 1000)), // same denoms as in global indexes
 	)
 
 	suite.keeper.AccumulateHardBorrowRewards(suite.ctx, period)
@@ -77,7 +77,7 @@ func (suite *AccumulateBorrowRewardsTests) TestStateUpdatedWhenBlockTimeHasIncre
 	suite.storedTimeEquals(denom, newAccrualTime)
 	suite.storedIndexesEqual(denom, types.RewardIndexes{
 		{
-			CollateralType: "hard",
+			CollateralType: "jinx",
 			RewardFactor:   d("7.22"),
 		},
 		{
@@ -98,7 +98,7 @@ func (suite *AccumulateBorrowRewardsTests) TestStateUnchangedWhenBlockTimeHasNot
 			CollateralType: denom,
 			RewardIndexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -119,7 +119,7 @@ func (suite *AccumulateBorrowRewardsTests) TestStateUnchangedWhenBlockTimeHasNot
 		denom,
 		time.Unix(0, 0), // ensure the test is within start and end times
 		distantFuture,
-		cs(c("hard", 2000), c("ufury", 1000)), // same denoms as in global indexes
+		cs(c("jinx", 2000), c("ufury", 1000)), // same denoms as in global indexes
 	)
 
 	suite.keeper.AccumulateHardBorrowRewards(suite.ctx, period)
@@ -143,7 +143,7 @@ func (suite *AccumulateBorrowRewardsTests) TestNoAccumulationWhenSourceSharesAre
 			CollateralType: denom,
 			RewardIndexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -165,7 +165,7 @@ func (suite *AccumulateBorrowRewardsTests) TestNoAccumulationWhenSourceSharesAre
 		denom,
 		time.Unix(0, 0), // ensure the test is within start and end times
 		distantFuture,
-		cs(c("hard", 2000), c("ufury", 1000)), // same denoms as in global indexes
+		cs(c("jinx", 2000), c("ufury", 1000)), // same denoms as in global indexes
 	)
 
 	suite.keeper.AccumulateHardBorrowRewards(suite.ctx, period)
@@ -189,7 +189,7 @@ func (suite *AccumulateBorrowRewardsTests) TestStateAddedWhenStateDoesNotExist()
 		denom,
 		time.Unix(0, 0), // ensure the test is within start and end times
 		distantFuture,
-		cs(c("hard", 2000), c("ufury", 1000)),
+		cs(c("jinx", 2000), c("ufury", 1000)),
 	)
 
 	firstAccrualTime := time.Date(1998, 1, 1, 0, 0, 0, 0, time.UTC)
@@ -211,7 +211,7 @@ func (suite *AccumulateBorrowRewardsTests) TestStateAddedWhenStateDoesNotExist()
 	suite.storedTimeEquals(denom, secondAccrualTime)
 	suite.storedIndexesEqual(denom, types.RewardIndexes{
 		{
-			CollateralType: "hard",
+			CollateralType: "jinx",
 			RewardFactor:   d("0.02"),
 		},
 		{
@@ -260,7 +260,7 @@ func (suite *AccumulateBorrowRewardsTests) TestNoAccumulationWhenBeforeStartTime
 			CollateralType: denom,
 			RewardIndexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -281,7 +281,7 @@ func (suite *AccumulateBorrowRewardsTests) TestNoAccumulationWhenBeforeStartTime
 		denom,
 		firstAccrualTime.Add(time.Nanosecond), // start time after accrual time
 		distantFuture,
-		cs(c("hard", 2000), c("ufury", 1000)),
+		cs(c("jinx", 2000), c("ufury", 1000)),
 	)
 
 	suite.ctx = suite.ctx.WithBlockTime(firstAccrualTime)
@@ -311,7 +311,7 @@ func (suite *AccumulateBorrowRewardsTests) TestPanicWhenCurrentTimeLessThanPrevi
 		denom,
 		time.Time{}, // start time after accrual time
 		distantFuture,
-		cs(c("hard", 2000), c("ufury", 1000)),
+		cs(c("jinx", 2000), c("ufury", 1000)),
 	)
 
 	suite.ctx = suite.ctx.WithBlockTime(firstAccrualTime)

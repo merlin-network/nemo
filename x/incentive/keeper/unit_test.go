@@ -23,7 +23,7 @@ import (
 	earntypes "github.com/incubus-network/nemo/x/earn/types"
 	tmprototypes "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	"github.com/incubus-network/nemo/x/incentive/keeper"
 	"github.com/incubus-network/nemo/x/incentive/types"
 )
@@ -293,8 +293,8 @@ func (k *fakeSwapKeeper) GetDepositorSharesAmount(_ sdk.Context, depositor sdk.A
 	return shares, found
 }
 
-// fakeHardKeeper is a stub hard keeper.
-// It can be used to return values to the incentive keeper without having to initialize a full hard keeper.
+// fakeHardKeeper is a stub jinx keeper.
+// It can be used to return values to the incentive keeper without having to initialize a full jinx keeper.
 type fakeHardKeeper struct {
 	borrows  fakeHardState
 	deposits fakeHardState
@@ -764,7 +764,7 @@ var nonEmptyMultiRewardIndexes = types.MultiRewardIndexes{
 		CollateralType: "bnb",
 		RewardIndexes: types.RewardIndexes{
 			{
-				CollateralType: "hard",
+				CollateralType: "jinx",
 				RewardFactor:   d("0.02"),
 			},
 			{
@@ -777,7 +777,7 @@ var nonEmptyMultiRewardIndexes = types.MultiRewardIndexes{
 		CollateralType: "btcb",
 		RewardIndexes: types.RewardIndexes{
 			{
-				CollateralType: "hard",
+				CollateralType: "jinx",
 				RewardFactor:   d("0.2"),
 			},
 			{
@@ -829,7 +829,7 @@ func appendUniqueMultiRewardIndex(indexes types.MultiRewardIndexes) types.MultiR
 		uniqueDenom,
 		types.RewardIndexes{
 			{
-				CollateralType: "hard",
+				CollateralType: "jinx",
 				RewardFactor:   d("0.02"),
 			},
 			{

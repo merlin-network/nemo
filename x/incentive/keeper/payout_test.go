@@ -15,7 +15,7 @@ import (
 	"github.com/incubus-network/nemo/app"
 	cdpkeeper "github.com/incubus-network/nemo/x/cdp/keeper"
 	cdptypes "github.com/incubus-network/nemo/x/cdp/types"
-	hardkeeper "github.com/incubus-network/nemo/x/hard/keeper"
+	hardkeeper "github.com/incubus-network/nemo/x/jinx/keeper"
 	"github.com/incubus-network/nemo/x/incentive/keeper"
 	"github.com/incubus-network/nemo/x/incentive/testutil"
 	"github.com/incubus-network/nemo/x/incentive/types"

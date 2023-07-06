@@ -71,7 +71,7 @@ func (suite keeperTestSuite) TestParams_Persistance() {
 	oldParams := params
 	params = types.Params{
 		AllowedPools: types.AllowedPools{
-			types.NewAllowedPool("hard", "ufury"),
+			types.NewAllowedPool("jinx", "ufury"),
 		},
 		SwapFee: sdk.MustNewDecFromStr("0.01"),
 	}
@@ -157,7 +157,7 @@ func (suite *keeperTestSuite) TestShare_PanicsWhenInvalid() {
 
 	invalidRecord := types.NewShareRecord(
 		depositor,
-		"hard/usdx",
+		"jinx/usdx",
 		i(-1),
 	)
 

@@ -21,7 +21,7 @@ const (
 	flagDenom    = "denom"
 
 	typeDelegator   = "delegator"
-	typeHard        = "hard"
+	typeHard        = "jinx"
 	typeUSDXMinting = "usdx-minting"
 	typeSwap        = "swap"
 	typeSavings     = "savings"
@@ -62,14 +62,14 @@ func queryRewardsCmd() *cobra.Command {
 			Example:
 			$ %[1]s query %[2]s rewards
 			$ %[1]s query %[2]s rewards --owner fury15qdefkmwswysgg4qxgqpqr35k3m49pkxxvsmkx
-			$ %[1]s query %[2]s rewards --type hard
+			$ %[1]s query %[2]s rewards --type jinx
 			$ %[1]s query %[2]s rewards --type usdx-minting
 			$ %[1]s query %[2]s rewards --type delegator
 			$ %[1]s query %[2]s rewards --type swap
 			$ %[1]s query %[2]s rewards --type savings
 			$ %[1]s query %[2]s rewards --type earn
-			$ %[1]s query %[2]s rewards --type hard --owner fury15qdefkmwswysgg4qxgqpqr35k3m49pkxxvsmkx
-			$ %[1]s query %[2]s rewards --type hard --unsynced
+			$ %[1]s query %[2]s rewards --type jinx --owner fury15qdefkmwswysgg4qxgqpqr35k3m49pkxxvsmkx
+			$ %[1]s query %[2]s rewards --type jinx --unsynced
 			`,
 				version.AppName, types.ModuleName)),
 		Args: cobra.NoArgs,

@@ -93,7 +93,7 @@ Ref: https://keepachangelog.com/en/1.0.0/
 ### Client Breaking
 
 - [#1477] Remove legacy REST endpoints.
-- [#1519] Remove required denom path parameter from hard grpc query endpoints.
+- [#1519] Remove required denom path parameter from jinx grpc query endpoints.
 
 ### Bug Fixes
 
@@ -114,7 +114,7 @@ Ref: https://keepachangelog.com/en/1.0.0/
 ## [v0.13.0]
 
 - Hard Protocol - Introduces borrowing functionality to HARD protocol. See full
-  [spec](https://github.com/Incubus-Network/nemo/tree/master/x/hard/spec)
+  [spec](https://github.com/Incubus-Network/nemo/tree/master/x/jinx/spec)
 
 ### Breaking changes
 

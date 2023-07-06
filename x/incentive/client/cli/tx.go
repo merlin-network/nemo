@@ -75,12 +75,12 @@ func getCmdClaimHard() *cobra.Command {
 	var denomsToClaim map[string]string
 
 	cmd := &cobra.Command{
-		Use:   "claim-hard",
+		Use:   "claim-jinx",
 		Short: "claim sender's Hard module rewards using given multipliers",
 		Long:  `Claim sender's outstanding Hard rewards for deposit/borrow using given multipliers`,
 		Example: strings.Join([]string{
-			fmt.Sprintf(`  $ %s tx %s claim-hard --%s hard=large --%s ufury=small`, version.AppName, types.ModuleName, multiplierFlag, multiplierFlag),
-			fmt.Sprintf(`  $ %s tx %s claim-hard --%s hard=large,ufury=small`, version.AppName, types.ModuleName, multiplierFlag),
+			fmt.Sprintf(`  $ %s tx %s claim-jinx --%s jinx=large --%s ufury=small`, version.AppName, types.ModuleName, multiplierFlag, multiplierFlag),
+			fmt.Sprintf(`  $ %s tx %s claim-jinx --%s jinx=large,ufury=small`, version.AppName, types.ModuleName, multiplierFlag),
 		}, "\n"),
 		Args: cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -114,8 +114,8 @@ func getCmdClaimDelegator() *cobra.Command {
 		Short: "claim sender's non-sdk delegator rewards using given multipliers",
 		Long:  `Claim sender's outstanding delegator rewards using given multipliers`,
 		Example: strings.Join([]string{
-			fmt.Sprintf(`  $ %s tx %s claim-delegator --%s hard=large --%s swp=small`, version.AppName, types.ModuleName, multiplierFlag, multiplierFlag),
-			fmt.Sprintf(`  $ %s tx %s claim-delegator --%s hard=large,swp=small`, version.AppName, types.ModuleName, multiplierFlag),
+			fmt.Sprintf(`  $ %s tx %s claim-delegator --%s jinx=large --%s swp=small`, version.AppName, types.ModuleName, multiplierFlag, multiplierFlag),
+			fmt.Sprintf(`  $ %s tx %s claim-delegator --%s jinx=large,swp=small`, version.AppName, types.ModuleName, multiplierFlag),
 		}, "\n"),
 		Args: cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, args []string) error {

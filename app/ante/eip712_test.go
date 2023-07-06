@@ -38,7 +38,7 @@ import (
 	evmutilkeeper "github.com/incubus-network/nemo/x/evmutil/keeper"
 	evmutiltestutil "github.com/incubus-network/nemo/x/evmutil/testutil"
 	evmutiltypes "github.com/incubus-network/nemo/x/evmutil/types"
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	pricefeedtypes "github.com/incubus-network/nemo/x/pricefeed/types"
 )
 
@@ -381,7 +381,7 @@ func (suite *EIP712TestSuite) SetupTest() {
 			},
 		},
 		{
-			MsgTypeUrl:       "/nemo.hard.v1beta1.MsgDeposit",
+			MsgTypeUrl:       "/nemo.jinx.v1beta1.MsgDeposit",
 			MsgValueTypeName: "MsgValueHardDeposit",
 			ValueTypes: []evmtypes.EIP712MsgAttrType{
 				{Name: "depositor", Type: "string"},
@@ -407,7 +407,7 @@ func (suite *EIP712TestSuite) SetupTest() {
 			},
 		},
 		{
-			MsgTypeUrl:       "/nemo.hard.v1beta1.MsgWithdraw",
+			MsgTypeUrl:       "/nemo.jinx.v1beta1.MsgWithdraw",
 			MsgValueTypeName: "MsgValueHardWithdraw",
 			ValueTypes: []evmtypes.EIP712MsgAttrType{
 				{Name: "depositor", Type: "string"},
@@ -665,7 +665,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 				suite.Require().Equal(sdk.NewCoin(USDCCoinDenom, suite.getEVMAmount(100)), cdp.Collateral)
 				suite.Require().Equal(sdk.NewCoin("usdx", sdkmath.NewInt(99_000_000)), cdp.Principal)
 
-				// validate hard
+				// validate jinx
 				hardDeposit, found := suite.tApp.GetHardKeeper().GetDeposit(suite.ctx, suite.testAddr)
 				suite.Require().True(found)
 				suite.Require().Equal(suite.testAddr, hardDeposit.Depositor)
@@ -720,7 +720,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx_DepositAndWithdraw() {
 	)
 	suite.Require().Equal(resDeliverTx.Code, uint32(0), resDeliverTx.Log)
 
-	// validate hard
+	// validate jinx
 	hardDeposit, found := suite.tApp.GetHardKeeper().GetDeposit(suite.ctx, suite.testAddr)
 	suite.Require().True(found)
 	suite.Require().Equal(suite.testAddr, hardDeposit.Depositor)
@@ -765,7 +765,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx_DepositAndWithdraw() {
 	)
 	suite.Require().Equal(resDeliverTx.Code, uint32(0), resDeliverTx.Log)
 
-	// validate hard & cdp should be repayed
+	// validate jinx & cdp should be repayed
 	_, found = suite.tApp.GetHardKeeper().GetDeposit(suite.ctx, suite.testAddr)
 	suite.Require().False(found)
 	_, found = suite.tApp.GetCDPKeeper().GetCdpByOwnerAndCollateralType(suite.ctx, suite.testAddr, USDCCDPType)

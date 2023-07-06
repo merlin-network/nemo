@@ -115,7 +115,7 @@ func (m *QueryParamsResponse) GetParams() Params {
 type QueryRewardsRequest struct {
 	// owner is the address of the user to query rewards for.
 	Owner string `protobuf:"bytes,1,opt,name=owner,proto3" json:"owner,omitempty"`
-	// reward_type is the type of reward to query rewards for, e.g. hard, earn,
+	// reward_type is the type of reward to query rewards for, e.g. jinx, earn,
 	// swap.
 	RewardType string `protobuf:"bytes,2,opt,name=reward_type,json=rewardType,proto3" json:"reward_type,omitempty"`
 	// unsynchronized is a flag to query rewards that are not simulated for reward

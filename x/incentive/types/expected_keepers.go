@@ -9,7 +9,7 @@ import (
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	cdptypes "github.com/incubus-network/nemo/x/cdp/types"
 	earntypes "github.com/incubus-network/nemo/x/earn/types"
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	pricefeedtypes "github.com/incubus-network/nemo/x/pricefeed/types"
 	savingstypes "github.com/incubus-network/nemo/x/savings/types"
 )
@@ -45,7 +45,7 @@ type CdpKeeper interface {
 	GetCollateral(ctx sdk.Context, collateralType string) (cdptypes.CollateralParam, bool)
 }
 
-// HardKeeper defines the expected hard keeper for interacting with Hard protocol
+// HardKeeper defines the expected jinx keeper for interacting with Hard protocol
 type HardKeeper interface {
 	GetDeposit(ctx sdk.Context, depositor sdk.AccAddress) (hardtypes.Deposit, bool)
 	GetBorrow(ctx sdk.Context, borrower sdk.AccAddress) (hardtypes.Borrow, bool)

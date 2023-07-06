@@ -135,7 +135,7 @@ func (suite *KeeperTestSuite) TestGetSetSwapRewardIndexes() {
 			poolName: "btc/usdx",
 			indexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -145,7 +145,7 @@ func (suite *KeeperTestSuite) TestGetSetSwapRewardIndexes() {
 			},
 			wantIndex: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -159,7 +159,7 @@ func (suite *KeeperTestSuite) TestGetSetSwapRewardIndexes() {
 			poolName: "",
 			indexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -231,7 +231,7 @@ func (suite *KeeperTestSuite) TestIterateSwapRewardIndexes() {
 			CollateralType: "btcb/usdx",
 			RewardIndexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 			},
@@ -344,7 +344,7 @@ func (suite *KeeperTestSuite) TestGetSetEarnRewardIndexes() {
 			vaultDenom: "usdx",
 			indexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -354,7 +354,7 @@ func (suite *KeeperTestSuite) TestGetSetEarnRewardIndexes() {
 			},
 			wantIndex: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -368,7 +368,7 @@ func (suite *KeeperTestSuite) TestGetSetEarnRewardIndexes() {
 			vaultDenom: "",
 			indexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 				{
@@ -440,7 +440,7 @@ func (suite *KeeperTestSuite) TestIterateEarnRewardIndexes() {
 			CollateralType: "usdx",
 			RewardIndexes: types.RewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardFactor:   d("0.02"),
 				},
 			},

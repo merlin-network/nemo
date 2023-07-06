@@ -120,7 +120,7 @@ type USDXMintingClaim struct {
 	RewardIndexes RewardIndexes `json:"reward_indexes" yaml:"reward_indexes"`
 }
 
-// HardLiquidityProviderClaim stores the hard liquidity provider rewards that can be claimed by owner
+// HardLiquidityProviderClaim stores the jinx liquidity provider rewards that can be claimed by owner
 type HardLiquidityProviderClaim struct {
 	BaseMultiClaim      `json:"base_claim" yaml:"base_claim"`
 	SupplyRewardIndexes MultiRewardIndexes `json:"supply_reward_indexes" yaml:"supply_reward_indexes"`

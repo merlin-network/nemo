@@ -348,7 +348,7 @@ func getCirculatingSupplySWP(ctx sdk.Context, req abci.RequestQuery, legacyQueri
 }
 
 func getTotalSupplyHARD(ctx sdk.Context, req abci.RequestQuery, bk types.BankKeeper, legacyQuerierCdc *codec.LegacyAmino) ([]byte, error) {
-	totalSupply := bk.GetSupply(ctx, "hard").Amount
+	totalSupply := bk.GetSupply(ctx, "jinx").Amount
 	supplyInt := sdk.NewDecFromInt(totalSupply).Mul(sdk.MustNewDecFromStr("0.000001")).TruncateInt64()
 	bz, err := legacyQuerierCdc.MarshalJSON(supplyInt)
 	if err != nil {

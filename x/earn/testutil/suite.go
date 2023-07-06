@@ -10,10 +10,10 @@ import (
 	"github.com/incubus-network/nemo/app"
 	"github.com/incubus-network/nemo/x/earn/keeper"
 	"github.com/incubus-network/nemo/x/earn/types"
-	"github.com/incubus-network/nemo/x/hard"
+	"github.com/incubus-network/nemo/x/jinx"
 
-	hardkeeper "github.com/incubus-network/nemo/x/hard/keeper"
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardkeeper "github.com/incubus-network/nemo/x/jinx/keeper"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	pricefeedtypes "github.com/incubus-network/nemo/x/pricefeed/types"
 	savingskeeper "github.com/incubus-network/nemo/x/savings/keeper"
 	savingstypes "github.com/incubus-network/nemo/x/savings/types"
@@ -54,7 +54,7 @@ type Suite struct {
 
 // SetupTest instantiates a new app, keepers, and sets suite state
 func (suite *Suite) SetupTest() {
-	// Pricefeed required for withdrawing from hard
+	// Pricefeed required for withdrawing from jinx
 	pricefeedGS := pricefeedtypes.GenesisState{
 		Params: pricefeedtypes.Params{
 			Markets: []pricefeedtypes.Market{
@@ -195,7 +195,7 @@ func (suite *Suite) SetupTest() {
 	suite.HardKeeper = tApp.GetHardKeeper()
 	suite.SavingsKeeper = tApp.GetSavingsKeeper()
 
-	hard.BeginBlocker(suite.Ctx, suite.HardKeeper)
+	jinx.BeginBlocker(suite.Ctx, suite.HardKeeper)
 }
 
 // GetEvents returns emitted events on the sdk context
@@ -328,7 +328,7 @@ func (suite *Suite) VaultAccountSharesEqual(accs []sdk.AccAddress, supplies []sd
 // ----------------------------------------------------------------------------
 // Hard
 
-// HardDepositAmountEqual asserts that the hard deposit amount matches the provided
+// HardDepositAmountEqual asserts that the jinx deposit amount matches the provided
 // values.
 func (suite *Suite) HardDepositAmountEqual(expected sdk.Coins) {
 	macc := suite.AccountKeeper.GetModuleAccount(suite.Ctx, types.ModuleName)
@@ -339,11 +339,11 @@ func (suite *Suite) HardDepositAmountEqual(expected sdk.Coins) {
 		return
 	}
 
-	suite.Require().True(found, "hard should have a deposit")
+	suite.Require().True(found, "jinx should have a deposit")
 	suite.Require().Equalf(
 		expected,
 		hardDeposit.Amount,
-		"hard should have a deposit with the amount %v",
+		"jinx should have a deposit with the amount %v",
 		expected,
 	)
 }

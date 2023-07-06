@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	"github.com/incubus-network/nemo/x/incentive/keeper"
 	"github.com/incubus-network/nemo/x/incentive/types"
 )
@@ -73,7 +73,7 @@ func (suite *SynchronizeHardBorrowRewardTests) TestClaimIndexesAreUnchangedWhenG
 }
 
 func (suite *SynchronizeHardBorrowRewardTests) TestClaimIndexesAreUpdatedWhenNewRewardAdded() {
-	// When a new reward is added (via gov) for a hard borrow denom the user has already borrowed, and the claim is synced;
+	// When a new reward is added (via gov) for a jinx borrow denom the user has already borrowed, and the claim is synced;
 	// Then the new reward's index should be added to the claim.
 
 	claim := types.HardLiquidityProviderClaim{
@@ -176,7 +176,7 @@ func (suite *SynchronizeHardBorrowRewardTests) TestRewardIsIncrementedWhenGlobal
 }
 
 func (suite *SynchronizeHardBorrowRewardTests) TestRewardIsIncrementedWhenNewRewardAdded() {
-	// When a new reward is added (via gov) for a hard borrow denom the user has already borrowed, and the claim is synced
+	// When a new reward is added (via gov) for a jinx borrow denom the user has already borrowed, and the claim is synced
 	// Then the user earns rewards for the time since the reward was added
 
 	originalReward := arbitraryCoins()
@@ -297,8 +297,8 @@ func (suite *SynchronizeHardBorrowRewardTests) TestRewardIsIncrementedWhenNewRew
 	)
 }
 
-// BorrowBuilder is a tool for creating a hard borrows.
-// The builder inherits from hard.Borrow, so fields can be accessed directly if a helper method doesn't exist.
+// BorrowBuilder is a tool for creating a jinx borrows.
+// The builder inherits from jinx.Borrow, so fields can be accessed directly if a helper method doesn't exist.
 type BorrowBuilder struct {
 	hardtypes.Borrow
 }
@@ -364,7 +364,7 @@ func TestCalculateRewards(t *testing.T) {
 			args: args{
 				oldIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("0.000000001"),
 					},
 					{
@@ -374,7 +374,7 @@ func TestCalculateRewards(t *testing.T) {
 				},
 				newIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("1000.0"),
 					},
 					{
@@ -386,7 +386,7 @@ func TestCalculateRewards(t *testing.T) {
 			},
 			expected: expected{
 				// for each denom: (new - old) * sourceAmount
-				coins: cs(c("hard", 999999999999), c("ufury", 1)),
+				coins: cs(c("jinx", 999999999999), c("ufury", 1)),
 			},
 		},
 		{
@@ -394,13 +394,13 @@ func TestCalculateRewards(t *testing.T) {
 			args: args{
 				oldIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("0.000000001"),
 					},
 				},
 				newIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("1000.0"),
 					},
 					{
@@ -412,7 +412,7 @@ func TestCalculateRewards(t *testing.T) {
 			},
 			expected: expected{
 				// for each denom: (new - old) * sourceAmount
-				coins: cs(c("hard", 999999999999), c("ufury", 100000001)),
+				coins: cs(c("jinx", 999999999999), c("ufury", 100000001)),
 			},
 		},
 		{
@@ -420,13 +420,13 @@ func TestCalculateRewards(t *testing.T) {
 			args: args{
 				oldIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("0.2"),
 					},
 				},
 				newIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("0.1"),
 					},
 				},
@@ -441,7 +441,7 @@ func TestCalculateRewards(t *testing.T) {
 			args: args{
 				oldIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("0.1"),
 					},
 					{
@@ -451,7 +451,7 @@ func TestCalculateRewards(t *testing.T) {
 				},
 				newIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("0.2"),
 					},
 				},
@@ -466,13 +466,13 @@ func TestCalculateRewards(t *testing.T) {
 			args: args{
 				oldIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("0.0"),
 					},
 				},
 				newIndexes: types.RewardIndexes{
 					{
-						CollateralType: "hard",
+						CollateralType: "jinx",
 						RewardFactor:   d("0.0"),
 					},
 				},

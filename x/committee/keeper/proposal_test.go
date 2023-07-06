@@ -270,7 +270,7 @@ func (suite *keeperTestSuite) TestAddVote() {
 		time.Hour*24*7,
 		types.TALLY_OPTION_FIRST_PAST_THE_POST,
 		sdk.Dec{},
-		"hard",
+		"jinx",
 	)
 	nonMemberAddr := suite.Addresses[4]
 	firstBlockTime := time.Date(1998, time.January, 1, 1, 0, 0, 0, time.UTC)
@@ -441,7 +441,7 @@ func (suite *keeperTestSuite) TestTallyTokenCommitteeVotes() {
 		time.Hour*24*7,
 		types.TALLY_OPTION_DEADLINE,
 		testutil.D("0.4"),
-		"hard",
+		"jinx",
 	)
 	var defaultProposalID uint64 = 1
 	firstBlockTime := time.Date(1998, time.January, 1, 1, 0, 0, 0, time.UTC)
@@ -538,7 +538,7 @@ func (suite *keeperTestSuite) TestTallyTokenCommitteeVotes() {
 	var genCoins []sdk.Coins
 	var totalSupply sdk.Coins
 	for _, amount := range genCoinCounts {
-		userCoin := testutil.C("hard", amount)
+		userCoin := testutil.C("jinx", amount)
 		genCoins = append(genCoins, testutil.Cs(userCoin))
 		totalSupply = totalSupply.Add(userCoin)
 	}
@@ -656,7 +656,7 @@ func (suite *keeperTestSuite) TestGetTokenCommitteeProposalResult() {
 		time.Hour*24*7,
 		types.TALLY_OPTION_DEADLINE,
 		testutil.D("0.4"),
-		"hard",
+		"jinx",
 	)
 	var defaultID uint64 = 1
 	firstBlockTime := time.Date(1998, time.January, 1, 1, 0, 0, 0, time.UTC)
@@ -741,7 +741,7 @@ func (suite *keeperTestSuite) TestGetTokenCommitteeProposalResult() {
 	var genCoins []sdk.Coins
 	var totalSupply sdk.Coins
 	for _, amount := range genCoinCounts {
-		userCoin := testutil.C("hard", amount)
+		userCoin := testutil.C("jinx", amount)
 		genCoins = append(genCoins, testutil.Cs(userCoin))
 		totalSupply = totalSupply.Add(userCoin)
 	}
@@ -965,7 +965,7 @@ var _ types.PubProposal = &UnregisteredPubProposal{}
 // 	var genCoins []sdk.Coins
 // 	var totalSupply sdk.Coins
 // 	for _, amount := range genCoinCounts {
-// 		userCoin := testutil.C("hard", amount)
+// 		userCoin := testutil.C("jinx", amount)
 // 		genCoins = append(genCoins, testutil.Cs(userCoin))
 // 		totalSupply = totalSupply.Add(userCoin)
 // 	}
@@ -994,7 +994,7 @@ var _ types.PubProposal = &UnregisteredPubProposal{}
 // 			time.Hour*24*7,
 // 			types.TALLY_OPTION_FIRST_PAST_THE_POST,
 // 			testutil.D("0.30"),
-// 			"hard",
+// 			"jinx",
 // 		),
 // 		// 	3. Deadline MemberCommmittee
 // 		types.MustNewMemberCommittee(
@@ -1017,7 +1017,7 @@ var _ types.PubProposal = &UnregisteredPubProposal{}
 // 			time.Hour*24*7,
 // 			types.TALLY_OPTION_DEADLINE,
 // 			testutil.D("0.30"),
-// 			"hard",
+// 			"jinx",
 // 		),
 // 		// 	5. PTP MemberCommmittee without permissions
 // 		types.MustNewMemberCommittee(

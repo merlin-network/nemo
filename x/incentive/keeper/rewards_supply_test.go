@@ -14,8 +14,8 @@ import (
 	"github.com/incubus-network/nemo/x/committee"
 	committeekeeper "github.com/incubus-network/nemo/x/committee/keeper"
 	committeetypes "github.com/incubus-network/nemo/x/committee/types"
-	"github.com/incubus-network/nemo/x/hard"
-	hardkeeper "github.com/incubus-network/nemo/x/hard/keeper"
+	"github.com/incubus-network/nemo/x/jinx"
+	hardkeeper "github.com/incubus-network/nemo/x/jinx/keeper"
 	"github.com/incubus-network/nemo/x/incentive/keeper"
 	"github.com/incubus-network/nemo/x/incentive/testutil"
 	"github.com/incubus-network/nemo/x/incentive/types"
@@ -44,16 +44,16 @@ func (suite *SupplyIntegrationTests) TestSingleUserAccumulatesRewardsAfterSyncin
 	userA := suite.addrs[0]
 
 	authBulder := app.NewAuthBankGenesisBuilder().
-		WithSimpleModuleAccount(nemodisttypes.ModuleName, cs(c("hard", 1e18))). // Fill nemodist with enough coins to pay out any reward
+		WithSimpleModuleAccount(nemodisttypes.ModuleName, cs(c("jinx", 1e18))). // Fill nemodist with enough coins to pay out any reward
 		WithSimpleAccount(userA, cs(c("bnb", 1e12)))                            // give the user some coins
 
 	incentBuilder := testutil.NewIncentiveGenesisBuilder().
 		WithGenesisTime(suite.genesisTime).
 		WithMultipliers(types.MultipliersPerDenoms{{
-			Denom:       "hard",
+			Denom:       "jinx",
 			Multipliers: types.Multipliers{types.NewMultiplier("large", 12, d("1.0"))}, // keep payout at 1.0 to make maths easier
 		}}).
-		WithSimpleSupplyRewardPeriod("bnb", cs(c("hard", 1e6))) // only borrow rewards
+		WithSimpleSupplyRewardPeriod("bnb", cs(c("jinx", 1e6))) // only borrow rewards
 
 	suite.SetApp()
 
@@ -85,7 +85,7 @@ func (suite *SupplyIntegrationTests) TestSingleUserAccumulatesRewardsAfterSyncin
 	msg := types.NewMsgClaimHardReward(
 		userA.String(),
 		types.Selections{
-			types.NewSelection("hard", "large"),
+			types.NewSelection("jinx", "large"),
 		})
 
 	// User claims all their rewards
@@ -94,7 +94,7 @@ func (suite *SupplyIntegrationTests) TestSingleUserAccumulatesRewardsAfterSyncin
 	// The users has always had 100% of deposits, so they should receive all rewards for the previous two blocks.
 	// Total rewards for each block is block duration * rewards per second
 	accuracy := 1e-10 // using a very high accuracy to flag future small calculation changes
-	suite.BalanceInEpsilon(userA, cs(c("bnb", 1e12-1e11+1e10), c("hard", 2*1e6*1e6)), accuracy)
+	suite.BalanceInEpsilon(userA, cs(c("bnb", 1e12-1e11+1e10), c("jinx", 2*1e6*1e6)), accuracy)
 }
 
 // Test suite used for all keeper tests
@@ -161,37 +161,37 @@ func (suite *SupplyRewardsTestSuite) TestAccumulateHardSupplyRewards() {
 			"single reward denom: 7 seconds",
 			args{
 				deposit:               c("bnb", 1000000000000),
-				rewardsPerSecond:      cs(c("hard", 122354)),
+				rewardsPerSecond:      cs(c("jinx", 122354)),
 				timeElapsed:           7,
-				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("hard", d("0.000000856478000000"))},
+				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("jinx", d("0.000000856478000000"))},
 			},
 		},
 		{
 			"single reward denom: 1 day",
 			args{
 				deposit:               c("bnb", 1000000000000),
-				rewardsPerSecond:      cs(c("hard", 122354)),
+				rewardsPerSecond:      cs(c("jinx", 122354)),
 				timeElapsed:           86400,
-				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("hard", d("0.010571385600000000"))},
+				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("jinx", d("0.010571385600000000"))},
 			},
 		},
 		{
 			"single reward denom: 0 seconds",
 			args{
 				deposit:               c("bnb", 1000000000000),
-				rewardsPerSecond:      cs(c("hard", 122354)),
+				rewardsPerSecond:      cs(c("jinx", 122354)),
 				timeElapsed:           0,
-				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("hard", d("0.0"))},
+				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("jinx", d("0.0"))},
 			},
 		},
 		{
 			"multiple reward denoms: 7 seconds",
 			args{
 				deposit:          c("bnb", 1000000000000),
-				rewardsPerSecond: cs(c("hard", 122354), c("ufury", 122354)),
+				rewardsPerSecond: cs(c("jinx", 122354), c("ufury", 122354)),
 				timeElapsed:      7,
 				expectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("0.000000856478000000")),
+					types.NewRewardIndex("jinx", d("0.000000856478000000")),
 					types.NewRewardIndex("ufury", d("0.000000856478000000")),
 				},
 			},
@@ -200,10 +200,10 @@ func (suite *SupplyRewardsTestSuite) TestAccumulateHardSupplyRewards() {
 			"multiple reward denoms: 1 day",
 			args{
 				deposit:          c("bnb", 1000000000000),
-				rewardsPerSecond: cs(c("hard", 122354), c("ufury", 122354)),
+				rewardsPerSecond: cs(c("jinx", 122354), c("ufury", 122354)),
 				timeElapsed:      86400,
 				expectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("0.010571385600000000")),
+					types.NewRewardIndex("jinx", d("0.010571385600000000")),
 					types.NewRewardIndex("ufury", d("0.010571385600000000")),
 				},
 			},
@@ -212,10 +212,10 @@ func (suite *SupplyRewardsTestSuite) TestAccumulateHardSupplyRewards() {
 			"multiple reward denoms: 0 seconds",
 			args{
 				deposit:          c("bnb", 1000000000000),
-				rewardsPerSecond: cs(c("hard", 122354), c("ufury", 122354)),
+				rewardsPerSecond: cs(c("jinx", 122354), c("ufury", 122354)),
 				timeElapsed:      0,
 				expectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("0.0")),
+					types.NewRewardIndex("jinx", d("0.0")),
 					types.NewRewardIndex("ufury", d("0.0")),
 				},
 			},
@@ -224,10 +224,10 @@ func (suite *SupplyRewardsTestSuite) TestAccumulateHardSupplyRewards() {
 			"multiple reward denoms with different rewards per second: 1 day",
 			args{
 				deposit:          c("bnb", 1000000000000),
-				rewardsPerSecond: cs(c("hard", 122354), c("ufury", 555555)),
+				rewardsPerSecond: cs(c("jinx", 122354), c("ufury", 555555)),
 				timeElapsed:      86400,
 				expectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("0.010571385600000000")),
+					types.NewRewardIndex("jinx", d("0.010571385600000000")),
 					types.NewRewardIndex("ufury", d("0.047999952000000000")),
 				},
 			},
@@ -258,9 +258,9 @@ func (suite *SupplyRewardsTestSuite) TestAccumulateHardSupplyRewards() {
 			runCtx := suite.ctx.WithBlockTime(runAtTime)
 
 			// Run Hard begin blocker in order to update the denom's index factor
-			hard.BeginBlocker(runCtx, suite.hardKeeper)
+			jinx.BeginBlocker(runCtx, suite.hardKeeper)
 
-			// Accumulate hard supply rewards for the deposit denom
+			// Accumulate jinx supply rewards for the deposit denom
 			multiRewardPeriod, found := suite.keeper.GetHardSupplyRewardPeriods(runCtx, tc.args.deposit.Denom)
 			suite.Require().True(found)
 			suite.keeper.AccumulateHardSupplyRewards(runCtx, multiRewardPeriod)
@@ -293,8 +293,8 @@ func (suite *SupplyRewardsTestSuite) TestInitializeHardSupplyRewards() {
 	}
 
 	standardMoneyMarketRewardDenoms := map[string]sdk.Coins{
-		"bnb":  cs(c("hard", 1)),
-		"btcb": cs(c("hard", 1), c("ufury", 1)),
+		"bnb":  cs(c("jinx", 1)),
+		"btcb": cs(c("jinx", 1), c("ufury", 1)),
 	}
 
 	testCases := []test{
@@ -307,7 +307,7 @@ func (suite *SupplyRewardsTestSuite) TestInitializeHardSupplyRewards() {
 					types.NewMultiRewardIndex(
 						"bnb",
 						types.RewardIndexes{
-							types.NewRewardIndex("hard", d("0.0")),
+							types.NewRewardIndex("jinx", d("0.0")),
 						},
 					),
 				},
@@ -322,7 +322,7 @@ func (suite *SupplyRewardsTestSuite) TestInitializeHardSupplyRewards() {
 					types.NewMultiRewardIndex(
 						"btcb",
 						types.RewardIndexes{
-							types.NewRewardIndex("hard", d("0.0")),
+							types.NewRewardIndex("jinx", d("0.0")),
 							types.NewRewardIndex("ufury", d("0.0")),
 						},
 					),
@@ -351,13 +351,13 @@ func (suite *SupplyRewardsTestSuite) TestInitializeHardSupplyRewards() {
 					types.NewMultiRewardIndex(
 						"bnb",
 						types.RewardIndexes{
-							types.NewRewardIndex("hard", d("0.0")),
+							types.NewRewardIndex("jinx", d("0.0")),
 						},
 					),
 					types.NewMultiRewardIndex(
 						"btcb",
 						types.RewardIndexes{
-							types.NewRewardIndex("hard", d("0.0")),
+							types.NewRewardIndex("jinx", d("0.0")),
 							types.NewRewardIndex("ufury", d("0.0")),
 						},
 					),
@@ -373,7 +373,7 @@ func (suite *SupplyRewardsTestSuite) TestInitializeHardSupplyRewards() {
 					types.NewMultiRewardIndex(
 						"bnb",
 						types.RewardIndexes{
-							types.NewRewardIndex("hard", d("0.0")),
+							types.NewRewardIndex("jinx", d("0.0")),
 						},
 					),
 					types.NewMultiRewardIndex(
@@ -435,10 +435,10 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 			args{
 				incentiveSupplyRewardDenom: "bnb",
 				deposit:                    c("bnb", 10000000000),
-				rewardsPerSecond:           cs(c("hard", 122354)),
+				rewardsPerSecond:           cs(c("jinx", 122354)),
 				blockTimes:                 []int{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
-				expectedRewardIndexes:      types.RewardIndexes{types.NewRewardIndex("hard", d("0.001223540000000000"))},
-				expectedRewards:            cs(c("hard", 12235400)),
+				expectedRewardIndexes:      types.RewardIndexes{types.NewRewardIndex("jinx", d("0.001223540000000000"))},
+				expectedRewards:            cs(c("jinx", 12235400)),
 				updateRewardsViaCommmittee: false,
 			},
 		},
@@ -447,10 +447,10 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 			args{
 				incentiveSupplyRewardDenom: "bnb",
 				deposit:                    c("bnb", 10000000000),
-				rewardsPerSecond:           cs(c("hard", 122354)),
+				rewardsPerSecond:           cs(c("jinx", 122354)),
 				blockTimes:                 []int{86400, 86400, 86400, 86400, 86400, 86400, 86400, 86400, 86400, 86400},
-				expectedRewardIndexes:      types.RewardIndexes{types.NewRewardIndex("hard", d("10.571385600000000000"))},
-				expectedRewards:            cs(c("hard", 105713856000)),
+				expectedRewardIndexes:      types.RewardIndexes{types.NewRewardIndex("jinx", d("10.571385600000000000"))},
+				expectedRewards:            cs(c("jinx", 105713856000)),
 				updateRewardsViaCommmittee: false,
 			},
 		},
@@ -459,9 +459,9 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 			args{
 				incentiveSupplyRewardDenom: "ufury",
 				deposit:                    c("ufury", 1),
-				rewardsPerSecond:           cs(c("hard", 122354)),
+				rewardsPerSecond:           cs(c("jinx", 122354)),
 				blockTimes:                 []int{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
-				expectedRewardIndexes:      types.RewardIndexes{types.NewRewardIndex("hard", d("0.122353998776460010"))},
+				expectedRewardIndexes:      types.RewardIndexes{types.NewRewardIndex("jinx", d("0.122353998776460010"))},
 				expectedRewards:            cs(),
 				updateRewardsViaCommmittee: false,
 			},
@@ -471,13 +471,13 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 			args{
 				incentiveSupplyRewardDenom: "bnb",
 				deposit:                    c("bnb", 10000000000),
-				rewardsPerSecond:           cs(c("hard", 122354), c("ufury", 122354)),
+				rewardsPerSecond:           cs(c("jinx", 122354), c("ufury", 122354)),
 				blockTimes:                 []int{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
 				expectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("0.001223540000000000")),
+					types.NewRewardIndex("jinx", d("0.001223540000000000")),
 					types.NewRewardIndex("ufury", d("0.001223540000000000")),
 				},
-				expectedRewards:            cs(c("hard", 12235400), c("ufury", 12235400)),
+				expectedRewards:            cs(c("jinx", 12235400), c("ufury", 12235400)),
 				updateRewardsViaCommmittee: false,
 			},
 		},
@@ -486,13 +486,13 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 			args{
 				incentiveSupplyRewardDenom: "bnb",
 				deposit:                    c("bnb", 10000000000),
-				rewardsPerSecond:           cs(c("hard", 122354), c("ufury", 122354)),
+				rewardsPerSecond:           cs(c("jinx", 122354), c("ufury", 122354)),
 				blockTimes:                 []int{86400, 86400, 86400, 86400, 86400, 86400, 86400, 86400, 86400, 86400},
 				expectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("10.571385600000000000")),
+					types.NewRewardIndex("jinx", d("10.571385600000000000")),
 					types.NewRewardIndex("ufury", d("10.571385600000000000")),
 				},
-				expectedRewards:            cs(c("hard", 105713856000), c("ufury", 105713856000)),
+				expectedRewards:            cs(c("jinx", 105713856000), c("ufury", 105713856000)),
 				updateRewardsViaCommmittee: false,
 			},
 		},
@@ -501,40 +501,40 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 			args{
 				incentiveSupplyRewardDenom: "bnb",
 				deposit:                    c("bnb", 10000000000),
-				rewardsPerSecond:           cs(c("hard", 122354), c("ufury", 555555)),
+				rewardsPerSecond:           cs(c("jinx", 122354), c("ufury", 555555)),
 				blockTimes:                 []int{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
 				expectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("0.001223540000000000")),
+					types.NewRewardIndex("jinx", d("0.001223540000000000")),
 					types.NewRewardIndex("ufury", d("0.005555550000000000")),
 				},
-				expectedRewards:            cs(c("hard", 12235400), c("ufury", 55555500)),
+				expectedRewards:            cs(c("jinx", 12235400), c("ufury", 55555500)),
 				updateRewardsViaCommmittee: false,
 			},
 		},
 		{
-			"denom is in incentive's hard supply reward params and has rewards; add new reward type",
+			"denom is in incentive's jinx supply reward params and has rewards; add new reward type",
 			args{
 				incentiveSupplyRewardDenom: "bnb",
 				deposit:                    c("bnb", 10000000000),
-				rewardsPerSecond:           cs(c("hard", 122354)),
+				rewardsPerSecond:           cs(c("jinx", 122354)),
 				blockTimes:                 []int{86400},
 				expectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("1.057138560000000000")),
+					types.NewRewardIndex("jinx", d("1.057138560000000000")),
 				},
-				expectedRewards:            cs(c("hard", 10571385600)),
+				expectedRewards:            cs(c("jinx", 10571385600)),
 				updateRewardsViaCommmittee: true,
 				updatedBaseDenom:           "bnb",
-				updatedRewardsPerSecond:    cs(c("hard", 122354), c("ufury", 100000)),
-				updatedExpectedRewards:     cs(c("hard", 21142771200), c("ufury", 8640000000)),
+				updatedRewardsPerSecond:    cs(c("jinx", 122354), c("ufury", 100000)),
+				updatedExpectedRewards:     cs(c("jinx", 21142771200), c("ufury", 8640000000)),
 				updatedExpectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("2.114277120000000000")),
+					types.NewRewardIndex("jinx", d("2.114277120000000000")),
 					types.NewRewardIndex("ufury", d("0.864000000000000000")),
 				},
 				updatedTimeDuration: 86400,
 			},
 		},
 		{
-			"denom is in hard's money market params but not in incentive's hard supply reward params; add reward",
+			"denom is in jinx's money market params but not in incentive's jinx supply reward params; add reward",
 			args{
 				incentiveSupplyRewardDenom: "bnb",
 				deposit:                    c("zzz", 10000000000),
@@ -544,16 +544,16 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 				expectedRewards:            sdk.Coins{},
 				updateRewardsViaCommmittee: true,
 				updatedBaseDenom:           "zzz",
-				updatedRewardsPerSecond:    cs(c("hard", 100000)),
-				updatedExpectedRewards:     cs(c("hard", 8640000000)),
+				updatedRewardsPerSecond:    cs(c("jinx", 100000)),
+				updatedExpectedRewards:     cs(c("jinx", 8640000000)),
 				updatedExpectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("0.864")),
+					types.NewRewardIndex("jinx", d("0.864")),
 				},
 				updatedTimeDuration: 86400,
 			},
 		},
 		{
-			"denom is in hard's money market params but not in incentive's hard supply reward params; add multiple reward types",
+			"denom is in jinx's money market params but not in incentive's jinx supply reward params; add multiple reward types",
 			args{
 				incentiveSupplyRewardDenom: "bnb",
 				deposit:                    c("zzz", 10000000000),
@@ -563,10 +563,10 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 				expectedRewards:            sdk.Coins{},
 				updateRewardsViaCommmittee: true,
 				updatedBaseDenom:           "zzz",
-				updatedRewardsPerSecond:    cs(c("hard", 100000), c("ufury", 100500), c("swap", 500)),
-				updatedExpectedRewards:     cs(c("hard", 8640000000), c("ufury", 8683200000), c("swap", 43200000)),
+				updatedRewardsPerSecond:    cs(c("jinx", 100000), c("ufury", 100500), c("swap", 500)),
+				updatedExpectedRewards:     cs(c("jinx", 8640000000), c("ufury", 8683200000), c("swap", 43200000)),
 				updatedExpectedRewardIndexes: types.RewardIndexes{
-					types.NewRewardIndex("hard", d("0.864")),
+					types.NewRewardIndex("jinx", d("0.864")),
 					types.NewRewardIndex("ufury", d("0.86832")),
 					types.NewRewardIndex("swap", d("0.00432")),
 				},
@@ -617,9 +617,9 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 				blockCtx := suite.ctx.WithBlockTime(updatedBlockTime)
 
 				// Run Hard begin blocker for each block ctx to update denom's interest factor
-				hard.BeginBlocker(blockCtx, suite.hardKeeper)
+				jinx.BeginBlocker(blockCtx, suite.hardKeeper)
 
-				// Accumulate hard supply-side rewards
+				// Accumulate jinx supply-side rewards
 				multiRewardPeriod, found := suite.keeper.GetHardSupplyRewardPeriods(blockCtx, tc.args.deposit.Denom)
 				if found {
 					suite.keeper.AccumulateHardSupplyRewards(blockCtx, multiRewardPeriod)
@@ -687,11 +687,11 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 
 			// 2. Construct the parameter change proposal to update HardSupplyRewardPeriods param
 			pubProposal := proposaltypes.NewParameterChangeProposal(
-				"Update hard supply rewards", "Adds a new reward coin to the incentive module's hard supply rewards.",
+				"Update jinx supply rewards", "Adds a new reward coin to the incentive module's jinx supply rewards.",
 				[]proposaltypes.ParamChange{
 					{
 						Subspace: types.ModuleName,                         // target incentive module
-						Key:      string(types.KeyHardSupplyRewardPeriods), // target hard supply rewards key
+						Key:      string(types.KeyHardSupplyRewardPeriods), // target jinx supply rewards key
 						Value:    string(suite.app.LegacyAmino().MustMarshalJSON(&currIncentiveHardSupplyRewardPeriods)),
 					},
 				},
@@ -724,7 +724,7 @@ func (suite *SupplyRewardsTestSuite) TestSynchronizeHardSupplyReward() {
 				committee.BeginBlocker(suite.ctx, abci.RequestBeginBlock{}, suite.committeeKeeper)
 			})
 
-			// We need to accumulate hard supply-side rewards again
+			// We need to accumulate jinx supply-side rewards again
 			multiRewardPeriod, found = suite.keeper.GetHardSupplyRewardPeriods(suite.ctx, tc.args.deposit.Denom)
 			suite.Require().True(found)
 
@@ -797,7 +797,7 @@ func (suite *SupplyRewardsTestSuite) TestUpdateHardSupplyIndexDenoms() {
 			args{
 				firstDeposit:              cs(c("bnb", 10000000000)),
 				modification:              depositModification{coins: cs(c("ufury", 10000000000))},
-				rewardsPerSecond:          cs(c("hard", 122354)),
+				rewardsPerSecond:          cs(c("jinx", 122354)),
 				expectedSupplyIndexDenoms: []string{"bnb", "ufury"},
 			},
 		},
@@ -806,7 +806,7 @@ func (suite *SupplyRewardsTestSuite) TestUpdateHardSupplyIndexDenoms() {
 			args{
 				firstDeposit:              cs(c("bnb", 10000000000)),
 				modification:              depositModification{coins: cs(c("ufury", 10000000000), c("btcb", 10000000000), c("xrp", 10000000000))},
-				rewardsPerSecond:          cs(c("hard", 122354)),
+				rewardsPerSecond:          cs(c("jinx", 122354)),
 				expectedSupplyIndexDenoms: []string{"bnb", "ufury", "btcb", "xrp"},
 			},
 		},
@@ -815,7 +815,7 @@ func (suite *SupplyRewardsTestSuite) TestUpdateHardSupplyIndexDenoms() {
 			args{
 				firstDeposit:              cs(c("bnb", 10000000000)),
 				modification:              depositModification{coins: cs(c("bnb", 5000000000))},
-				rewardsPerSecond:          cs(c("hard", 122354)),
+				rewardsPerSecond:          cs(c("jinx", 122354)),
 				expectedSupplyIndexDenoms: []string{"bnb"},
 			},
 		},
@@ -824,7 +824,7 @@ func (suite *SupplyRewardsTestSuite) TestUpdateHardSupplyIndexDenoms() {
 			args{
 				firstDeposit:              cs(c("bnb", 10000000000)),
 				modification:              depositModification{coins: cs(c("ufury", 10000000000))},
-				rewardsPerSecond:          cs(c("hard", 122354), c("ufury", 122354)),
+				rewardsPerSecond:          cs(c("jinx", 122354), c("ufury", 122354)),
 				expectedSupplyIndexDenoms: []string{"bnb", "ufury"},
 			},
 		},
@@ -833,7 +833,7 @@ func (suite *SupplyRewardsTestSuite) TestUpdateHardSupplyIndexDenoms() {
 			args{
 				firstDeposit:              cs(c("bnb", 10000000000)),
 				modification:              depositModification{coins: cs(c("ufury", 10000000000), c("btcb", 10000000000), c("xrp", 10000000000))},
-				rewardsPerSecond:          cs(c("hard", 122354), c("ufury", 122354)),
+				rewardsPerSecond:          cs(c("jinx", 122354), c("ufury", 122354)),
 				expectedSupplyIndexDenoms: []string{"bnb", "ufury", "btcb", "xrp"},
 			},
 		},
@@ -842,7 +842,7 @@ func (suite *SupplyRewardsTestSuite) TestUpdateHardSupplyIndexDenoms() {
 			args{
 				firstDeposit:              cs(c("bnb", 10000000000)),
 				modification:              depositModification{coins: cs(c("bnb", 5000000000))},
-				rewardsPerSecond:          cs(c("hard", 122354), c("ufury", 122354)),
+				rewardsPerSecond:          cs(c("jinx", 122354), c("ufury", 122354)),
 				expectedSupplyIndexDenoms: []string{"bnb"},
 			},
 		},
@@ -851,7 +851,7 @@ func (suite *SupplyRewardsTestSuite) TestUpdateHardSupplyIndexDenoms() {
 			args{
 				firstDeposit:              cs(c("bnb", 1000000000)),
 				modification:              depositModification{coins: cs(c("bnb", 1100000000)), withdraw: true},
-				rewardsPerSecond:          cs(c("hard", 122354)),
+				rewardsPerSecond:          cs(c("jinx", 122354)),
 				expectedSupplyIndexDenoms: []string{},
 			},
 		},
@@ -860,7 +860,7 @@ func (suite *SupplyRewardsTestSuite) TestUpdateHardSupplyIndexDenoms() {
 			args{
 				firstDeposit:              cs(c("bnb", 1000000000), c("ufury", 100000000)),
 				modification:              depositModification{coins: cs(c("bnb", 1100000000)), withdraw: true},
-				rewardsPerSecond:          cs(c("hard", 122354)),
+				rewardsPerSecond:          cs(c("jinx", 122354)),
 				expectedSupplyIndexDenoms: []string{"ufury"},
 			},
 		},
@@ -869,7 +869,7 @@ func (suite *SupplyRewardsTestSuite) TestUpdateHardSupplyIndexDenoms() {
 			args{
 				firstDeposit:              cs(c("bnb", 1000000000)),
 				modification:              depositModification{coins: cs(c("bnb", 1100000000)), withdraw: true},
-				rewardsPerSecond:          cs(c("hard", 122354), c("ufury", 122354)),
+				rewardsPerSecond:          cs(c("jinx", 122354), c("ufury", 122354)),
 				expectedSupplyIndexDenoms: []string{},
 			},
 		},
@@ -941,20 +941,20 @@ func (suite *SupplyRewardsTestSuite) TestSimulateHardSupplyRewardSynchronization
 			"10 blocks",
 			args{
 				deposit:               c("bnb", 10000000000),
-				rewardsPerSecond:      cs(c("hard", 122354)),
+				rewardsPerSecond:      cs(c("jinx", 122354)),
 				blockTimes:            []int{10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
-				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("hard", d("0.001223540000000000"))},
-				expectedRewards:       cs(c("hard", 12235400)),
+				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("jinx", d("0.001223540000000000"))},
+				expectedRewards:       cs(c("jinx", 12235400)),
 			},
 		},
 		{
 			"10 blocks - long block time",
 			args{
 				deposit:               c("bnb", 10000000000),
-				rewardsPerSecond:      cs(c("hard", 122354)),
+				rewardsPerSecond:      cs(c("jinx", 122354)),
 				blockTimes:            []int{86400, 86400, 86400, 86400, 86400, 86400, 86400, 86400, 86400, 86400},
-				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("hard", d("10.571385600000000000"))},
-				expectedRewards:       cs(c("hard", 105713856000)),
+				expectedRewardIndexes: types.RewardIndexes{types.NewRewardIndex("jinx", d("10.571385600000000000"))},
+				expectedRewards:       cs(c("jinx", 105713856000)),
 			},
 		},
 	}
@@ -985,9 +985,9 @@ func (suite *SupplyRewardsTestSuite) TestSimulateHardSupplyRewardSynchronization
 				blockCtx := suite.ctx.WithBlockTime(updatedBlockTime)
 
 				// Run Hard begin blocker for each block ctx to update denom's interest factor
-				hard.BeginBlocker(blockCtx, suite.hardKeeper)
+				jinx.BeginBlocker(blockCtx, suite.hardKeeper)
 
-				// Accumulate hard supply-side rewards
+				// Accumulate jinx supply-side rewards
 				multiRewardPeriod, found := suite.keeper.GetHardSupplyRewardPeriods(blockCtx, tc.args.deposit.Denom)
 				suite.Require().True(found)
 				suite.keeper.AccumulateHardSupplyRewards(blockCtx, multiRewardPeriod)

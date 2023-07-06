@@ -22,7 +22,7 @@ func (s StrategyType) Validate() error {
 // NewStrategyTypeFromString converts string to StrategyType type
 func NewStrategyTypeFromString(str string) StrategyType {
 	switch strings.ToLower(str) {
-	case "hard":
+	case "jinx":
 		return STRATEGY_TYPE_HARD
 	case "savings":
 		return STRATEGY_TYPE_SAVINGS

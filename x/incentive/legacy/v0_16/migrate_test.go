@@ -179,13 +179,13 @@ func (s *migrateTestSuite) TestMigrate_GenState() {
 		HardBorrowRewardState: v015incentive.GenesisRewardState{
 			AccumulationTimes: v015incentive.AccumulationTimes{
 				{
-					CollateralType:           "hard",
+					CollateralType:           "jinx",
 					PreviousAccumulationTime: time.Date(2020, time.January, 1, 0, 0, 0, 0, time.UTC),
 				},
 			},
 			MultiRewardIndexes: v015incentive.MultiRewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardIndexes: []v015incentive.RewardIndex{
 						{
 							CollateralType: "bnb",
@@ -428,13 +428,13 @@ func (s *migrateTestSuite) TestMigrate_GenState() {
 		HardBorrowRewardState: v016incentive.GenesisRewardState{
 			AccumulationTimes: v016incentive.AccumulationTimes{
 				{
-					CollateralType:           "hard",
+					CollateralType:           "jinx",
 					PreviousAccumulationTime: time.Date(2020, time.January, 1, 0, 0, 0, 0, time.UTC),
 				},
 			},
 			MultiRewardIndexes: v016incentive.MultiRewardIndexes{
 				{
-					CollateralType: "hard",
+					CollateralType: "jinx",
 					RewardIndexes: []v016incentive.RewardIndex{
 						{
 							CollateralType: "bnb",

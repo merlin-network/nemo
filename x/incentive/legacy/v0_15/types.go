@@ -101,7 +101,7 @@ type BaseClaim struct {
 // HardLiquidityProviderClaims slice of HardLiquidityProviderClaim
 type HardLiquidityProviderClaims []HardLiquidityProviderClaim
 
-// HardLiquidityProviderClaim stores the hard liquidity provider rewards that can be claimed by owner
+// HardLiquidityProviderClaim stores the jinx liquidity provider rewards that can be claimed by owner
 type HardLiquidityProviderClaim struct {
 	BaseMultiClaim      `json:"base_claim" yaml:"base_claim"`
 	SupplyRewardIndexes MultiRewardIndexes `json:"supply_reward_indexes" yaml:"supply_reward_indexes"`

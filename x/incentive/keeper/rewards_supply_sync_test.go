@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	"github.com/incubus-network/nemo/x/incentive/types"
 )
 
@@ -69,7 +69,7 @@ func (suite *SynchronizeHardSupplyRewardTests) TestClaimIndexesAreUnchangedWhenG
 }
 
 func (suite *SynchronizeHardSupplyRewardTests) TestClaimIndexesAreUpdatedWhenNewRewardAdded() {
-	// When a new reward is added (via gov) for a hard deposit denom the user has already deposited, and the claim is synced;
+	// When a new reward is added (via gov) for a jinx deposit denom the user has already deposited, and the claim is synced;
 	// Then the new reward's index should be added to the claim.
 
 	claim := types.HardLiquidityProviderClaim{
@@ -172,7 +172,7 @@ func (suite *SynchronizeHardSupplyRewardTests) TestRewardIsIncrementedWhenGlobal
 }
 
 func (suite *SynchronizeHardSupplyRewardTests) TestRewardIsIncrementedWhenNewRewardAdded() {
-	// When a new reward is added (via gov) for a hard deposit denom the user has already deposited, and the claim is synced
+	// When a new reward is added (via gov) for a jinx deposit denom the user has already deposited, and the claim is synced
 	// Then the user earns rewards for the time since the reward was added
 
 	originalReward := arbitraryCoins()
@@ -293,8 +293,8 @@ func (suite *SynchronizeHardSupplyRewardTests) TestRewardIsIncrementedWhenNewRew
 	)
 }
 
-// HardDepositBuilder is a tool for creating a hard deposit in tests.
-// The builder inherits from hard.Deposit, so fields can be accessed directly if a helper method doesn't exist.
+// HardDepositBuilder is a tool for creating a jinx deposit in tests.
+// The builder inherits from jinx.Deposit, so fields can be accessed directly if a helper method doesn't exist.
 type HardDepositBuilder struct {
 	hardtypes.Deposit
 }

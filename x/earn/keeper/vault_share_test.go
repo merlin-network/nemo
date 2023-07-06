@@ -44,7 +44,7 @@ func (suite *vaultShareTestSuite) TestConvertToShares() {
 			name: "value doubled",
 
 			beforeConvert: func() {
-				// set total shares set total value for hard
+				// set total shares set total value for jinx
 				// value is double than shares
 				// shares is 2x price now
 				suite.addTotalShareAndValue(vaultDenom, sdk.NewDec(100), sdkmath.NewInt(200))
@@ -107,7 +107,7 @@ func (suite *vaultShareTestSuite) addTotalShareAndValue(
 		suite.Ctx,
 		vaultRecord,
 	)
-	// add value for hard -- this does not set
+	// add value for jinx -- this does not set
 	err := suite.HardKeeper.Deposit(
 		suite.Ctx,
 		macc.GetAddress(),

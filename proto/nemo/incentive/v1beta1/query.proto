@@ -44,7 +44,7 @@ message QueryParamsResponse {
 message QueryRewardsRequest {
   // owner is the address of the user to query rewards for.
   string owner = 1;
-  // reward_type is the type of reward to query rewards for, e.g. hard, earn,
+  // reward_type is the type of reward to query rewards for, e.g. jinx, earn,
   // swap.
   string reward_type = 2;
   // unsynchronized is a flag to query rewards that are not simulated for reward

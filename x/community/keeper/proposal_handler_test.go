@@ -16,8 +16,8 @@ import (
 	"github.com/incubus-network/nemo/x/community/keeper"
 	"github.com/incubus-network/nemo/x/community/testutil"
 	"github.com/incubus-network/nemo/x/community/types"
-	hardkeeper "github.com/incubus-network/nemo/x/hard/keeper"
-	hardtypes "github.com/incubus-network/nemo/x/hard/types"
+	hardkeeper "github.com/incubus-network/nemo/x/jinx/keeper"
+	hardtypes "github.com/incubus-network/nemo/x/jinx/types"
 	pricefeedtypes "github.com/incubus-network/nemo/x/pricefeed/types"
 )
 
@@ -322,7 +322,7 @@ func (suite *proposalTestSuite) TestCommunityLendWithdrawProposal() {
 				suite.NextBlock()
 			}
 
-			// expect funds to be removed from hard deposit
+			// expect funds to be removed from jinx deposit
 			expectedRemaining := tc.initialDeposit.Sub(tc.expectedWithdrawal...)
 			deposits := suite.hardKeeper.GetDepositsByUser(suite.Ctx, suite.MaccAddress)
 			if expectedRemaining.IsZero() {

@@ -297,7 +297,7 @@ func (m *USDXMintingClaim) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_USDXMintingClaim proto.InternalMessageInfo
 
-// HardLiquidityProviderClaim stores the hard liquidity provider rewards that can be claimed by owner
+// HardLiquidityProviderClaim stores the jinx liquidity provider rewards that can be claimed by owner
 type HardLiquidityProviderClaim struct {
 	BaseMultiClaim      `protobuf:"bytes,1,opt,name=base_claim,json=baseClaim,proto3,embedded=base_claim" json:"base_claim"`
 	SupplyRewardIndexes MultiRewardIndexes `protobuf:"bytes,2,rep,name=supply_reward_indexes,json=supplyRewardIndexes,proto3,castrepeated=MultiRewardIndexes" json:"supply_reward_indexes"`

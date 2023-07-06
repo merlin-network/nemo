@@ -6,7 +6,7 @@ import (
 
 // Querier routes for the incentive module
 const (
-	QueryGetHardRewards        = "hard-rewards"
+	QueryGetHardRewards        = "jinx-rewards"
 	QueryGetUSDXMintingRewards = "usdx-minting-rewards"
 	QueryGetDelegatorRewards   = "delegator-rewards"
 	QueryGetSwapRewards        = "swap-rewards"

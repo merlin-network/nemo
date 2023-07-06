@@ -14,7 +14,7 @@
         "token_b": "usdx"
       },
       {
-        "token_a": "hard",
+        "token_a": "jinx",
         "token_b": "usdx"
       },
       {
@@ -71,7 +71,7 @@
     },
     {
       "depositor": "fury1ll3ndyv333aet6mzqltu5wdepqhyme8uhjv8uc",
-      "pool_id": "hard:usdx",
+      "pool_id": "jinx:usdx",
       "shares_owned": "708138421"
     },
     {

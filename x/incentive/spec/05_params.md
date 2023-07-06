@@ -24,7 +24,7 @@ Each `RewardPeriod` has the following parameters
 | CollateralType   | string        | "bnb-a"                            | the collateral for which rewards are eligible         |
 | Start            | Time          | "2020-12-02T14:00:00Z"             | the time at which rewards start                       |
 | End              | Time          | "2023-12-02T14:00:00Z"             | the time at which rewards end                         |
-| AvailableRewards | object (coin) | `{"denom":"hard","amount":"1000"}` | the rewards available per reward period               |
+| AvailableRewards | object (coin) | `{"denom":"jinx","amount":"1000"}` | the rewards available per reward period               |
 
 Each `MultiRewardPeriod` has the following parameters
 
@@ -34,7 +34,7 @@ Each `MultiRewardPeriod` has the following parameters
 | CollateralType   | string        | "bnb-a"                                                                 | the collateral for which rewards are eligible         |
 | Start            | Time          | "2020-12-02T14:00:00Z"                                                  | the time at which rewards start                       |
 | End              | Time          | "2023-12-02T14:00:00Z"                                                  | the time at which rewards end                         |
-| AvailableRewards | array (coins) | `[{"denom":"hard","amount":"1000"}, {"denom":"ufury","amount":"1000"}]` | the rewards available per reward period               |
+| AvailableRewards | array (coins) | `[{"denom":"jinx","amount":"1000"}, {"denom":"ufury","amount":"1000"}]` | the rewards available per reward period               |
 
 Each `Multiplier` has the following parameters:
 

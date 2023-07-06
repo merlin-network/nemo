@@ -90,7 +90,7 @@ var arbitraryDelegatorRewardIndexes = types.MultiRewardIndexes{
 	types.NewMultiRewardIndex(
 		types.BondDenom,
 		types.RewardIndexes{
-			types.NewRewardIndex("hard", d("0.2")),
+			types.NewRewardIndex("jinx", d("0.2")),
 			types.NewRewardIndex("swp", d("0.2")),
 		},
 	),
