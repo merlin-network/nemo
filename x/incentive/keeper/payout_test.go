@@ -15,10 +15,10 @@ import (
 	"github.com/merlin-network/nemo/app"
 	cdpkeeper "github.com/merlin-network/nemo/x/cdp/keeper"
 	cdptypes "github.com/merlin-network/nemo/x/cdp/types"
-	jinxkeeper "github.com/merlin-network/nemo/x/jinx/keeper"
 	"github.com/merlin-network/nemo/x/incentive/keeper"
 	"github.com/merlin-network/nemo/x/incentive/testutil"
 	"github.com/merlin-network/nemo/x/incentive/types"
+	jinxkeeper "github.com/merlin-network/nemo/x/jinx/keeper"
 	nemodisttypes "github.com/merlin-network/nemo/x/nemodist/types"
 )
 

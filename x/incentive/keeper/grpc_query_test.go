@@ -8,9 +8,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/merlin-network/nemo/app"
-	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 	"github.com/merlin-network/nemo/x/incentive/keeper"
 	"github.com/merlin-network/nemo/x/incentive/types"
+	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 	"github.com/stretchr/testify/suite"
 	tmprototypes "github.com/tendermint/tendermint/proto/tendermint/types"
 )

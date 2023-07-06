@@ -14,11 +14,11 @@ import (
 	"github.com/merlin-network/nemo/x/committee"
 	committeekeeper "github.com/merlin-network/nemo/x/committee/keeper"
 	committeetypes "github.com/merlin-network/nemo/x/committee/types"
-	"github.com/merlin-network/nemo/x/jinx"
-	jinxkeeper "github.com/merlin-network/nemo/x/jinx/keeper"
 	"github.com/merlin-network/nemo/x/incentive/keeper"
 	"github.com/merlin-network/nemo/x/incentive/testutil"
 	"github.com/merlin-network/nemo/x/incentive/types"
+	"github.com/merlin-network/nemo/x/jinx"
+	jinxkeeper "github.com/merlin-network/nemo/x/jinx/keeper"
 	nemodisttypes "github.com/merlin-network/nemo/x/nemodist/types"
 )
 

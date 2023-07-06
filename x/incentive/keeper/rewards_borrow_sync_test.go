@@ -9,9 +9,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 	"github.com/merlin-network/nemo/x/incentive/keeper"
 	"github.com/merlin-network/nemo/x/incentive/types"
+	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 )
 
 // SynchronizeJinxBorrowRewardTests runs unit tests for the keeper.SynchronizeJinxBorrowReward method

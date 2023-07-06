@@ -23,9 +23,9 @@ import (
 	earntypes "github.com/merlin-network/nemo/x/earn/types"
 	tmprototypes "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 	"github.com/merlin-network/nemo/x/incentive/keeper"
 	"github.com/merlin-network/nemo/x/incentive/types"
+	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 )
 
 // NewTestContext sets up a basic context with an in-memory db

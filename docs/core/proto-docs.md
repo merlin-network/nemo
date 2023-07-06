@@ -276,67 +276,6 @@
   
     - [Msg](#nemo.evmutil.v1beta1.Msg)
   
-- [nemo/jinx/v1beta1/jinx.proto](#nemo/jinx/v1beta1/jinx.proto)
-    - [Borrow](#nemo.jinx.v1beta1.Borrow)
-    - [BorrowInterestFactor](#nemo.jinx.v1beta1.BorrowInterestFactor)
-    - [BorrowLimit](#nemo.jinx.v1beta1.BorrowLimit)
-    - [CoinsProto](#nemo.jinx.v1beta1.CoinsProto)
-    - [Deposit](#nemo.jinx.v1beta1.Deposit)
-    - [InterestRateModel](#nemo.jinx.v1beta1.InterestRateModel)
-    - [MoneyMarket](#nemo.jinx.v1beta1.MoneyMarket)
-    - [Params](#nemo.jinx.v1beta1.Params)
-    - [SupplyInterestFactor](#nemo.jinx.v1beta1.SupplyInterestFactor)
-  
-- [nemo/jinx/v1beta1/genesis.proto](#nemo/jinx/v1beta1/genesis.proto)
-    - [GenesisAccumulationTime](#nemo.jinx.v1beta1.GenesisAccumulationTime)
-    - [GenesisState](#nemo.jinx.v1beta1.GenesisState)
-  
-- [nemo/jinx/v1beta1/query.proto](#nemo/jinx/v1beta1/query.proto)
-    - [BorrowInterestFactorResponse](#nemo.jinx.v1beta1.BorrowInterestFactorResponse)
-    - [BorrowResponse](#nemo.jinx.v1beta1.BorrowResponse)
-    - [DepositResponse](#nemo.jinx.v1beta1.DepositResponse)
-    - [InterestFactor](#nemo.jinx.v1beta1.InterestFactor)
-    - [MoneyMarketInterestRate](#nemo.jinx.v1beta1.MoneyMarketInterestRate)
-    - [QueryAccountsRequest](#nemo.jinx.v1beta1.QueryAccountsRequest)
-    - [QueryAccountsResponse](#nemo.jinx.v1beta1.QueryAccountsResponse)
-    - [QueryBorrowsRequest](#nemo.jinx.v1beta1.QueryBorrowsRequest)
-    - [QueryBorrowsResponse](#nemo.jinx.v1beta1.QueryBorrowsResponse)
-    - [QueryDepositsRequest](#nemo.jinx.v1beta1.QueryDepositsRequest)
-    - [QueryDepositsResponse](#nemo.jinx.v1beta1.QueryDepositsResponse)
-    - [QueryInterestFactorsRequest](#nemo.jinx.v1beta1.QueryInterestFactorsRequest)
-    - [QueryInterestFactorsResponse](#nemo.jinx.v1beta1.QueryInterestFactorsResponse)
-    - [QueryInterestRateRequest](#nemo.jinx.v1beta1.QueryInterestRateRequest)
-    - [QueryInterestRateResponse](#nemo.jinx.v1beta1.QueryInterestRateResponse)
-    - [QueryParamsRequest](#nemo.jinx.v1beta1.QueryParamsRequest)
-    - [QueryParamsResponse](#nemo.jinx.v1beta1.QueryParamsResponse)
-    - [QueryReservesRequest](#nemo.jinx.v1beta1.QueryReservesRequest)
-    - [QueryReservesResponse](#nemo.jinx.v1beta1.QueryReservesResponse)
-    - [QueryTotalBorrowedRequest](#nemo.jinx.v1beta1.QueryTotalBorrowedRequest)
-    - [QueryTotalBorrowedResponse](#nemo.jinx.v1beta1.QueryTotalBorrowedResponse)
-    - [QueryTotalDepositedRequest](#nemo.jinx.v1beta1.QueryTotalDepositedRequest)
-    - [QueryTotalDepositedResponse](#nemo.jinx.v1beta1.QueryTotalDepositedResponse)
-    - [QueryUnsyncedBorrowsRequest](#nemo.jinx.v1beta1.QueryUnsyncedBorrowsRequest)
-    - [QueryUnsyncedBorrowsResponse](#nemo.jinx.v1beta1.QueryUnsyncedBorrowsResponse)
-    - [QueryUnsyncedDepositsRequest](#nemo.jinx.v1beta1.QueryUnsyncedDepositsRequest)
-    - [QueryUnsyncedDepositsResponse](#nemo.jinx.v1beta1.QueryUnsyncedDepositsResponse)
-    - [SupplyInterestFactorResponse](#nemo.jinx.v1beta1.SupplyInterestFactorResponse)
-  
-    - [Query](#nemo.jinx.v1beta1.Query)
-  
-- [nemo/jinx/v1beta1/tx.proto](#nemo/jinx/v1beta1/tx.proto)
-    - [MsgBorrow](#nemo.jinx.v1beta1.MsgBorrow)
-    - [MsgBorrowResponse](#nemo.jinx.v1beta1.MsgBorrowResponse)
-    - [MsgDeposit](#nemo.jinx.v1beta1.MsgDeposit)
-    - [MsgDepositResponse](#nemo.jinx.v1beta1.MsgDepositResponse)
-    - [MsgLiquidate](#nemo.jinx.v1beta1.MsgLiquidate)
-    - [MsgLiquidateResponse](#nemo.jinx.v1beta1.MsgLiquidateResponse)
-    - [MsgRepay](#nemo.jinx.v1beta1.MsgRepay)
-    - [MsgRepayResponse](#nemo.jinx.v1beta1.MsgRepayResponse)
-    - [MsgWithdraw](#nemo.jinx.v1beta1.MsgWithdraw)
-    - [MsgWithdrawResponse](#nemo.jinx.v1beta1.MsgWithdrawResponse)
-  
-    - [Msg](#nemo.jinx.v1beta1.Msg)
-  
 - [nemo/incentive/v1beta1/apy.proto](#nemo/incentive/v1beta1/apy.proto)
     - [Apy](#nemo.incentive.v1beta1.Apy)
   
@@ -421,6 +360,67 @@
     - [MsgUnblockAddressResponse](#nemo.issuance.v1beta1.MsgUnblockAddressResponse)
   
     - [Msg](#nemo.issuance.v1beta1.Msg)
+  
+- [nemo/jinx/v1beta1/jinx.proto](#nemo/jinx/v1beta1/jinx.proto)
+    - [Borrow](#nemo.jinx.v1beta1.Borrow)
+    - [BorrowInterestFactor](#nemo.jinx.v1beta1.BorrowInterestFactor)
+    - [BorrowLimit](#nemo.jinx.v1beta1.BorrowLimit)
+    - [CoinsProto](#nemo.jinx.v1beta1.CoinsProto)
+    - [Deposit](#nemo.jinx.v1beta1.Deposit)
+    - [InterestRateModel](#nemo.jinx.v1beta1.InterestRateModel)
+    - [MoneyMarket](#nemo.jinx.v1beta1.MoneyMarket)
+    - [Params](#nemo.jinx.v1beta1.Params)
+    - [SupplyInterestFactor](#nemo.jinx.v1beta1.SupplyInterestFactor)
+  
+- [nemo/jinx/v1beta1/genesis.proto](#nemo/jinx/v1beta1/genesis.proto)
+    - [GenesisAccumulationTime](#nemo.jinx.v1beta1.GenesisAccumulationTime)
+    - [GenesisState](#nemo.jinx.v1beta1.GenesisState)
+  
+- [nemo/jinx/v1beta1/query.proto](#nemo/jinx/v1beta1/query.proto)
+    - [BorrowInterestFactorResponse](#nemo.jinx.v1beta1.BorrowInterestFactorResponse)
+    - [BorrowResponse](#nemo.jinx.v1beta1.BorrowResponse)
+    - [DepositResponse](#nemo.jinx.v1beta1.DepositResponse)
+    - [InterestFactor](#nemo.jinx.v1beta1.InterestFactor)
+    - [MoneyMarketInterestRate](#nemo.jinx.v1beta1.MoneyMarketInterestRate)
+    - [QueryAccountsRequest](#nemo.jinx.v1beta1.QueryAccountsRequest)
+    - [QueryAccountsResponse](#nemo.jinx.v1beta1.QueryAccountsResponse)
+    - [QueryBorrowsRequest](#nemo.jinx.v1beta1.QueryBorrowsRequest)
+    - [QueryBorrowsResponse](#nemo.jinx.v1beta1.QueryBorrowsResponse)
+    - [QueryDepositsRequest](#nemo.jinx.v1beta1.QueryDepositsRequest)
+    - [QueryDepositsResponse](#nemo.jinx.v1beta1.QueryDepositsResponse)
+    - [QueryInterestFactorsRequest](#nemo.jinx.v1beta1.QueryInterestFactorsRequest)
+    - [QueryInterestFactorsResponse](#nemo.jinx.v1beta1.QueryInterestFactorsResponse)
+    - [QueryInterestRateRequest](#nemo.jinx.v1beta1.QueryInterestRateRequest)
+    - [QueryInterestRateResponse](#nemo.jinx.v1beta1.QueryInterestRateResponse)
+    - [QueryParamsRequest](#nemo.jinx.v1beta1.QueryParamsRequest)
+    - [QueryParamsResponse](#nemo.jinx.v1beta1.QueryParamsResponse)
+    - [QueryReservesRequest](#nemo.jinx.v1beta1.QueryReservesRequest)
+    - [QueryReservesResponse](#nemo.jinx.v1beta1.QueryReservesResponse)
+    - [QueryTotalBorrowedRequest](#nemo.jinx.v1beta1.QueryTotalBorrowedRequest)
+    - [QueryTotalBorrowedResponse](#nemo.jinx.v1beta1.QueryTotalBorrowedResponse)
+    - [QueryTotalDepositedRequest](#nemo.jinx.v1beta1.QueryTotalDepositedRequest)
+    - [QueryTotalDepositedResponse](#nemo.jinx.v1beta1.QueryTotalDepositedResponse)
+    - [QueryUnsyncedBorrowsRequest](#nemo.jinx.v1beta1.QueryUnsyncedBorrowsRequest)
+    - [QueryUnsyncedBorrowsResponse](#nemo.jinx.v1beta1.QueryUnsyncedBorrowsResponse)
+    - [QueryUnsyncedDepositsRequest](#nemo.jinx.v1beta1.QueryUnsyncedDepositsRequest)
+    - [QueryUnsyncedDepositsResponse](#nemo.jinx.v1beta1.QueryUnsyncedDepositsResponse)
+    - [SupplyInterestFactorResponse](#nemo.jinx.v1beta1.SupplyInterestFactorResponse)
+  
+    - [Query](#nemo.jinx.v1beta1.Query)
+  
+- [nemo/jinx/v1beta1/tx.proto](#nemo/jinx/v1beta1/tx.proto)
+    - [MsgBorrow](#nemo.jinx.v1beta1.MsgBorrow)
+    - [MsgBorrowResponse](#nemo.jinx.v1beta1.MsgBorrowResponse)
+    - [MsgDeposit](#nemo.jinx.v1beta1.MsgDeposit)
+    - [MsgDepositResponse](#nemo.jinx.v1beta1.MsgDepositResponse)
+    - [MsgLiquidate](#nemo.jinx.v1beta1.MsgLiquidate)
+    - [MsgLiquidateResponse](#nemo.jinx.v1beta1.MsgLiquidateResponse)
+    - [MsgRepay](#nemo.jinx.v1beta1.MsgRepay)
+    - [MsgRepayResponse](#nemo.jinx.v1beta1.MsgRepayResponse)
+    - [MsgWithdraw](#nemo.jinx.v1beta1.MsgWithdraw)
+    - [MsgWithdrawResponse](#nemo.jinx.v1beta1.MsgWithdrawResponse)
+  
+    - [Msg](#nemo.jinx.v1beta1.Msg)
   
 - [nemo/liquid/v1beta1/query.proto](#nemo/liquid/v1beta1/query.proto)
     - [QueryDelegatedBalanceRequest](#nemo.liquid.v1beta1.QueryDelegatedBalanceRequest)
@@ -4016,859 +4016,6 @@ Msg defines the evmutil Msg service.
 
 
 
-<a name="nemo/jinx/v1beta1/jinx.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## nemo/jinx/v1beta1/jinx.proto
-
-
-
-<a name="nemo.jinx.v1beta1.Borrow"></a>
-
-### Borrow
-Borrow defines an amount of coins borrowed from a jinx module account.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `borrower` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-| `index` | [BorrowInterestFactor](#nemo.jinx.v1beta1.BorrowInterestFactor) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.BorrowInterestFactor"></a>
-
-### BorrowInterestFactor
-BorrowInterestFactor defines an individual borrow interest factor.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `value` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.BorrowLimit"></a>
-
-### BorrowLimit
-BorrowLimit enforces restrictions on a money market.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `has_max_limit` | [bool](#bool) |  |  |
-| `maximum_limit` | [string](#string) |  |  |
-| `loan_to_value` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.CoinsProto"></a>
-
-### CoinsProto
-CoinsProto defines a Protobuf wrapper around a Coins slice
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `coins` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.Deposit"></a>
-
-### Deposit
-Deposit defines an amount of coins deposited into a jinx module account.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `depositor` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-| `index` | [SupplyInterestFactor](#nemo.jinx.v1beta1.SupplyInterestFactor) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.InterestRateModel"></a>
-
-### InterestRateModel
-InterestRateModel contains information about an asset's interest rate.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `base_rate_apy` | [string](#string) |  |  |
-| `base_multiplier` | [string](#string) |  |  |
-| `kink` | [string](#string) |  |  |
-| `jump_multiplier` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MoneyMarket"></a>
-
-### MoneyMarket
-MoneyMarket is a money market for an individual asset.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `borrow_limit` | [BorrowLimit](#nemo.jinx.v1beta1.BorrowLimit) |  |  |
-| `spot_market_id` | [string](#string) |  |  |
-| `conversion_factor` | [string](#string) |  |  |
-| `interest_rate_model` | [InterestRateModel](#nemo.jinx.v1beta1.InterestRateModel) |  |  |
-| `reserve_factor` | [string](#string) |  |  |
-| `keeper_reward_percentage` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.Params"></a>
-
-### Params
-Params defines the parameters for the jinx module.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `money_markets` | [MoneyMarket](#nemo.jinx.v1beta1.MoneyMarket) | repeated |  |
-| `minimum_borrow_usd_value` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.SupplyInterestFactor"></a>
-
-### SupplyInterestFactor
-SupplyInterestFactor defines an individual borrow interest factor.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `value` | [string](#string) |  |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
- <!-- end services -->
-
-
-
-<a name="nemo/jinx/v1beta1/genesis.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## nemo/jinx/v1beta1/genesis.proto
-
-
-
-<a name="nemo.jinx.v1beta1.GenesisAccumulationTime"></a>
-
-### GenesisAccumulationTime
-GenesisAccumulationTime stores the previous distribution time and its corresponding denom.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `collateral_type` | [string](#string) |  |  |
-| `previous_accumulation_time` | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-| `supply_interest_factor` | [string](#string) |  |  |
-| `borrow_interest_factor` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.GenesisState"></a>
-
-### GenesisState
-GenesisState defines the jinx module's genesis state.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `params` | [Params](#nemo.jinx.v1beta1.Params) |  |  |
-| `previous_accumulation_times` | [GenesisAccumulationTime](#nemo.jinx.v1beta1.GenesisAccumulationTime) | repeated |  |
-| `deposits` | [Deposit](#nemo.jinx.v1beta1.Deposit) | repeated |  |
-| `borrows` | [Borrow](#nemo.jinx.v1beta1.Borrow) | repeated |  |
-| `total_supplied` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-| `total_borrowed` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-| `total_reserves` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
- <!-- end services -->
-
-
-
-<a name="nemo/jinx/v1beta1/query.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## nemo/jinx/v1beta1/query.proto
-
-
-
-<a name="nemo.jinx.v1beta1.BorrowInterestFactorResponse"></a>
-
-### BorrowInterestFactorResponse
-BorrowInterestFactorResponse defines an individual borrow interest factor.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `value` | [string](#string) |  | sdk.Dec as string |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.BorrowResponse"></a>
-
-### BorrowResponse
-BorrowResponse defines an amount of coins borrowed from a jinx module account.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `borrower` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-| `index` | [BorrowInterestFactorResponse](#nemo.jinx.v1beta1.BorrowInterestFactorResponse) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.DepositResponse"></a>
-
-### DepositResponse
-DepositResponse defines an amount of coins deposited into a jinx module account.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `depositor` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-| `index` | [SupplyInterestFactorResponse](#nemo.jinx.v1beta1.SupplyInterestFactorResponse) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.InterestFactor"></a>
-
-### InterestFactor
-InterestFactor is a unique type returned by interest factor queries
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `borrow_interest_factor` | [string](#string) |  | sdk.Dec as String |
-| `supply_interest_factor` | [string](#string) |  | sdk.Dec as String |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MoneyMarketInterestRate"></a>
-
-### MoneyMarketInterestRate
-MoneyMarketInterestRate is a unique type returned by interest rate queries
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `supply_interest_rate` | [string](#string) |  | sdk.Dec as String |
-| `borrow_interest_rate` | [string](#string) |  | sdk.Dec as String |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryAccountsRequest"></a>
-
-### QueryAccountsRequest
-QueryAccountsRequest is the request type for the Query/Accounts RPC method.
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryAccountsResponse"></a>
-
-### QueryAccountsResponse
-QueryAccountsResponse is the response type for the Query/Accounts RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `accounts` | [cosmos.auth.v1beta1.ModuleAccount](#cosmos.auth.v1beta1.ModuleAccount) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryBorrowsRequest"></a>
-
-### QueryBorrowsRequest
-QueryBorrowsRequest is the request type for the Query/Borrows RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryBorrowsResponse"></a>
-
-### QueryBorrowsResponse
-QueryBorrowsResponse is the response type for the Query/Borrows RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `borrows` | [BorrowResponse](#nemo.jinx.v1beta1.BorrowResponse) | repeated |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryDepositsRequest"></a>
-
-### QueryDepositsRequest
-QueryDepositsRequest is the request type for the Query/Deposits RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryDepositsResponse"></a>
-
-### QueryDepositsResponse
-QueryDepositsResponse is the response type for the Query/Deposits RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `deposits` | [DepositResponse](#nemo.jinx.v1beta1.DepositResponse) | repeated |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryInterestFactorsRequest"></a>
-
-### QueryInterestFactorsRequest
-QueryInterestFactorsRequest is the request type for the Query/InterestFactors RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryInterestFactorsResponse"></a>
-
-### QueryInterestFactorsResponse
-QueryInterestFactorsResponse is the response type for the Query/InterestFactors RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `interest_factors` | [InterestFactor](#nemo.jinx.v1beta1.InterestFactor) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryInterestRateRequest"></a>
-
-### QueryInterestRateRequest
-QueryInterestRateRequest is the request type for the Query/InterestRate RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryInterestRateResponse"></a>
-
-### QueryInterestRateResponse
-QueryInterestRateResponse is the response type for the Query/InterestRate RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `interest_rates` | [MoneyMarketInterestRate](#nemo.jinx.v1beta1.MoneyMarketInterestRate) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryParamsRequest"></a>
-
-### QueryParamsRequest
-QueryParamsRequest is the request type for the Query/Params RPC method.
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryParamsResponse"></a>
-
-### QueryParamsResponse
-QueryParamsResponse is the response type for the Query/Params RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `params` | [Params](#nemo.jinx.v1beta1.Params) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryReservesRequest"></a>
-
-### QueryReservesRequest
-QueryReservesRequest is the request type for the Query/Reserves RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryReservesResponse"></a>
-
-### QueryReservesResponse
-QueryReservesResponse is the response type for the Query/Reserves RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryTotalBorrowedRequest"></a>
-
-### QueryTotalBorrowedRequest
-QueryTotalBorrowedRequest is the request type for the Query/TotalBorrowed RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryTotalBorrowedResponse"></a>
-
-### QueryTotalBorrowedResponse
-QueryTotalBorrowedResponse is the response type for the Query/TotalBorrowed RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `borrowed_coins` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryTotalDepositedRequest"></a>
-
-### QueryTotalDepositedRequest
-QueryTotalDepositedRequest is the request type for the Query/TotalDeposited RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryTotalDepositedResponse"></a>
-
-### QueryTotalDepositedResponse
-QueryTotalDepositedResponse is the response type for the Query/TotalDeposited RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `supplied_coins` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryUnsyncedBorrowsRequest"></a>
-
-### QueryUnsyncedBorrowsRequest
-QueryUnsyncedBorrowsRequest is the request type for the Query/UnsyncedBorrows RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryUnsyncedBorrowsResponse"></a>
-
-### QueryUnsyncedBorrowsResponse
-QueryUnsyncedBorrowsResponse is the response type for the Query/UnsyncedBorrows RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `borrows` | [BorrowResponse](#nemo.jinx.v1beta1.BorrowResponse) | repeated |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryUnsyncedDepositsRequest"></a>
-
-### QueryUnsyncedDepositsRequest
-QueryUnsyncedDepositsRequest is the request type for the Query/UnsyncedDeposits RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.QueryUnsyncedDepositsResponse"></a>
-
-### QueryUnsyncedDepositsResponse
-QueryUnsyncedDepositsResponse is the response type for the Query/UnsyncedDeposits RPC method.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `deposits` | [DepositResponse](#nemo.jinx.v1beta1.DepositResponse) | repeated |  |
-| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.SupplyInterestFactorResponse"></a>
-
-### SupplyInterestFactorResponse
-SupplyInterestFactorResponse defines an individual borrow interest factor.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `denom` | [string](#string) |  |  |
-| `value` | [string](#string) |  | sdk.Dec as string |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-<a name="nemo.jinx.v1beta1.Query"></a>
-
-### Query
-Query defines the gRPC querier service for bep3 module.
-
-| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
-| ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `Params` | [QueryParamsRequest](#nemo.jinx.v1beta1.QueryParamsRequest) | [QueryParamsResponse](#nemo.jinx.v1beta1.QueryParamsResponse) | Params queries module params. | GET|/nemo/jinx/v1beta1/params|
-| `Accounts` | [QueryAccountsRequest](#nemo.jinx.v1beta1.QueryAccountsRequest) | [QueryAccountsResponse](#nemo.jinx.v1beta1.QueryAccountsResponse) | Accounts queries module accounts. | GET|/nemo/jinx/v1beta1/accounts|
-| `Deposits` | [QueryDepositsRequest](#nemo.jinx.v1beta1.QueryDepositsRequest) | [QueryDepositsResponse](#nemo.jinx.v1beta1.QueryDepositsResponse) | Deposits queries jinx deposits. | GET|/nemo/jinx/v1beta1/deposits|
-| `UnsyncedDeposits` | [QueryUnsyncedDepositsRequest](#nemo.jinx.v1beta1.QueryUnsyncedDepositsRequest) | [QueryUnsyncedDepositsResponse](#nemo.jinx.v1beta1.QueryUnsyncedDepositsResponse) | UnsyncedDeposits queries unsynced deposits. | GET|/nemo/jinx/v1beta1/unsynced-deposits|
-| `TotalDeposited` | [QueryTotalDepositedRequest](#nemo.jinx.v1beta1.QueryTotalDepositedRequest) | [QueryTotalDepositedResponse](#nemo.jinx.v1beta1.QueryTotalDepositedResponse) | TotalDeposited queries total coins deposited to jinx liquidity pools. | GET|/nemo/jinx/v1beta1/total-deposited|
-| `Borrows` | [QueryBorrowsRequest](#nemo.jinx.v1beta1.QueryBorrowsRequest) | [QueryBorrowsResponse](#nemo.jinx.v1beta1.QueryBorrowsResponse) | Borrows queries jinx borrows. | GET|/nemo/jinx/v1beta1/borrows|
-| `UnsyncedBorrows` | [QueryUnsyncedBorrowsRequest](#nemo.jinx.v1beta1.QueryUnsyncedBorrowsRequest) | [QueryUnsyncedBorrowsResponse](#nemo.jinx.v1beta1.QueryUnsyncedBorrowsResponse) | UnsyncedBorrows queries unsynced borrows. | GET|/nemo/jinx/v1beta1/unsynced-borrows|
-| `TotalBorrowed` | [QueryTotalBorrowedRequest](#nemo.jinx.v1beta1.QueryTotalBorrowedRequest) | [QueryTotalBorrowedResponse](#nemo.jinx.v1beta1.QueryTotalBorrowedResponse) | TotalBorrowed queries total coins borrowed from jinx liquidity pools. | GET|/nemo/jinx/v1beta1/total-borrowed|
-| `InterestRate` | [QueryInterestRateRequest](#nemo.jinx.v1beta1.QueryInterestRateRequest) | [QueryInterestRateResponse](#nemo.jinx.v1beta1.QueryInterestRateResponse) | InterestRate queries the jinx module interest rates. | GET|/nemo/jinx/v1beta1/interest-rate|
-| `Reserves` | [QueryReservesRequest](#nemo.jinx.v1beta1.QueryReservesRequest) | [QueryReservesResponse](#nemo.jinx.v1beta1.QueryReservesResponse) | Reserves queries total jinx reserve coins. | GET|/nemo/jinx/v1beta1/reserves|
-| `InterestFactors` | [QueryInterestFactorsRequest](#nemo.jinx.v1beta1.QueryInterestFactorsRequest) | [QueryInterestFactorsResponse](#nemo.jinx.v1beta1.QueryInterestFactorsResponse) | InterestFactors queries jinx module interest factors. | GET|/nemo/jinx/v1beta1/interest-factors|
-
- <!-- end services -->
-
-
-
-<a name="nemo/jinx/v1beta1/tx.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## nemo/jinx/v1beta1/tx.proto
-
-
-
-<a name="nemo.jinx.v1beta1.MsgBorrow"></a>
-
-### MsgBorrow
-MsgBorrow defines the Msg/Borrow request type.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `borrower` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MsgBorrowResponse"></a>
-
-### MsgBorrowResponse
-MsgBorrowResponse defines the Msg/Borrow response type.
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MsgDeposit"></a>
-
-### MsgDeposit
-MsgDeposit defines the Msg/Deposit request type.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `depositor` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MsgDepositResponse"></a>
-
-### MsgDepositResponse
-MsgDepositResponse defines the Msg/Deposit response type.
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MsgLiquidate"></a>
-
-### MsgLiquidate
-MsgLiquidate defines the Msg/Liquidate request type.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `keeper` | [string](#string) |  |  |
-| `borrower` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MsgLiquidateResponse"></a>
-
-### MsgLiquidateResponse
-MsgLiquidateResponse defines the Msg/Liquidate response type.
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MsgRepay"></a>
-
-### MsgRepay
-MsgRepay defines the Msg/Repay request type.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `sender` | [string](#string) |  |  |
-| `owner` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MsgRepayResponse"></a>
-
-### MsgRepayResponse
-MsgRepayResponse defines the Msg/Repay response type.
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MsgWithdraw"></a>
-
-### MsgWithdraw
-MsgWithdraw defines the Msg/Withdraw request type.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `depositor` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="nemo.jinx.v1beta1.MsgWithdrawResponse"></a>
-
-### MsgWithdrawResponse
-MsgWithdrawResponse defines the Msg/Withdraw response type.
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-<a name="nemo.jinx.v1beta1.Msg"></a>
-
-### Msg
-Msg defines the jinx Msg service.
-
-| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
-| ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `Deposit` | [MsgDeposit](#nemo.jinx.v1beta1.MsgDeposit) | [MsgDepositResponse](#nemo.jinx.v1beta1.MsgDepositResponse) | Deposit defines a method for depositing funds to jinx liquidity pool. | |
-| `Withdraw` | [MsgWithdraw](#nemo.jinx.v1beta1.MsgWithdraw) | [MsgWithdrawResponse](#nemo.jinx.v1beta1.MsgWithdrawResponse) | Withdraw defines a method for withdrawing funds from jinx liquidity pool. | |
-| `Borrow` | [MsgBorrow](#nemo.jinx.v1beta1.MsgBorrow) | [MsgBorrowResponse](#nemo.jinx.v1beta1.MsgBorrowResponse) | Borrow defines a method for borrowing funds from jinx liquidity pool. | |
-| `Repay` | [MsgRepay](#nemo.jinx.v1beta1.MsgRepay) | [MsgRepayResponse](#nemo.jinx.v1beta1.MsgRepayResponse) | Repay defines a method for repaying funds borrowed from jinx liquidity pool. | |
-| `Liquidate` | [MsgLiquidate](#nemo.jinx.v1beta1.MsgLiquidate) | [MsgLiquidateResponse](#nemo.jinx.v1beta1.MsgLiquidateResponse) | Liquidate defines a method for attempting to liquidate a borrower that is over their loan-to-value. | |
-
- <!-- end services -->
-
-
-
 <a name="nemo/incentive/v1beta1/apy.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -5957,6 +5104,859 @@ Msg defines the issuance Msg service.
 | `BlockAddress` | [MsgBlockAddress](#nemo.issuance.v1beta1.MsgBlockAddress) | [MsgBlockAddressResponse](#nemo.issuance.v1beta1.MsgBlockAddressResponse) | BlockAddress message type used by the issuer to block an address from holding or transferring tokens | |
 | `UnblockAddress` | [MsgUnblockAddress](#nemo.issuance.v1beta1.MsgUnblockAddress) | [MsgUnblockAddressResponse](#nemo.issuance.v1beta1.MsgUnblockAddressResponse) | UnblockAddress message type used by the issuer to unblock an address from holding or transferring tokens | |
 | `SetPauseStatus` | [MsgSetPauseStatus](#nemo.issuance.v1beta1.MsgSetPauseStatus) | [MsgSetPauseStatusResponse](#nemo.issuance.v1beta1.MsgSetPauseStatusResponse) | SetPauseStatus message type used to pause or unpause status | |
+
+ <!-- end services -->
+
+
+
+<a name="nemo/jinx/v1beta1/jinx.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## nemo/jinx/v1beta1/jinx.proto
+
+
+
+<a name="nemo.jinx.v1beta1.Borrow"></a>
+
+### Borrow
+Borrow defines an amount of coins borrowed from a jinx module account.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `borrower` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+| `index` | [BorrowInterestFactor](#nemo.jinx.v1beta1.BorrowInterestFactor) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.BorrowInterestFactor"></a>
+
+### BorrowInterestFactor
+BorrowInterestFactor defines an individual borrow interest factor.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `value` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.BorrowLimit"></a>
+
+### BorrowLimit
+BorrowLimit enforces restrictions on a money market.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `has_max_limit` | [bool](#bool) |  |  |
+| `maximum_limit` | [string](#string) |  |  |
+| `loan_to_value` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.CoinsProto"></a>
+
+### CoinsProto
+CoinsProto defines a Protobuf wrapper around a Coins slice
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `coins` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.Deposit"></a>
+
+### Deposit
+Deposit defines an amount of coins deposited into a jinx module account.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `depositor` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+| `index` | [SupplyInterestFactor](#nemo.jinx.v1beta1.SupplyInterestFactor) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.InterestRateModel"></a>
+
+### InterestRateModel
+InterestRateModel contains information about an asset's interest rate.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `base_rate_apy` | [string](#string) |  |  |
+| `base_multiplier` | [string](#string) |  |  |
+| `kink` | [string](#string) |  |  |
+| `jump_multiplier` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MoneyMarket"></a>
+
+### MoneyMarket
+MoneyMarket is a money market for an individual asset.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `borrow_limit` | [BorrowLimit](#nemo.jinx.v1beta1.BorrowLimit) |  |  |
+| `spot_market_id` | [string](#string) |  |  |
+| `conversion_factor` | [string](#string) |  |  |
+| `interest_rate_model` | [InterestRateModel](#nemo.jinx.v1beta1.InterestRateModel) |  |  |
+| `reserve_factor` | [string](#string) |  |  |
+| `keeper_reward_percentage` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.Params"></a>
+
+### Params
+Params defines the parameters for the jinx module.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `money_markets` | [MoneyMarket](#nemo.jinx.v1beta1.MoneyMarket) | repeated |  |
+| `minimum_borrow_usd_value` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.SupplyInterestFactor"></a>
+
+### SupplyInterestFactor
+SupplyInterestFactor defines an individual borrow interest factor.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `value` | [string](#string) |  |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+ <!-- end services -->
+
+
+
+<a name="nemo/jinx/v1beta1/genesis.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## nemo/jinx/v1beta1/genesis.proto
+
+
+
+<a name="nemo.jinx.v1beta1.GenesisAccumulationTime"></a>
+
+### GenesisAccumulationTime
+GenesisAccumulationTime stores the previous distribution time and its corresponding denom.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `collateral_type` | [string](#string) |  |  |
+| `previous_accumulation_time` | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+| `supply_interest_factor` | [string](#string) |  |  |
+| `borrow_interest_factor` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.GenesisState"></a>
+
+### GenesisState
+GenesisState defines the jinx module's genesis state.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `params` | [Params](#nemo.jinx.v1beta1.Params) |  |  |
+| `previous_accumulation_times` | [GenesisAccumulationTime](#nemo.jinx.v1beta1.GenesisAccumulationTime) | repeated |  |
+| `deposits` | [Deposit](#nemo.jinx.v1beta1.Deposit) | repeated |  |
+| `borrows` | [Borrow](#nemo.jinx.v1beta1.Borrow) | repeated |  |
+| `total_supplied` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+| `total_borrowed` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+| `total_reserves` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+ <!-- end services -->
+
+
+
+<a name="nemo/jinx/v1beta1/query.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## nemo/jinx/v1beta1/query.proto
+
+
+
+<a name="nemo.jinx.v1beta1.BorrowInterestFactorResponse"></a>
+
+### BorrowInterestFactorResponse
+BorrowInterestFactorResponse defines an individual borrow interest factor.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `value` | [string](#string) |  | sdk.Dec as string |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.BorrowResponse"></a>
+
+### BorrowResponse
+BorrowResponse defines an amount of coins borrowed from a jinx module account.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `borrower` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+| `index` | [BorrowInterestFactorResponse](#nemo.jinx.v1beta1.BorrowInterestFactorResponse) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.DepositResponse"></a>
+
+### DepositResponse
+DepositResponse defines an amount of coins deposited into a jinx module account.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `depositor` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+| `index` | [SupplyInterestFactorResponse](#nemo.jinx.v1beta1.SupplyInterestFactorResponse) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.InterestFactor"></a>
+
+### InterestFactor
+InterestFactor is a unique type returned by interest factor queries
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `borrow_interest_factor` | [string](#string) |  | sdk.Dec as String |
+| `supply_interest_factor` | [string](#string) |  | sdk.Dec as String |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MoneyMarketInterestRate"></a>
+
+### MoneyMarketInterestRate
+MoneyMarketInterestRate is a unique type returned by interest rate queries
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `supply_interest_rate` | [string](#string) |  | sdk.Dec as String |
+| `borrow_interest_rate` | [string](#string) |  | sdk.Dec as String |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryAccountsRequest"></a>
+
+### QueryAccountsRequest
+QueryAccountsRequest is the request type for the Query/Accounts RPC method.
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryAccountsResponse"></a>
+
+### QueryAccountsResponse
+QueryAccountsResponse is the response type for the Query/Accounts RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `accounts` | [cosmos.auth.v1beta1.ModuleAccount](#cosmos.auth.v1beta1.ModuleAccount) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryBorrowsRequest"></a>
+
+### QueryBorrowsRequest
+QueryBorrowsRequest is the request type for the Query/Borrows RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryBorrowsResponse"></a>
+
+### QueryBorrowsResponse
+QueryBorrowsResponse is the response type for the Query/Borrows RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `borrows` | [BorrowResponse](#nemo.jinx.v1beta1.BorrowResponse) | repeated |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryDepositsRequest"></a>
+
+### QueryDepositsRequest
+QueryDepositsRequest is the request type for the Query/Deposits RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryDepositsResponse"></a>
+
+### QueryDepositsResponse
+QueryDepositsResponse is the response type for the Query/Deposits RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `deposits` | [DepositResponse](#nemo.jinx.v1beta1.DepositResponse) | repeated |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryInterestFactorsRequest"></a>
+
+### QueryInterestFactorsRequest
+QueryInterestFactorsRequest is the request type for the Query/InterestFactors RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryInterestFactorsResponse"></a>
+
+### QueryInterestFactorsResponse
+QueryInterestFactorsResponse is the response type for the Query/InterestFactors RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `interest_factors` | [InterestFactor](#nemo.jinx.v1beta1.InterestFactor) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryInterestRateRequest"></a>
+
+### QueryInterestRateRequest
+QueryInterestRateRequest is the request type for the Query/InterestRate RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryInterestRateResponse"></a>
+
+### QueryInterestRateResponse
+QueryInterestRateResponse is the response type for the Query/InterestRate RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `interest_rates` | [MoneyMarketInterestRate](#nemo.jinx.v1beta1.MoneyMarketInterestRate) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryParamsRequest"></a>
+
+### QueryParamsRequest
+QueryParamsRequest is the request type for the Query/Params RPC method.
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryParamsResponse"></a>
+
+### QueryParamsResponse
+QueryParamsResponse is the response type for the Query/Params RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `params` | [Params](#nemo.jinx.v1beta1.Params) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryReservesRequest"></a>
+
+### QueryReservesRequest
+QueryReservesRequest is the request type for the Query/Reserves RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryReservesResponse"></a>
+
+### QueryReservesResponse
+QueryReservesResponse is the response type for the Query/Reserves RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryTotalBorrowedRequest"></a>
+
+### QueryTotalBorrowedRequest
+QueryTotalBorrowedRequest is the request type for the Query/TotalBorrowed RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryTotalBorrowedResponse"></a>
+
+### QueryTotalBorrowedResponse
+QueryTotalBorrowedResponse is the response type for the Query/TotalBorrowed RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `borrowed_coins` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryTotalDepositedRequest"></a>
+
+### QueryTotalDepositedRequest
+QueryTotalDepositedRequest is the request type for the Query/TotalDeposited RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryTotalDepositedResponse"></a>
+
+### QueryTotalDepositedResponse
+QueryTotalDepositedResponse is the response type for the Query/TotalDeposited RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `supplied_coins` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryUnsyncedBorrowsRequest"></a>
+
+### QueryUnsyncedBorrowsRequest
+QueryUnsyncedBorrowsRequest is the request type for the Query/UnsyncedBorrows RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryUnsyncedBorrowsResponse"></a>
+
+### QueryUnsyncedBorrowsResponse
+QueryUnsyncedBorrowsResponse is the response type for the Query/UnsyncedBorrows RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `borrows` | [BorrowResponse](#nemo.jinx.v1beta1.BorrowResponse) | repeated |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryUnsyncedDepositsRequest"></a>
+
+### QueryUnsyncedDepositsRequest
+QueryUnsyncedDepositsRequest is the request type for the Query/UnsyncedDeposits RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageRequest](#cosmos.base.query.v1beta1.PageRequest) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.QueryUnsyncedDepositsResponse"></a>
+
+### QueryUnsyncedDepositsResponse
+QueryUnsyncedDepositsResponse is the response type for the Query/UnsyncedDeposits RPC method.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `deposits` | [DepositResponse](#nemo.jinx.v1beta1.DepositResponse) | repeated |  |
+| `pagination` | [cosmos.base.query.v1beta1.PageResponse](#cosmos.base.query.v1beta1.PageResponse) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.SupplyInterestFactorResponse"></a>
+
+### SupplyInterestFactorResponse
+SupplyInterestFactorResponse defines an individual borrow interest factor.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `denom` | [string](#string) |  |  |
+| `value` | [string](#string) |  | sdk.Dec as string |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+<a name="nemo.jinx.v1beta1.Query"></a>
+
+### Query
+Query defines the gRPC querier service for bep3 module.
+
+| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
+| ----------- | ------------ | ------------- | ------------| ------- | -------- |
+| `Params` | [QueryParamsRequest](#nemo.jinx.v1beta1.QueryParamsRequest) | [QueryParamsResponse](#nemo.jinx.v1beta1.QueryParamsResponse) | Params queries module params. | GET|/nemo/jinx/v1beta1/params|
+| `Accounts` | [QueryAccountsRequest](#nemo.jinx.v1beta1.QueryAccountsRequest) | [QueryAccountsResponse](#nemo.jinx.v1beta1.QueryAccountsResponse) | Accounts queries module accounts. | GET|/nemo/jinx/v1beta1/accounts|
+| `Deposits` | [QueryDepositsRequest](#nemo.jinx.v1beta1.QueryDepositsRequest) | [QueryDepositsResponse](#nemo.jinx.v1beta1.QueryDepositsResponse) | Deposits queries jinx deposits. | GET|/nemo/jinx/v1beta1/deposits|
+| `UnsyncedDeposits` | [QueryUnsyncedDepositsRequest](#nemo.jinx.v1beta1.QueryUnsyncedDepositsRequest) | [QueryUnsyncedDepositsResponse](#nemo.jinx.v1beta1.QueryUnsyncedDepositsResponse) | UnsyncedDeposits queries unsynced deposits. | GET|/nemo/jinx/v1beta1/unsynced-deposits|
+| `TotalDeposited` | [QueryTotalDepositedRequest](#nemo.jinx.v1beta1.QueryTotalDepositedRequest) | [QueryTotalDepositedResponse](#nemo.jinx.v1beta1.QueryTotalDepositedResponse) | TotalDeposited queries total coins deposited to jinx liquidity pools. | GET|/nemo/jinx/v1beta1/total-deposited|
+| `Borrows` | [QueryBorrowsRequest](#nemo.jinx.v1beta1.QueryBorrowsRequest) | [QueryBorrowsResponse](#nemo.jinx.v1beta1.QueryBorrowsResponse) | Borrows queries jinx borrows. | GET|/nemo/jinx/v1beta1/borrows|
+| `UnsyncedBorrows` | [QueryUnsyncedBorrowsRequest](#nemo.jinx.v1beta1.QueryUnsyncedBorrowsRequest) | [QueryUnsyncedBorrowsResponse](#nemo.jinx.v1beta1.QueryUnsyncedBorrowsResponse) | UnsyncedBorrows queries unsynced borrows. | GET|/nemo/jinx/v1beta1/unsynced-borrows|
+| `TotalBorrowed` | [QueryTotalBorrowedRequest](#nemo.jinx.v1beta1.QueryTotalBorrowedRequest) | [QueryTotalBorrowedResponse](#nemo.jinx.v1beta1.QueryTotalBorrowedResponse) | TotalBorrowed queries total coins borrowed from jinx liquidity pools. | GET|/nemo/jinx/v1beta1/total-borrowed|
+| `InterestRate` | [QueryInterestRateRequest](#nemo.jinx.v1beta1.QueryInterestRateRequest) | [QueryInterestRateResponse](#nemo.jinx.v1beta1.QueryInterestRateResponse) | InterestRate queries the jinx module interest rates. | GET|/nemo/jinx/v1beta1/interest-rate|
+| `Reserves` | [QueryReservesRequest](#nemo.jinx.v1beta1.QueryReservesRequest) | [QueryReservesResponse](#nemo.jinx.v1beta1.QueryReservesResponse) | Reserves queries total jinx reserve coins. | GET|/nemo/jinx/v1beta1/reserves|
+| `InterestFactors` | [QueryInterestFactorsRequest](#nemo.jinx.v1beta1.QueryInterestFactorsRequest) | [QueryInterestFactorsResponse](#nemo.jinx.v1beta1.QueryInterestFactorsResponse) | InterestFactors queries jinx module interest factors. | GET|/nemo/jinx/v1beta1/interest-factors|
+
+ <!-- end services -->
+
+
+
+<a name="nemo/jinx/v1beta1/tx.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## nemo/jinx/v1beta1/tx.proto
+
+
+
+<a name="nemo.jinx.v1beta1.MsgBorrow"></a>
+
+### MsgBorrow
+MsgBorrow defines the Msg/Borrow request type.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `borrower` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MsgBorrowResponse"></a>
+
+### MsgBorrowResponse
+MsgBorrowResponse defines the Msg/Borrow response type.
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MsgDeposit"></a>
+
+### MsgDeposit
+MsgDeposit defines the Msg/Deposit request type.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `depositor` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MsgDepositResponse"></a>
+
+### MsgDepositResponse
+MsgDepositResponse defines the Msg/Deposit response type.
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MsgLiquidate"></a>
+
+### MsgLiquidate
+MsgLiquidate defines the Msg/Liquidate request type.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `keeper` | [string](#string) |  |  |
+| `borrower` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MsgLiquidateResponse"></a>
+
+### MsgLiquidateResponse
+MsgLiquidateResponse defines the Msg/Liquidate response type.
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MsgRepay"></a>
+
+### MsgRepay
+MsgRepay defines the Msg/Repay request type.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `sender` | [string](#string) |  |  |
+| `owner` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MsgRepayResponse"></a>
+
+### MsgRepayResponse
+MsgRepayResponse defines the Msg/Repay response type.
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MsgWithdraw"></a>
+
+### MsgWithdraw
+MsgWithdraw defines the Msg/Withdraw request type.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `depositor` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="nemo.jinx.v1beta1.MsgWithdrawResponse"></a>
+
+### MsgWithdrawResponse
+MsgWithdrawResponse defines the Msg/Withdraw response type.
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+<a name="nemo.jinx.v1beta1.Msg"></a>
+
+### Msg
+Msg defines the jinx Msg service.
+
+| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
+| ----------- | ------------ | ------------- | ------------| ------- | -------- |
+| `Deposit` | [MsgDeposit](#nemo.jinx.v1beta1.MsgDeposit) | [MsgDepositResponse](#nemo.jinx.v1beta1.MsgDepositResponse) | Deposit defines a method for depositing funds to jinx liquidity pool. | |
+| `Withdraw` | [MsgWithdraw](#nemo.jinx.v1beta1.MsgWithdraw) | [MsgWithdrawResponse](#nemo.jinx.v1beta1.MsgWithdrawResponse) | Withdraw defines a method for withdrawing funds from jinx liquidity pool. | |
+| `Borrow` | [MsgBorrow](#nemo.jinx.v1beta1.MsgBorrow) | [MsgBorrowResponse](#nemo.jinx.v1beta1.MsgBorrowResponse) | Borrow defines a method for borrowing funds from jinx liquidity pool. | |
+| `Repay` | [MsgRepay](#nemo.jinx.v1beta1.MsgRepay) | [MsgRepayResponse](#nemo.jinx.v1beta1.MsgRepayResponse) | Repay defines a method for repaying funds borrowed from jinx liquidity pool. | |
+| `Liquidate` | [MsgLiquidate](#nemo.jinx.v1beta1.MsgLiquidate) | [MsgLiquidateResponse](#nemo.jinx.v1beta1.MsgLiquidateResponse) | Liquidate defines a method for attempting to liquidate a borrower that is over their loan-to-value. | |
 
  <!-- end services -->
 

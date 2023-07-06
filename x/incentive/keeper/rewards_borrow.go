@@ -7,8 +7,8 @@ import (
 	sdkmath "cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 	"github.com/merlin-network/nemo/x/incentive/types"
+	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 )
 
 // AccumulateJinxBorrowRewards calculates new rewards to distribute this block and updates the global indexes to reflect this.

@@ -12,10 +12,10 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
 	"github.com/merlin-network/nemo/app"
-	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 	"github.com/merlin-network/nemo/x/incentive"
 	"github.com/merlin-network/nemo/x/incentive/keeper"
 	"github.com/merlin-network/nemo/x/incentive/types"
+	jinxtypes "github.com/merlin-network/nemo/x/jinx/types"
 	nemodisttypes "github.com/merlin-network/nemo/x/nemodist/types"
 )
 

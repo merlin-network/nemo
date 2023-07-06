@@ -48756,7 +48756,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -49221,7 +49221,7 @@ paths:
                         RevisionNumber the same. However some consensus
                         algorithms may choose to
 
-                        reset the height in certain conditions e.g. jinx forks,
+                        reset the height in certain conditions e.g. hard forks,
                         state-machine
 
                         breaking changes In these cases, the RevisionNumber is
@@ -49734,7 +49734,7 @@ paths:
                     RevisionNumber the same. However some consensus algorithms
                     may choose to
 
-                    reset the height in certain conditions e.g. jinx forks,
+                    reset the height in certain conditions e.g. hard forks,
                     state-machine
 
                     breaking changes In these cases, the RevisionNumber is
@@ -50249,7 +50249,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -51499,7 +51499,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -51854,7 +51854,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -52245,7 +52245,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -52683,7 +52683,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -53103,7 +53103,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -53684,7 +53684,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -54054,7 +54054,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -54499,7 +54499,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -54924,7 +54924,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -55190,7 +55190,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -55496,7 +55496,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -55815,7 +55815,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -56129,7 +56129,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -56441,7 +56441,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -56705,7 +56705,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -56967,7 +56967,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -57234,7 +57234,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -57600,7 +57600,7 @@ paths:
                   RevisionNumber the same. However some consensus algorithms may
                   choose to
 
-                  reset the height in certain conditions e.g. jinx forks,
+                  reset the height in certain conditions e.g. hard forks,
                   state-machine
 
                   breaking changes In these cases, the RevisionNumber is
@@ -90658,7 +90658,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -90846,7 +90846,7 @@ definitions:
     description: |-
       Normally the RevisionHeight is incremented at each height while keeping
       RevisionNumber the same. However some consensus algorithms may choose to
-      reset the height in certain conditions e.g. jinx forks, state-machine
+      reset the height in certain conditions e.g. hard forks, state-machine
       breaking changes In these cases, the RevisionNumber is incremented so that
       height continues to be monitonically increasing even as the RevisionHeight
       gets reset
@@ -91238,7 +91238,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -91506,7 +91506,7 @@ definitions:
             RevisionNumber the same. However some consensus algorithms may
             choose to
 
-            reset the height in certain conditions e.g. jinx forks,
+            reset the height in certain conditions e.g. hard forks,
             state-machine
 
             breaking changes In these cases, the RevisionNumber is incremented
@@ -91741,7 +91741,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -91789,7 +91789,7 @@ definitions:
                 RevisionNumber the same. However some consensus algorithms may
                 choose to
 
-                reset the height in certain conditions e.g. jinx forks,
+                reset the height in certain conditions e.g. hard forks,
                 state-machine
 
                 breaking changes In these cases, the RevisionNumber is
@@ -92592,7 +92592,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -92806,7 +92806,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93007,7 +93007,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93157,7 +93157,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93305,7 +93305,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93730,7 +93730,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -93931,7 +93931,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94038,7 +94038,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94178,7 +94178,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94314,7 +94314,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94356,7 +94356,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94398,7 +94398,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94488,7 +94488,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94530,7 +94530,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94623,7 +94623,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94665,7 +94665,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94709,7 +94709,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
@@ -94749,7 +94749,7 @@ definitions:
           RevisionNumber the same. However some consensus algorithms may choose
           to
 
-          reset the height in certain conditions e.g. jinx forks, state-machine
+          reset the height in certain conditions e.g. hard forks, state-machine
 
           breaking changes In these cases, the RevisionNumber is incremented so
           that
