@@ -12,7 +12,7 @@ import (
 
 var (
 	testDenom1 = "ufury"
-	testDenom2 = "usdx"
+	testDenom2 = "usdf"
 )
 
 func d(i int64) sdk.Dec {

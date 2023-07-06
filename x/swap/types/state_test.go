@@ -41,7 +41,7 @@ func TestState_PoolID(t *testing.T) {
 }
 
 func TestState_NewPoolRecord(t *testing.T) {
-	reserves := sdk.NewCoins(usdx(50e6), ufury(10e6))
+	reserves := sdk.NewCoins(usdf(50e6), ufury(10e6))
 	totalShares := sdkmath.NewInt(30e6)
 
 	poolRecord := types.NewPoolRecord(reserves, totalShares)
@@ -57,32 +57,32 @@ func TestState_NewPoolRecord(t *testing.T) {
 	}, "expected panic with 1 coin in reserves")
 
 	assert.PanicsWithValue(t, "reserves must have two denominations", func() {
-		reserves := sdk.NewCoins(ufury(10e6), jinx(1e6), usdx(20e6))
+		reserves := sdk.NewCoins(ufury(10e6), jinx(1e6), usdf(20e6))
 		_ = types.NewPoolRecord(reserves, totalShares)
 	}, "expected panic with 3 coins in reserves")
 }
 
 func TestState_NewPoolRecordFromPool(t *testing.T) {
-	reserves := sdk.NewCoins(usdx(50e6), ufury(10e6))
+	reserves := sdk.NewCoins(usdf(50e6), ufury(10e6))
 
 	pool, err := types.NewDenominatedPool(reserves)
 	require.NoError(t, err)
 
 	record := types.NewPoolRecordFromPool(pool)
 
-	assert.Equal(t, types.PoolID("ufury", "usdx"), record.PoolID)
+	assert.Equal(t, types.PoolID("ufury", "usdf"), record.PoolID)
 	assert.Equal(t, ufury(10e6), record.ReservesA)
-	assert.Equal(t, record.ReservesB, usdx(50e6))
+	assert.Equal(t, record.ReservesB, usdf(50e6))
 	assert.Equal(t, pool.TotalShares(), record.TotalShares)
-	assert.Equal(t, sdk.NewCoins(ufury(10e6), usdx(50e6)), record.Reserves())
+	assert.Equal(t, sdk.NewCoins(ufury(10e6), usdf(50e6)), record.Reserves())
 	assert.Nil(t, record.Validate())
 }
 
 func TestState_PoolRecord_JSONEncoding(t *testing.T) {
 	raw := `{
-		"pool_id": "ufury:usdx",
+		"pool_id": "ufury:usdf",
 		"reserves_a": { "denom": "ufury", "amount": "1000000" },
-		"reserves_b": { "denom": "usdx", "amount": "5000000" },
+		"reserves_b": { "denom": "usdf", "amount": "5000000" },
 		"total_shares": "3000000"
 	}`
 
@@ -90,23 +90,23 @@ func TestState_PoolRecord_JSONEncoding(t *testing.T) {
 	err := json.Unmarshal([]byte(raw), &record)
 	require.NoError(t, err)
 
-	assert.Equal(t, types.PoolID("ufury", "usdx"), record.PoolID)
+	assert.Equal(t, types.PoolID("ufury", "usdf"), record.PoolID)
 	assert.Equal(t, ufury(1e6), record.ReservesA)
-	assert.Equal(t, usdx(5e6), record.ReservesB)
+	assert.Equal(t, usdf(5e6), record.ReservesB)
 	assert.Equal(t, i(3e6), record.TotalShares)
 }
 
 func TestState_PoolRecord_YamlEncoding(t *testing.T) {
-	expected := `pool_id: ufury:usdx
+	expected := `pool_id: ufury:usdf
 reserves_a:
   amount: "1000000"
   denom: ufury
 reserves_b:
   amount: "5000000"
-  denom: usdx
+  denom: usdf
 total_shares: "3000000"
 `
-	record := types.NewPoolRecord(sdk.NewCoins(ufury(1e6), usdx(5e6)), i(3e6))
+	record := types.NewPoolRecord(sdk.NewCoins(ufury(1e6), usdf(5e6)), i(3e6))
 	data, err := yaml.Marshal(record)
 	require.NoError(t, err)
 
@@ -115,7 +115,7 @@ total_shares: "3000000"
 
 func TestState_PoolRecord_Validations(t *testing.T) {
 	validRecord := types.NewPoolRecord(
-		sdk.NewCoins(usdx(500e6), ufury(100e6)),
+		sdk.NewCoins(usdf(500e6), ufury(100e6)),
 		i(300e6),
 	)
 	testCases := []struct {
@@ -136,11 +136,11 @@ func TestState_PoolRecord_Validations(t *testing.T) {
 		},
 		{
 			name:        "no poolID tokens",
-			poolID:      "ufuryusdx",
+			poolID:      "ufuryusdf",
 			reservesA:   validRecord.ReservesA,
 			reservesB:   validRecord.ReservesB,
 			totalShares: validRecord.TotalShares,
-			expectedErr: "poolID 'ufuryusdx' is invalid",
+			expectedErr: "poolID 'ufuryusdf' is invalid",
 		},
 		{
 			name:        "poolID empty tokens",
@@ -152,11 +152,11 @@ func TestState_PoolRecord_Validations(t *testing.T) {
 		},
 		{
 			name:        "poolID empty token a",
-			poolID:      ":usdx",
+			poolID:      ":usdf",
 			reservesA:   validRecord.ReservesA,
 			reservesB:   validRecord.ReservesB,
 			totalShares: validRecord.TotalShares,
-			expectedErr: "poolID ':usdx' is invalid",
+			expectedErr: "poolID ':usdf' is invalid",
 		},
 		{
 			name:        "poolID empty token b",
@@ -168,11 +168,11 @@ func TestState_PoolRecord_Validations(t *testing.T) {
 		},
 		{
 			name:        "poolID is not sorted",
-			poolID:      "usdx:ufury",
+			poolID:      "usdf:ufury",
 			reservesA:   validRecord.ReservesA,
 			reservesB:   validRecord.ReservesB,
 			totalShares: validRecord.TotalShares,
-			expectedErr: "poolID 'usdx:ufury' is invalid",
+			expectedErr: "poolID 'usdf:ufury' is invalid",
 		},
 		{
 			name:        "poolID has duplicate denoms",
@@ -184,51 +184,51 @@ func TestState_PoolRecord_Validations(t *testing.T) {
 		},
 		{
 			name:        "poolID does not match reserve A",
-			poolID:      "ufury:usdx",
+			poolID:      "ufury:usdf",
 			reservesA:   jinx(5e6),
 			reservesB:   validRecord.ReservesB,
 			totalShares: validRecord.TotalShares,
-			expectedErr: "poolID 'ufury:usdx' does not match reserves",
+			expectedErr: "poolID 'ufury:usdf' does not match reserves",
 		},
 		{
 			name:        "poolID does not match reserve B",
-			poolID:      "ufury:usdx",
+			poolID:      "ufury:usdf",
 			reservesA:   validRecord.ReservesA,
 			reservesB:   jinx(5e6),
 			totalShares: validRecord.TotalShares,
-			expectedErr: "poolID 'ufury:usdx' does not match reserves",
+			expectedErr: "poolID 'ufury:usdf' does not match reserves",
 		},
 		{
 			name:        "negative reserve a",
-			poolID:      "ufury:usdx",
+			poolID:      "ufury:usdf",
 			reservesA:   sdk.Coin{Denom: "ufury", Amount: sdkmath.NewInt(-1)},
 			reservesB:   validRecord.ReservesB,
 			totalShares: validRecord.TotalShares,
-			expectedErr: "pool 'ufury:usdx' has invalid reserves: -1ufury",
+			expectedErr: "pool 'ufury:usdf' has invalid reserves: -1ufury",
 		},
 		{
 			name:        "zero reserve a",
-			poolID:      "ufury:usdx",
+			poolID:      "ufury:usdf",
 			reservesA:   sdk.Coin{Denom: "ufury", Amount: sdk.ZeroInt()},
 			reservesB:   validRecord.ReservesB,
 			totalShares: validRecord.TotalShares,
-			expectedErr: "pool 'ufury:usdx' has invalid reserves: 0ufury",
+			expectedErr: "pool 'ufury:usdf' has invalid reserves: 0ufury",
 		},
 		{
 			name:        "negative reserve b",
-			poolID:      "ufury:usdx",
+			poolID:      "ufury:usdf",
 			reservesA:   validRecord.ReservesA,
-			reservesB:   sdk.Coin{Denom: "usdx", Amount: sdkmath.NewInt(-1)},
+			reservesB:   sdk.Coin{Denom: "usdf", Amount: sdkmath.NewInt(-1)},
 			totalShares: validRecord.TotalShares,
-			expectedErr: "pool 'ufury:usdx' has invalid reserves: -1usdx",
+			expectedErr: "pool 'ufury:usdf' has invalid reserves: -1usdf",
 		},
 		{
 			name:        "zero reserve b",
-			poolID:      "ufury:usdx",
+			poolID:      "ufury:usdf",
 			reservesA:   validRecord.ReservesA,
-			reservesB:   sdk.Coin{Denom: "usdx", Amount: sdk.ZeroInt()},
+			reservesB:   sdk.Coin{Denom: "usdf", Amount: sdk.ZeroInt()},
 			totalShares: validRecord.TotalShares,
-			expectedErr: "pool 'ufury:usdx' has invalid reserves: 0usdx",
+			expectedErr: "pool 'ufury:usdf' has invalid reserves: 0usdf",
 		},
 		{
 			name:        "negative total shares",
@@ -236,7 +236,7 @@ func TestState_PoolRecord_Validations(t *testing.T) {
 			reservesA:   validRecord.ReservesA,
 			reservesB:   validRecord.ReservesB,
 			totalShares: sdkmath.NewInt(-1),
-			expectedErr: "pool 'ufury:usdx' has invalid total shares: -1",
+			expectedErr: "pool 'ufury:usdf' has invalid total shares: -1",
 		},
 		{
 			name:        "zero total shares",
@@ -244,7 +244,7 @@ func TestState_PoolRecord_Validations(t *testing.T) {
 			reservesA:   validRecord.ReservesA,
 			reservesB:   validRecord.ReservesB,
 			totalShares: sdk.ZeroInt(),
-			expectedErr: "pool 'ufury:usdx' has invalid total shares: 0",
+			expectedErr: "pool 'ufury:usdf' has invalid total shares: 0",
 		},
 	}
 
@@ -265,34 +265,34 @@ func TestState_PoolRecord_Validations(t *testing.T) {
 func TestState_PoolRecord_OrderedReserves(t *testing.T) {
 	invalidOrder := types.NewPoolRecord(
 		// force order to not be sorted
-		sdk.Coins{usdx(500e6), ufury(100e6)},
+		sdk.Coins{usdf(500e6), ufury(100e6)},
 		i(300e6),
 	)
 	assert.Error(t, invalidOrder.Validate())
 
 	validOrder := types.NewPoolRecord(
 		// force order to not be sorted
-		sdk.Coins{ufury(500e6), usdx(100e6)},
+		sdk.Coins{ufury(500e6), usdf(100e6)},
 		i(300e6),
 	)
 	assert.NoError(t, validOrder.Validate())
 
-	record_1 := types.NewPoolRecord(sdk.NewCoins(usdx(500e6), ufury(100e6)), i(300e6))
-	record_2 := types.NewPoolRecord(sdk.NewCoins(ufury(100e6), usdx(500e6)), i(300e6))
+	record_1 := types.NewPoolRecord(sdk.NewCoins(usdf(500e6), ufury(100e6)), i(300e6))
+	record_2 := types.NewPoolRecord(sdk.NewCoins(ufury(100e6), usdf(500e6)), i(300e6))
 	// ensure no regresssions in NewCoins ordering
 	assert.Equal(t, record_1, record_2)
-	assert.Equal(t, types.PoolID("ufury", "usdx"), record_1.PoolID)
-	assert.Equal(t, types.PoolID("ufury", "usdx"), record_2.PoolID)
+	assert.Equal(t, types.PoolID("ufury", "usdf"), record_1.PoolID)
+	assert.Equal(t, types.PoolID("ufury", "usdf"), record_2.PoolID)
 }
 
 func TestState_PoolRecords_Validation(t *testing.T) {
 	validRecord := types.NewPoolRecord(
-		sdk.NewCoins(usdx(500e6), ufury(100e6)),
+		sdk.NewCoins(usdf(500e6), ufury(100e6)),
 		i(300e6),
 	)
 
 	invalidRecord := types.NewPoolRecord(
-		sdk.NewCoins(usdx(500e6), ufury(100e6)),
+		sdk.NewCoins(usdf(500e6), ufury(100e6)),
 		i(-1),
 	)
 
@@ -304,22 +304,22 @@ func TestState_PoolRecords_Validation(t *testing.T) {
 	records = append(records, invalidRecord)
 	err := records.Validate()
 	assert.Error(t, err)
-	assert.EqualError(t, err, "pool 'ufury:usdx' has invalid total shares: -1")
+	assert.EqualError(t, err, "pool 'ufury:usdf' has invalid total shares: -1")
 }
 
 func TestState_PoolRecords_ValidateUniquePools(t *testing.T) {
 	record_1 := types.NewPoolRecord(
-		sdk.NewCoins(usdx(500e6), ufury(100e6)),
+		sdk.NewCoins(usdf(500e6), ufury(100e6)),
 		i(300e6),
 	)
 
 	record_2 := types.NewPoolRecord(
-		sdk.NewCoins(usdx(5000e6), ufury(1000e6)),
+		sdk.NewCoins(usdf(5000e6), ufury(1000e6)),
 		i(3000e6),
 	)
 
 	record_3 := types.NewPoolRecord(
-		sdk.NewCoins(usdx(5000e6), jinx(1000e6)),
+		sdk.NewCoins(usdf(5000e6), jinx(1000e6)),
 		i(3000e6),
 	)
 
@@ -327,12 +327,12 @@ func TestState_PoolRecords_ValidateUniquePools(t *testing.T) {
 	assert.NoError(t, validRecords.Validate())
 
 	invalidRecords := types.PoolRecords{record_1, record_2}
-	assert.EqualError(t, invalidRecords.Validate(), "duplicate poolID 'ufury:usdx'")
+	assert.EqualError(t, invalidRecords.Validate(), "duplicate poolID 'ufury:usdf'")
 }
 
 func TestState_NewShareRecord(t *testing.T) {
 	depositor := sdk.AccAddress("some user")
-	poolID := types.PoolID("ufury", "usdx")
+	poolID := types.PoolID("ufury", "usdf")
 	shares := sdkmath.NewInt(1e6)
 
 	record := types.NewShareRecord(depositor, poolID, shares)
@@ -345,7 +345,7 @@ func TestState_NewShareRecord(t *testing.T) {
 func TestState_ShareRecord_JSONEncoding(t *testing.T) {
 	raw := `{
 		"depositor": "fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x",
-		"pool_id": "ufury:usdx",
+		"pool_id": "ufury:usdf",
 		"shares_owned": "3000000"
 	}`
 
@@ -354,19 +354,19 @@ func TestState_ShareRecord_JSONEncoding(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, "fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x", record.Depositor.String())
-	assert.Equal(t, types.PoolID("ufury", "usdx"), record.PoolID)
+	assert.Equal(t, types.PoolID("ufury", "usdf"), record.PoolID)
 	assert.Equal(t, i(3e6), record.SharesOwned)
 }
 
 func TestState_ShareRecord_YamlEncoding(t *testing.T) {
 	expected := `depositor: fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x
-pool_id: ufury:usdx
+pool_id: ufury:usdf
 shares_owned: "3000000"
 `
 	depositor, err := sdk.AccAddressFromBech32("fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x")
 	require.NoError(t, err)
 
-	record := types.NewShareRecord(depositor, "ufury:usdx", i(3e6))
+	record := types.NewShareRecord(depositor, "ufury:usdf", i(3e6))
 	data, err := yaml.Marshal(record)
 	require.NoError(t, err)
 
@@ -376,7 +376,7 @@ shares_owned: "3000000"
 func TestState_InvalidShareRecordEmptyDepositor(t *testing.T) {
 	record := types.ShareRecord{
 		Depositor:   sdk.AccAddress{},
-		PoolID:      types.PoolID("ufury", "usdx"),
+		PoolID:      types.PoolID("ufury", "usdf"),
 		SharesOwned: sdkmath.NewInt(1e6),
 	}
 	require.Error(t, record.Validate())
@@ -385,7 +385,7 @@ func TestState_InvalidShareRecordEmptyDepositor(t *testing.T) {
 func TestState_InvalidShareRecordNegativeShares(t *testing.T) {
 	record := types.ShareRecord{
 		Depositor:   sdk.AccAddress("some user ----------------"),
-		PoolID:      types.PoolID("ufury", "usdx"),
+		PoolID:      types.PoolID("ufury", "usdf"),
 		SharesOwned: sdkmath.NewInt(-1e6),
 	}
 	require.Error(t, record.Validate())
@@ -396,7 +396,7 @@ func TestState_ShareRecord_Validations(t *testing.T) {
 	require.NoError(t, err)
 	validRecord := types.NewShareRecord(
 		depositor,
-		types.PoolID("ufury", "usdx"),
+		types.PoolID("ufury", "usdf"),
 		i(30e6),
 	)
 	testCases := []struct {
@@ -416,9 +416,9 @@ func TestState_ShareRecord_Validations(t *testing.T) {
 		{
 			name:        "no poolID tokens",
 			depositor:   validRecord.Depositor,
-			poolID:      "ufuryusdx",
+			poolID:      "ufuryusdf",
 			sharesOwned: validRecord.SharesOwned,
-			expectedErr: "poolID 'ufuryusdx' is invalid",
+			expectedErr: "poolID 'ufuryusdf' is invalid",
 		},
 		{
 			name:        "poolID empty tokens",
@@ -430,9 +430,9 @@ func TestState_ShareRecord_Validations(t *testing.T) {
 		{
 			name:        "poolID empty token a",
 			depositor:   validRecord.Depositor,
-			poolID:      ":usdx",
+			poolID:      ":usdf",
 			sharesOwned: validRecord.SharesOwned,
-			expectedErr: "poolID ':usdx' is invalid",
+			expectedErr: "poolID ':usdf' is invalid",
 		},
 		{
 			name:        "poolID empty token b",
@@ -444,9 +444,9 @@ func TestState_ShareRecord_Validations(t *testing.T) {
 		{
 			name:        "poolID is not sorted",
 			depositor:   validRecord.Depositor,
-			poolID:      "usdx:ufury",
+			poolID:      "usdf:ufury",
 			sharesOwned: validRecord.SharesOwned,
-			expectedErr: "poolID 'usdx:ufury' is invalid",
+			expectedErr: "poolID 'usdf:ufury' is invalid",
 		},
 		{
 			name:        "poolID has duplicate denoms",
@@ -460,14 +460,14 @@ func TestState_ShareRecord_Validations(t *testing.T) {
 			depositor:   validRecord.Depositor,
 			poolID:      validRecord.PoolID,
 			sharesOwned: sdkmath.NewInt(-1),
-			expectedErr: "depositor 'fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x' and pool 'ufury:usdx' has invalid total shares: -1",
+			expectedErr: "depositor 'fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x' and pool 'ufury:usdf' has invalid total shares: -1",
 		},
 		{
 			name:        "zero total shares",
 			depositor:   validRecord.Depositor,
 			poolID:      validRecord.PoolID,
 			sharesOwned: sdk.ZeroInt(),
-			expectedErr: "depositor 'fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x' and pool 'ufury:usdx' has invalid total shares: 0",
+			expectedErr: "depositor 'fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x' and pool 'ufury:usdf' has invalid total shares: 0",
 		},
 	}
 
@@ -490,13 +490,13 @@ func TestState_ShareRecords_Validation(t *testing.T) {
 
 	validRecord := types.NewShareRecord(
 		depositor,
-		types.PoolID("jinx", "usdx"),
+		types.PoolID("jinx", "usdf"),
 		i(300e6),
 	)
 
 	invalidRecord := types.NewShareRecord(
 		depositor,
-		types.PoolID("jinx", "usdx"),
+		types.PoolID("jinx", "usdf"),
 		i(-1),
 	)
 
@@ -508,7 +508,7 @@ func TestState_ShareRecords_Validation(t *testing.T) {
 	records = append(records, invalidRecord)
 	err = records.Validate()
 	assert.Error(t, err)
-	assert.EqualError(t, err, "depositor 'fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x' and pool 'jinx:usdx' has invalid total shares: -1")
+	assert.EqualError(t, err, "depositor 'fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x' and pool 'jinx:usdf' has invalid total shares: -1")
 }
 
 func TestState_ShareRecords_ValidateUniqueShareRecords(t *testing.T) {
@@ -518,14 +518,14 @@ func TestState_ShareRecords_ValidateUniqueShareRecords(t *testing.T) {
 	depositor_2, err := sdk.AccAddressFromBech32("fury1esagqd83rhqdtpy5sxhklaxgn58k2m3sa9wnu4")
 	require.NoError(t, err)
 
-	record_1 := types.NewShareRecord(depositor_1, "ufury:usdx", i(20e6))
-	record_2 := types.NewShareRecord(depositor_1, "ufury:usdx", i(10e6))
-	record_3 := types.NewShareRecord(depositor_1, "jinx:usdx", i(20e6))
-	record_4 := types.NewShareRecord(depositor_2, "ufury:usdx", i(20e6))
+	record_1 := types.NewShareRecord(depositor_1, "ufury:usdf", i(20e6))
+	record_2 := types.NewShareRecord(depositor_1, "ufury:usdf", i(10e6))
+	record_3 := types.NewShareRecord(depositor_1, "jinx:usdf", i(20e6))
+	record_4 := types.NewShareRecord(depositor_2, "ufury:usdf", i(20e6))
 
 	validRecords := types.ShareRecords{record_1, record_3, record_4}
 	assert.NoError(t, validRecords.Validate())
 
 	invalidRecords := types.ShareRecords{record_1, record_3, record_2, record_4}
-	assert.EqualError(t, invalidRecords.Validate(), "duplicate depositor 'fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x' and poolID 'ufury:usdx'")
+	assert.EqualError(t, invalidRecords.Validate(), "duplicate depositor 'fury1mq9qxlhze029lm0frzw2xr6hem8c3k9tu2gu2x' and poolID 'ufury:usdf'")
 }

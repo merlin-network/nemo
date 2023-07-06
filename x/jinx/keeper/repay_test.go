@@ -49,7 +49,7 @@ func (suite *KeeperTestSuite) TestRepay() {
 				repayer:              sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
 				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*USDX_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(1000*USDF_CF))),
 				depositCoins:         sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				borrowCoins:          sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(50*NEMO_CF))),
 				repayCoins:           sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(10*NEMO_CF))),
@@ -67,7 +67,7 @@ func (suite *KeeperTestSuite) TestRepay() {
 				repayer:              sdk.AccAddress(crypto.AddressHash([]byte("repayer"))),
 				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*USDX_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(1000*USDF_CF))),
 				depositCoins:         sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				borrowCoins:          sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(50*NEMO_CF))),
 				repayCoins:           sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(10*NEMO_CF))),
@@ -85,7 +85,7 @@ func (suite *KeeperTestSuite) TestRepay() {
 				repayer:              sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
 				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*USDX_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(1000*USDF_CF))),
 				depositCoins:         sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				borrowCoins:          sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(50*NEMO_CF))),
 				repayCoins:           sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(50*NEMO_CF))),
@@ -103,7 +103,7 @@ func (suite *KeeperTestSuite) TestRepay() {
 				repayer:              sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
 				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*USDX_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(1000*USDF_CF))),
 				depositCoins:         sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(80*NEMO_CF))), // Deposit less so user still has some NEMO
 				borrowCoins:          sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(50*NEMO_CF))),
 				repayCoins:           sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(60*NEMO_CF))), // Exceeds borrowed coins but not user's balance
@@ -121,7 +121,7 @@ func (suite *KeeperTestSuite) TestRepay() {
 				repayer:              sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
 				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*USDX_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(1000*USDF_CF))),
 				depositCoins:         sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				borrowCoins:          sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(50*NEMO_CF))),
 				repayCoins:           sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(10*NEMO_CF)), sdk.NewCoin("bnb", sdkmath.NewInt(10*NEMO_CF))),
@@ -139,7 +139,7 @@ func (suite *KeeperTestSuite) TestRepay() {
 				repayer:              sdk.AccAddress(crypto.AddressHash([]byte("repayer"))),
 				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(49*NEMO_CF))),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*USDX_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(1000*USDF_CF))),
 				depositCoins:         sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
 				borrowCoins:          sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(50*NEMO_CF))),
 				repayCoins:           sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(50*NEMO_CF))), // Exceeds repayer's balance, but not borrow amount
@@ -155,12 +155,12 @@ func (suite *KeeperTestSuite) TestRepay() {
 			args{
 				borrower:             sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
 				repayer:              sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
-				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(100*USDX_CF))),
-				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(100*USDX_CF))),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*USDX_CF))),
-				depositCoins:         sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(100*USDX_CF))),
-				borrowCoins:          sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(50*USDX_CF))),
-				repayCoins:           sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(45*USDX_CF))),
+				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(100*USDF_CF))),
+				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(100*USDF_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(1000*USDF_CF))),
+				depositCoins:         sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(100*USDF_CF))),
+				borrowCoins:          sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(50*USDF_CF))),
+				repayCoins:           sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(45*USDF_CF))),
 			},
 			errArgs{
 				expectPass:   false,
@@ -173,12 +173,12 @@ func (suite *KeeperTestSuite) TestRepay() {
 			args{
 				borrower:             sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
 				repayer:              sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
-				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(100*USDX_CF))),
-				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(100*USDX_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*USDX_CF))),
-				depositCoins:         sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(100*USDX_CF))),
-				borrowCoins:          sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(50*USDX_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(10*NEMO_CF))), // (50*$1)+(10*$2) = $70
-				repayCoins:           sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(45*USDX_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(8*NEMO_CF))),  // (45*$1)+(8*$2) = $61
+				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(100*USDF_CF))),
+				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(100*USDF_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(1000*USDF_CF))),
+				depositCoins:         sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(100*USDF_CF))),
+				borrowCoins:          sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(50*USDF_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(10*NEMO_CF))), // (50*$1)+(10*$2) = $70
+				repayCoins:           sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(45*USDF_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(8*NEMO_CF))),  // (45*$1)+(8*$2) = $61
 			},
 			errArgs{
 				expectPass:   false,
@@ -191,12 +191,12 @@ func (suite *KeeperTestSuite) TestRepay() {
 			args{
 				borrower:             sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
 				repayer:              sdk.AccAddress(crypto.AddressHash([]byte("borrower"))),
-				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(100*USDX_CF))),
-				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(100*USDX_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*USDX_CF))),
-				depositCoins:         sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(100*USDX_CF))),
-				borrowCoins:          sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(50*USDX_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(10*NEMO_CF))), // (50*$1)+(10*$2) = $70
-				repayCoins:           sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(500*USDX_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(8*NEMO_CF))), // (500*$1)+(8*$2) = $516, or capping to borrowed amount, (50*$1)+(8*$2) = $66
+				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(100*USDF_CF))),
+				initialRepayerCoins:  sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(100*USDF_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(1000*USDF_CF))),
+				depositCoins:         sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(100*USDF_CF))),
+				borrowCoins:          sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(50*USDF_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(10*NEMO_CF))), // (50*$1)+(10*$2) = $70
+				repayCoins:           sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(500*USDF_CF)), sdk.NewCoin("ufury", sdkmath.NewInt(8*NEMO_CF))), // (500*$1)+(8*$2) = $516, or capping to borrowed amount, (50*$1)+(8*$2) = $66
 			},
 			errArgs{
 				expectPass:   false,
@@ -226,10 +226,10 @@ func (suite *KeeperTestSuite) TestRepay() {
 			// Jinx module genesis state
 			jinxGS := types.NewGenesisState(types.NewParams(
 				types.MoneyMarkets{
-					types.NewMoneyMarket("usdx",
-						types.NewBorrowLimit(false, sdk.NewDec(100000000*USDX_CF), sdk.MustNewDecFromStr("1")), // Borrow Limit
-						"usdx:usd",                     // Market ID
-						sdkmath.NewInt(USDX_CF),        // Conversion Factor
+					types.NewMoneyMarket("usdf",
+						types.NewBorrowLimit(false, sdk.NewDec(100000000*USDF_CF), sdk.MustNewDecFromStr("1")), // Borrow Limit
+						"usdf:usd",                     // Market ID
+						sdkmath.NewInt(USDF_CF),        // Conversion Factor
 						model,                          // Interest Rate Model
 						sdk.MustNewDecFromStr("0.05"),  // Reserve Factor
 						sdk.MustNewDecFromStr("0.05")), // Keeper Reward Percent
@@ -250,13 +250,13 @@ func (suite *KeeperTestSuite) TestRepay() {
 			pricefeedGS := pricefeedtypes.GenesisState{
 				Params: pricefeedtypes.Params{
 					Markets: []pricefeedtypes.Market{
-						{MarketID: "usdx:usd", BaseAsset: "usdx", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
+						{MarketID: "usdf:usd", BaseAsset: "usdf", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 						{MarketID: "nemo:usd", BaseAsset: "nemo", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 					},
 				},
 				PostedPrices: []pricefeedtypes.PostedPrice{
 					{
-						MarketID:      "usdx:usd",
+						MarketID:      "usdf:usd",
 						OracleAddress: sdk.AccAddress{},
 						Price:         sdk.MustNewDecFromStr("1.00"),
 						Expiry:        time.Now().Add(1 * time.Hour),

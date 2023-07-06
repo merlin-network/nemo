@@ -20,7 +20,7 @@ import (
 func TestParams_UnmarshalJSON(t *testing.T) {
 	pools := types.NewAllowedPools(
 		types.NewAllowedPool("jinx", "ufury"),
-		types.NewAllowedPool("jinx", "usdx"),
+		types.NewAllowedPool("jinx", "usdf"),
 	)
 	poolData, err := json.Marshal(pools)
 	require.NoError(t, err)
@@ -46,7 +46,7 @@ func TestParams_UnmarshalJSON(t *testing.T) {
 func TestParams_MarshalYAML(t *testing.T) {
 	pools := types.NewAllowedPools(
 		types.NewAllowedPool("jinx", "ufury"),
-		types.NewAllowedPool("jinx", "usdx"),
+		types.NewAllowedPool("jinx", "usdf"),
 	)
 	fee, err := sdk.NewDecFromStr("0.5")
 	require.NoError(t, err)
@@ -213,7 +213,7 @@ func TestParams_String(t *testing.T) {
 	params := types.NewParams(
 		types.NewAllowedPools(
 			types.NewAllowedPool("jinx", "ufury"),
-			types.NewAllowedPool("ufury", "usdx"),
+			types.NewAllowedPool("ufury", "usdf"),
 		),
 		sdk.MustNewDecFromStr("0.5"),
 	)
@@ -222,7 +222,7 @@ func TestParams_String(t *testing.T) {
 
 	output := params.String()
 	assert.Contains(t, output, types.PoolID("jinx", "ufury"))
-	assert.Contains(t, output, types.PoolID("ufury", "usdx"))
+	assert.Contains(t, output, types.PoolID("ufury", "usdf"))
 	assert.Contains(t, output, "0.5")
 }
 
@@ -259,8 +259,8 @@ func TestAllowedPool_Validation(t *testing.T) {
 		},
 		{
 			name:        "invalid token order",
-			allowedPool: types.NewAllowedPool("usdx", "ufury"),
-			expectedErr: "invalid token order: 'ufury' must come before 'usdx'",
+			allowedPool: types.NewAllowedPool("usdf", "ufury"),
+			expectedErr: "invalid token order: 'ufury' must come before 'usdf'",
 		},
 		{
 			name:        "invalid token order due to capitalization",
@@ -296,7 +296,7 @@ func TestAllowedPool_TokenMatch_CaseSensitive(t *testing.T) {
 	err = allowedPool.Validate()
 	assert.NoError(t, err)
 
-	allowedPool = types.NewAllowedPool("Usdx", "uSdX")
+	allowedPool = types.NewAllowedPool("Usdf", "uSdX")
 	err = allowedPool.Validate()
 	assert.NoError(t, err)
 }
@@ -379,11 +379,11 @@ func TestAllowedPools_Validate(t *testing.T) {
 			name: "duplicate pools",
 			allowedPools: types.NewAllowedPools(
 				types.NewAllowedPool("jinx", "ufury"),
-				types.NewAllowedPool("bnb", "usdx"),
+				types.NewAllowedPool("bnb", "usdf"),
 				types.NewAllowedPool("btcb", "xrpb"),
-				types.NewAllowedPool("bnb", "usdx"),
+				types.NewAllowedPool("bnb", "usdf"),
 			),
-			expectedErr: "duplicate pool: bnb:usdx",
+			expectedErr: "duplicate pool: bnb:usdf",
 		},
 	}
 

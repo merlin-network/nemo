@@ -64,7 +64,7 @@ var validRewardPeriod = types.NewRewardPeriod(
 	"bnb-a",
 	time.Date(2020, 10, 15, 14, 0, 0, 0, time.UTC),
 	time.Date(2024, 10, 15, 14, 0, 0, 0, time.UTC),
-	sdk.NewInt64Coin(types.USDXMintingRewardDenom, 1e9),
+	sdk.NewInt64Coin(types.USDFMintingRewardDenom, 1e9),
 )
 
 func (suite *ParamTestSuite) TestParamValidation() {
@@ -89,13 +89,13 @@ func (suite *ParamTestSuite) TestParamValidation() {
 		{
 			"valid",
 			types.Params{
-				USDXMintingRewardPeriods: types.RewardPeriods{
+				USDFMintingRewardPeriods: types.RewardPeriods{
 					types.NewRewardPeriod(
 						true,
 						"bnb-a",
 						time.Date(2020, 10, 15, 14, 0, 0, 0, time.UTC),
 						time.Date(2024, 10, 15, 14, 0, 0, 0, time.UTC),
-						sdk.NewCoin(types.USDXMintingRewardDenom, sdkmath.NewInt(122354)),
+						sdk.NewCoin(types.USDFMintingRewardDenom, sdkmath.NewInt(122354)),
 					),
 				},
 				JinxSupplyRewardPeriods: types.DefaultMultiRewardPeriods,
@@ -126,9 +126,9 @@ func (suite *ParamTestSuite) TestParamValidation() {
 			},
 		},
 		{
-			"invalid usdx minting period makes params invalid",
+			"invalid usdf minting period makes params invalid",
 			types.Params{
-				USDXMintingRewardPeriods: types.RewardPeriods{rewardPeriodWithInvalidRewardsPerSecond},
+				USDFMintingRewardPeriods: types.RewardPeriods{rewardPeriodWithInvalidRewardsPerSecond},
 				JinxSupplyRewardPeriods:  types.DefaultMultiRewardPeriods,
 				JinxBorrowRewardPeriods:  types.DefaultMultiRewardPeriods,
 				DelegatorRewardPeriods:   types.DefaultMultiRewardPeriods,
@@ -139,13 +139,13 @@ func (suite *ParamTestSuite) TestParamValidation() {
 			},
 			errArgs{
 				expectPass: false,
-				contains:   fmt.Sprintf("reward denom must be %s", types.USDXMintingRewardDenom),
+				contains:   fmt.Sprintf("reward denom must be %s", types.USDFMintingRewardDenom),
 			},
 		},
 		{
 			"invalid jinx supply periods makes params invalid",
 			types.Params{
-				USDXMintingRewardPeriods: types.DefaultRewardPeriods,
+				USDFMintingRewardPeriods: types.DefaultRewardPeriods,
 				JinxSupplyRewardPeriods:  types.MultiRewardPeriods{rewardMultiPeriodWithInvalidRewardsPerSecond},
 				JinxBorrowRewardPeriods:  types.DefaultMultiRewardPeriods,
 				DelegatorRewardPeriods:   types.DefaultMultiRewardPeriods,
@@ -162,7 +162,7 @@ func (suite *ParamTestSuite) TestParamValidation() {
 		{
 			"invalid jinx borrow periods makes params invalid",
 			types.Params{
-				USDXMintingRewardPeriods: types.DefaultRewardPeriods,
+				USDFMintingRewardPeriods: types.DefaultRewardPeriods,
 				JinxSupplyRewardPeriods:  types.DefaultMultiRewardPeriods,
 				JinxBorrowRewardPeriods:  types.MultiRewardPeriods{rewardMultiPeriodWithInvalidRewardsPerSecond},
 				DelegatorRewardPeriods:   types.DefaultMultiRewardPeriods,
@@ -179,7 +179,7 @@ func (suite *ParamTestSuite) TestParamValidation() {
 		{
 			"invalid delegator periods makes params invalid",
 			types.Params{
-				USDXMintingRewardPeriods: types.DefaultRewardPeriods,
+				USDFMintingRewardPeriods: types.DefaultRewardPeriods,
 				JinxSupplyRewardPeriods:  types.DefaultMultiRewardPeriods,
 				JinxBorrowRewardPeriods:  types.DefaultMultiRewardPeriods,
 				DelegatorRewardPeriods:   types.MultiRewardPeriods{rewardMultiPeriodWithInvalidRewardsPerSecond},
@@ -196,7 +196,7 @@ func (suite *ParamTestSuite) TestParamValidation() {
 		{
 			"invalid swap periods makes params invalid",
 			types.Params{
-				USDXMintingRewardPeriods: types.DefaultRewardPeriods,
+				USDFMintingRewardPeriods: types.DefaultRewardPeriods,
 				JinxSupplyRewardPeriods:  types.DefaultMultiRewardPeriods,
 				JinxBorrowRewardPeriods:  types.DefaultMultiRewardPeriods,
 				DelegatorRewardPeriods:   types.DefaultMultiRewardPeriods,
@@ -213,7 +213,7 @@ func (suite *ParamTestSuite) TestParamValidation() {
 		{
 			"invalid multipliers makes params invalid",
 			types.Params{
-				USDXMintingRewardPeriods: types.DefaultRewardPeriods,
+				USDFMintingRewardPeriods: types.DefaultRewardPeriods,
 				JinxSupplyRewardPeriods:  types.DefaultMultiRewardPeriods,
 				JinxBorrowRewardPeriods:  types.DefaultMultiRewardPeriods,
 				DelegatorRewardPeriods:   types.DefaultMultiRewardPeriods,
@@ -237,7 +237,7 @@ func (suite *ParamTestSuite) TestParamValidation() {
 		{
 			"invalid zero amount multi rewards per second",
 			types.Params{
-				USDXMintingRewardPeriods: types.DefaultRewardPeriods,
+				USDFMintingRewardPeriods: types.DefaultRewardPeriods,
 				JinxSupplyRewardPeriods: types.MultiRewardPeriods{
 					rewardMultiPeriodWithZeroRewardsPerSecond,
 				},
@@ -256,7 +256,7 @@ func (suite *ParamTestSuite) TestParamValidation() {
 		{
 			"invalid zero amount single rewards per second",
 			types.Params{
-				USDXMintingRewardPeriods: types.RewardPeriods{
+				USDFMintingRewardPeriods: types.RewardPeriods{
 					rewardPeriodWithZeroRewardsPerSecond,
 				},
 				JinxSupplyRewardPeriods: types.DefaultMultiRewardPeriods,
@@ -330,7 +330,7 @@ func (suite *ParamTestSuite) TestRewardPeriods() {
 					),
 				},
 				expect: err{
-					contains: fmt.Sprintf("reward denom must be %s", types.USDXMintingRewardDenom),
+					contains: fmt.Sprintf("reward denom must be %s", types.USDFMintingRewardDenom),
 				},
 			},
 		}

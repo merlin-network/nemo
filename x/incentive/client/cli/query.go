@@ -22,13 +22,13 @@ const (
 
 	typeDelegator   = "delegator"
 	typeJinx        = "jinx"
-	typeUSDXMinting = "usdx-minting"
+	typeUSDFMinting = "usdf-minting"
 	typeSwap        = "swap"
 	typeSavings     = "savings"
 	typeEarn        = "earn"
 )
 
-var rewardTypes = []string{typeDelegator, typeJinx, typeUSDXMinting, typeSwap, typeEarn}
+var rewardTypes = []string{typeDelegator, typeJinx, typeUSDFMinting, typeSwap, typeEarn}
 
 // GetQueryCmd returns the cli query commands for the incentive module
 func GetQueryCmd() *cobra.Command {
@@ -63,7 +63,7 @@ func queryRewardsCmd() *cobra.Command {
 			$ %[1]s query %[2]s rewards
 			$ %[1]s query %[2]s rewards --owner fury15qdefkmwswysgg4qxgqpqr35k3m49pkxxvsmkx
 			$ %[1]s query %[2]s rewards --type jinx
-			$ %[1]s query %[2]s rewards --type usdx-minting
+			$ %[1]s query %[2]s rewards --type usdf-minting
 			$ %[1]s query %[2]s rewards --type delegator
 			$ %[1]s query %[2]s rewards --type swap
 			$ %[1]s query %[2]s rewards --type savings
@@ -101,9 +101,9 @@ func queryRewardsCmd() *cobra.Command {
 					return err
 				}
 				return cliCtx.PrintObjectLegacy(claims)
-			case typeUSDXMinting:
+			case typeUSDFMinting:
 				params := types.NewQueryRewardsParams(page, limit, owner, boolUnsynced)
-				claims, err := executeUSDXMintingRewardsQuery(cliCtx, params)
+				claims, err := executeUSDFMintingRewardsQuery(cliCtx, params)
 				if err != nil {
 					return err
 				}
@@ -143,7 +143,7 @@ func queryRewardsCmd() *cobra.Command {
 				if err != nil {
 					return err
 				}
-				usdxMintingClaims, err := executeUSDXMintingRewardsQuery(cliCtx, params)
+				usdfMintingClaims, err := executeUSDFMintingRewardsQuery(cliCtx, params)
 				if err != nil {
 					return err
 				}
@@ -169,8 +169,8 @@ func queryRewardsCmd() *cobra.Command {
 						return err
 					}
 				}
-				if len(usdxMintingClaims) > 0 {
-					if err := cliCtx.PrintObjectLegacy(usdxMintingClaims); err != nil {
+				if len(usdfMintingClaims) > 0 {
+					if err := cliCtx.PrintObjectLegacy(usdfMintingClaims); err != nil {
 						return err
 					}
 				}
@@ -290,23 +290,23 @@ func executeJinxRewardsQuery(cliCtx client.Context, params types.QueryRewardsPar
 	return claims, nil
 }
 
-func executeUSDXMintingRewardsQuery(cliCtx client.Context, params types.QueryRewardsParams) (types.USDXMintingClaims, error) {
+func executeUSDFMintingRewardsQuery(cliCtx client.Context, params types.QueryRewardsParams) (types.USDFMintingClaims, error) {
 	bz, err := cliCtx.LegacyAmino.MarshalJSON(params)
 	if err != nil {
-		return types.USDXMintingClaims{}, err
+		return types.USDFMintingClaims{}, err
 	}
 
-	route := fmt.Sprintf("custom/%s/%s", types.ModuleName, types.QueryGetUSDXMintingRewards)
+	route := fmt.Sprintf("custom/%s/%s", types.ModuleName, types.QueryGetUSDFMintingRewards)
 	res, height, err := cliCtx.QueryWithData(route, bz)
 	if err != nil {
-		return types.USDXMintingClaims{}, err
+		return types.USDFMintingClaims{}, err
 	}
 
 	cliCtx = cliCtx.WithHeight(height)
 
-	var claims types.USDXMintingClaims
+	var claims types.USDFMintingClaims
 	if err := cliCtx.LegacyAmino.UnmarshalJSON(res, &claims); err != nil {
-		return types.USDXMintingClaims{}, fmt.Errorf("failed to unmarshal claims: %w", err)
+		return types.USDFMintingClaims{}, fmt.Errorf("failed to unmarshal claims: %w", err)
 	}
 
 	return claims, nil

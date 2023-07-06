@@ -159,7 +159,7 @@ func TestMsgClaim_Validate(t *testing.T) {
 	}
 }
 
-func TestMsgClaimUSDXMintingReward_Validate(t *testing.T) {
+func TestMsgClaimUSDFMintingReward_Validate(t *testing.T) {
 	validAddress := sdk.AccAddress(crypto.AddressHash([]byte("NemoTest1"))).String()
 
 	type expectedErr struct {
@@ -209,7 +209,7 @@ func TestMsgClaimUSDXMintingReward_Validate(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			msg := types.NewMsgClaimUSDXMintingReward(tc.msgArgs.sender, tc.msgArgs.multiplierName)
+			msg := types.NewMsgClaimUSDFMintingReward(tc.msgArgs.sender, tc.msgArgs.multiplierName)
 
 			err := msg.ValidateBasic()
 			if tc.expect.pass {

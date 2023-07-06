@@ -29,8 +29,8 @@ func NewQuerier(k Keeper, legacyQuerierCdc *codec.LegacyAmino) sdk.Querier {
 
 		case types.QueryGetJinxRewards:
 			return queryGetJinxRewards(ctx, req, k, legacyQuerierCdc)
-		case types.QueryGetUSDXMintingRewards:
-			return queryGetUSDXMintingRewards(ctx, req, k, legacyQuerierCdc)
+		case types.QueryGetUSDFMintingRewards:
+			return queryGetUSDFMintingRewards(ctx, req, k, legacyQuerierCdc)
 		case types.QueryGetDelegatorRewards:
 			return queryGetDelegatorRewards(ctx, req, k, legacyQuerierCdc)
 		case types.QueryGetSwapRewards:
@@ -103,7 +103,7 @@ func queryGetJinxRewards(ctx sdk.Context, req abci.RequestQuery, k Keeper, legac
 	return bz, nil
 }
 
-func queryGetUSDXMintingRewards(ctx sdk.Context, req abci.RequestQuery, k Keeper, legacyQuerierCdc *codec.LegacyAmino) ([]byte, error) {
+func queryGetUSDFMintingRewards(ctx sdk.Context, req abci.RequestQuery, k Keeper, legacyQuerierCdc *codec.LegacyAmino) ([]byte, error) {
 	var params types.QueryRewardsParams
 	err := legacyQuerierCdc.UnmarshalJSON(req.Data, &params)
 	if err != nil {
@@ -111,33 +111,33 @@ func queryGetUSDXMintingRewards(ctx sdk.Context, req abci.RequestQuery, k Keeper
 	}
 	owner := len(params.Owner) > 0
 
-	var usdxMintingClaims types.USDXMintingClaims
+	var usdfMintingClaims types.USDFMintingClaims
 	switch {
 	case owner:
-		usdxMintingClaim, foundUsdxMintingClaim := k.GetUSDXMintingClaim(ctx, params.Owner)
-		if foundUsdxMintingClaim {
-			usdxMintingClaims = append(usdxMintingClaims, usdxMintingClaim)
+		usdfMintingClaim, foundUsdfMintingClaim := k.GetUSDFMintingClaim(ctx, params.Owner)
+		if foundUsdfMintingClaim {
+			usdfMintingClaims = append(usdfMintingClaims, usdfMintingClaim)
 		}
 	default:
-		usdxMintingClaims = k.GetAllUSDXMintingClaims(ctx)
+		usdfMintingClaims = k.GetAllUSDFMintingClaims(ctx)
 	}
 
-	var paginatedUsdxMintingClaims types.USDXMintingClaims
-	startU, endU := client.Paginate(len(usdxMintingClaims), params.Page, params.Limit, 100)
+	var paginatedUsdfMintingClaims types.USDFMintingClaims
+	startU, endU := client.Paginate(len(usdfMintingClaims), params.Page, params.Limit, 100)
 	if startU < 0 || endU < 0 {
-		paginatedUsdxMintingClaims = types.USDXMintingClaims{}
+		paginatedUsdfMintingClaims = types.USDFMintingClaims{}
 	} else {
-		paginatedUsdxMintingClaims = usdxMintingClaims[startU:endU]
+		paginatedUsdfMintingClaims = usdfMintingClaims[startU:endU]
 	}
 
 	if !params.Unsynchronized {
-		for i, claim := range paginatedUsdxMintingClaims {
-			paginatedUsdxMintingClaims[i] = k.SimulateUSDXMintingSynchronization(ctx, claim)
+		for i, claim := range paginatedUsdfMintingClaims {
+			paginatedUsdfMintingClaims[i] = k.SimulateUSDFMintingSynchronization(ctx, claim)
 		}
 	}
 
-	// Marshal USDX minting claims
-	bz, err := codec.MarshalJSONIndent(legacyQuerierCdc, paginatedUsdxMintingClaims)
+	// Marshal USDF minting claims
+	bz, err := codec.MarshalJSONIndent(legacyQuerierCdc, paginatedUsdfMintingClaims)
 	if err != nil {
 		return nil, errorsmod.Wrap(sdkerrors.ErrJSONMarshal, err.Error())
 	}
@@ -321,9 +321,9 @@ func queryGetEarnRewards(ctx sdk.Context, req abci.RequestQuery, k Keeper, legac
 }
 
 func queryGetRewardFactors(ctx sdk.Context, req abci.RequestQuery, k Keeper, legacyQuerierCdc *codec.LegacyAmino) ([]byte, error) {
-	var usdxFactors types.RewardIndexes
-	k.IterateUSDXMintingRewardFactors(ctx, func(collateralType string, factor sdk.Dec) (stop bool) {
-		usdxFactors = usdxFactors.With(collateralType, factor)
+	var usdfFactors types.RewardIndexes
+	k.IterateUSDFMintingRewardFactors(ctx, func(collateralType string, factor sdk.Dec) (stop bool) {
+		usdfFactors = usdfFactors.With(collateralType, factor)
 		return false
 	})
 
@@ -364,7 +364,7 @@ func queryGetRewardFactors(ctx sdk.Context, req abci.RequestQuery, k Keeper, leg
 	})
 
 	response := types.NewQueryGetRewardFactorsResponse(
-		usdxFactors,
+		usdfFactors,
 		supplyFactors,
 		borrowFactors,
 		delegatorFactors,

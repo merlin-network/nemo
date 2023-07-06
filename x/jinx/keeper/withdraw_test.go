@@ -130,7 +130,7 @@ func (suite *KeeperTestSuite) TestWithdraw() {
 			loanToValue := sdk.MustNewDecFromStr("0.6")
 			jinxGS := types.NewGenesisState(types.NewParams(
 				types.MoneyMarkets{
-					types.NewMoneyMarket("usdx", types.NewBorrowLimit(false, sdk.NewDec(1000000000000000), loanToValue), "usdx:usd", sdkmath.NewInt(1000000), types.NewInterestRateModel(sdk.MustNewDecFromStr("0.05"), sdk.MustNewDecFromStr("2"), sdk.MustNewDecFromStr("0.8"), sdk.MustNewDecFromStr("10")), sdk.MustNewDecFromStr("0.05"), sdk.ZeroDec()),
+					types.NewMoneyMarket("usdf", types.NewBorrowLimit(false, sdk.NewDec(1000000000000000), loanToValue), "usdf:usd", sdkmath.NewInt(1000000), types.NewInterestRateModel(sdk.MustNewDecFromStr("0.05"), sdk.MustNewDecFromStr("2"), sdk.MustNewDecFromStr("0.8"), sdk.MustNewDecFromStr("10")), sdk.MustNewDecFromStr("0.05"), sdk.ZeroDec()),
 					types.NewMoneyMarket("ufury", types.NewBorrowLimit(false, sdk.NewDec(1000000000000000), loanToValue), "nemo:usd", sdkmath.NewInt(1000000), types.NewInterestRateModel(sdk.MustNewDecFromStr("0.05"), sdk.MustNewDecFromStr("2"), sdk.MustNewDecFromStr("0.8"), sdk.MustNewDecFromStr("10")), sdk.MustNewDecFromStr("0.05"), sdk.ZeroDec()),
 					types.NewMoneyMarket("bnb", types.NewBorrowLimit(false, sdk.NewDec(1000000000000000), loanToValue), "bnb:usd", sdkmath.NewInt(100000000), types.NewInterestRateModel(sdk.MustNewDecFromStr("0.05"), sdk.MustNewDecFromStr("2"), sdk.MustNewDecFromStr("0.8"), sdk.MustNewDecFromStr("10")), sdk.MustNewDecFromStr("0.05"), sdk.ZeroDec()),
 				},
@@ -143,14 +143,14 @@ func (suite *KeeperTestSuite) TestWithdraw() {
 			pricefeedGS := pricefeedtypes.GenesisState{
 				Params: pricefeedtypes.Params{
 					Markets: []pricefeedtypes.Market{
-						{MarketID: "usdx:usd", BaseAsset: "usdx", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
+						{MarketID: "usdf:usd", BaseAsset: "usdf", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 						{MarketID: "nemo:usd", BaseAsset: "nemo", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 						{MarketID: "bnb:usd", BaseAsset: "bnb", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 					},
 				},
 				PostedPrices: []pricefeedtypes.PostedPrice{
 					{
-						MarketID:      "usdx:usd",
+						MarketID:      "usdf:usd",
 						OracleAddress: sdk.AccAddress{},
 						Price:         sdk.MustNewDecFromStr("1.00"),
 						Expiry:        time.Now().Add(100 * time.Hour),
@@ -245,7 +245,7 @@ func (suite *KeeperTestSuite) TestLtvWithdraw() {
 			args{
 				borrower:             borrower,
 				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))),
-				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(100*NEMO_CF))),
+				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF)), sdk.NewCoin("usdf", sdkmath.NewInt(100*NEMO_CF))),
 				depositCoins:         sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*NEMO_CF))), // 100 * 2 = $200
 				borrowCoins:          sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(80*NEMO_CF))),  // 80 * 2 = $160
 				repayCoins:           sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(60*NEMO_CF))),  // 60 * 2 = $120
@@ -281,9 +281,9 @@ func (suite *KeeperTestSuite) TestLtvWithdraw() {
 						model,                          // Interest Rate Model
 						reserveFactor,                  // Reserve Factor
 						sdk.MustNewDecFromStr("0.05")), // Keeper Reward Percent
-					types.NewMoneyMarket("usdx",
+					types.NewMoneyMarket("usdf",
 						types.NewBorrowLimit(false, sdk.NewDec(100000000*NEMO_CF), sdk.MustNewDecFromStr("0.8")), // Borrow Limit
-						"usdx:usd",                     // Market ID
+						"usdf:usd",                     // Market ID
 						sdkmath.NewInt(NEMO_CF),        // Conversion Factor
 						model,                          // Interest Rate Model
 						reserveFactor,                  // Reserve Factor
@@ -298,13 +298,13 @@ func (suite *KeeperTestSuite) TestLtvWithdraw() {
 			pricefeedGS := pricefeedtypes.GenesisState{
 				Params: pricefeedtypes.Params{
 					Markets: []pricefeedtypes.Market{
-						{MarketID: "usdx:usd", BaseAsset: "usdx", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
+						{MarketID: "usdf:usd", BaseAsset: "usdf", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 						{MarketID: "nemo:usd", BaseAsset: "nemo", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 					},
 				},
 				PostedPrices: []pricefeedtypes.PostedPrice{
 					{
-						MarketID:      "usdx:usd",
+						MarketID:      "usdf:usd",
 						OracleAddress: sdk.AccAddress{},
 						Price:         sdk.MustNewDecFromStr("1.00"),
 						Expiry:        time.Now().Add(100 * time.Hour),

@@ -291,7 +291,7 @@
     - [RewardIndexesProto](#nemo.incentive.v1beta1.RewardIndexesProto)
     - [SavingsClaim](#nemo.incentive.v1beta1.SavingsClaim)
     - [SwapClaim](#nemo.incentive.v1beta1.SwapClaim)
-    - [USDXMintingClaim](#nemo.incentive.v1beta1.USDXMintingClaim)
+    - [USDFMintingClaim](#nemo.incentive.v1beta1.USDFMintingClaim)
   
 - [nemo/incentive/v1beta1/params.proto](#nemo/incentive/v1beta1/params.proto)
     - [MultiRewardPeriod](#nemo.incentive.v1beta1.MultiRewardPeriod)
@@ -328,8 +328,8 @@
     - [MsgClaimSavingsRewardResponse](#nemo.incentive.v1beta1.MsgClaimSavingsRewardResponse)
     - [MsgClaimSwapReward](#nemo.incentive.v1beta1.MsgClaimSwapReward)
     - [MsgClaimSwapRewardResponse](#nemo.incentive.v1beta1.MsgClaimSwapRewardResponse)
-    - [MsgClaimUSDXMintingReward](#nemo.incentive.v1beta1.MsgClaimUSDXMintingReward)
-    - [MsgClaimUSDXMintingRewardResponse](#nemo.incentive.v1beta1.MsgClaimUSDXMintingRewardResponse)
+    - [MsgClaimUSDFMintingReward](#nemo.incentive.v1beta1.MsgClaimUSDFMintingReward)
+    - [MsgClaimUSDFMintingRewardResponse](#nemo.incentive.v1beta1.MsgClaimUSDFMintingRewardResponse)
     - [Selection](#nemo.incentive.v1beta1.Selection)
   
     - [Msg](#nemo.incentive.v1beta1.Msg)
@@ -4231,10 +4231,10 @@ SwapClaim stores the swap rewards that can be claimed by owner
 
 
 
-<a name="nemo.incentive.v1beta1.USDXMintingClaim"></a>
+<a name="nemo.incentive.v1beta1.USDFMintingClaim"></a>
 
-### USDXMintingClaim
-USDXMintingClaim is for USDX minting rewards
+### USDFMintingClaim
+USDFMintingClaim is for USDF minting rewards
 
 
 | Field | Type | Label | Description |
@@ -4323,7 +4323,7 @@ Params
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `usdx_minting_reward_periods` | [RewardPeriod](#nemo.incentive.v1beta1.RewardPeriod) | repeated |  |
+| `usdf_minting_reward_periods` | [RewardPeriod](#nemo.incentive.v1beta1.RewardPeriod) | repeated |  |
 | `jinx_supply_reward_periods` | [MultiRewardPeriod](#nemo.incentive.v1beta1.MultiRewardPeriod) | repeated |  |
 | `jinx_borrow_reward_periods` | [MultiRewardPeriod](#nemo.incentive.v1beta1.MultiRewardPeriod) | repeated |  |
 | `delegator_reward_periods` | [MultiRewardPeriod](#nemo.incentive.v1beta1.MultiRewardPeriod) | repeated |  |
@@ -4414,12 +4414,12 @@ GenesisState is the state that must be provided at genesis.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `params` | [Params](#nemo.incentive.v1beta1.Params) |  |  |
-| `usdx_reward_state` | [GenesisRewardState](#nemo.incentive.v1beta1.GenesisRewardState) |  |  |
+| `usdf_reward_state` | [GenesisRewardState](#nemo.incentive.v1beta1.GenesisRewardState) |  |  |
 | `jinx_supply_reward_state` | [GenesisRewardState](#nemo.incentive.v1beta1.GenesisRewardState) |  |  |
 | `jinx_borrow_reward_state` | [GenesisRewardState](#nemo.incentive.v1beta1.GenesisRewardState) |  |  |
 | `delegator_reward_state` | [GenesisRewardState](#nemo.incentive.v1beta1.GenesisRewardState) |  |  |
 | `swap_reward_state` | [GenesisRewardState](#nemo.incentive.v1beta1.GenesisRewardState) |  |  |
-| `usdx_minting_claims` | [USDXMintingClaim](#nemo.incentive.v1beta1.USDXMintingClaim) | repeated |  |
+| `usdf_minting_claims` | [USDFMintingClaim](#nemo.incentive.v1beta1.USDFMintingClaim) | repeated |  |
 | `jinx_liquidity_provider_claims` | [JinxLiquidityProviderClaim](#nemo.incentive.v1beta1.JinxLiquidityProviderClaim) | repeated |  |
 | `delegator_claims` | [DelegatorClaim](#nemo.incentive.v1beta1.DelegatorClaim) | repeated |  |
 | `swap_claims` | [SwapClaim](#nemo.incentive.v1beta1.SwapClaim) | repeated |  |
@@ -4517,7 +4517,7 @@ QueryRewardFactorsResponse is the response type for the Query/RewardFactors RPC 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `usdx_minting_reward_factors` | [RewardIndex](#nemo.incentive.v1beta1.RewardIndex) | repeated |  |
+| `usdf_minting_reward_factors` | [RewardIndex](#nemo.incentive.v1beta1.RewardIndex) | repeated |  |
 | `jinx_supply_reward_factors` | [MultiRewardIndex](#nemo.incentive.v1beta1.MultiRewardIndex) | repeated |  |
 | `jinx_borrow_reward_factors` | [MultiRewardIndex](#nemo.incentive.v1beta1.MultiRewardIndex) | repeated |  |
 | `delegator_reward_factors` | [MultiRewardIndex](#nemo.incentive.v1beta1.MultiRewardIndex) | repeated |  |
@@ -4555,7 +4555,7 @@ QueryRewardsResponse is the response type for the Query/Rewards RPC method.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `usdx_minting_claims` | [USDXMintingClaim](#nemo.incentive.v1beta1.USDXMintingClaim) | repeated |  |
+| `usdf_minting_claims` | [USDFMintingClaim](#nemo.incentive.v1beta1.USDFMintingClaim) | repeated |  |
 | `jinx_liquidity_provider_claims` | [JinxLiquidityProviderClaim](#nemo.incentive.v1beta1.JinxLiquidityProviderClaim) | repeated |  |
 | `delegator_claims` | [DelegatorClaim](#nemo.incentive.v1beta1.DelegatorClaim) | repeated |  |
 | `swap_claims` | [SwapClaim](#nemo.incentive.v1beta1.SwapClaim) | repeated |  |
@@ -4726,10 +4726,10 @@ MsgClaimSwapRewardResponse defines the Msg/ClaimSwapReward response type.
 
 
 
-<a name="nemo.incentive.v1beta1.MsgClaimUSDXMintingReward"></a>
+<a name="nemo.incentive.v1beta1.MsgClaimUSDFMintingReward"></a>
 
-### MsgClaimUSDXMintingReward
-MsgClaimUSDXMintingReward message type used to claim USDX minting rewards
+### MsgClaimUSDFMintingReward
+MsgClaimUSDFMintingReward message type used to claim USDF minting rewards
 
 
 | Field | Type | Label | Description |
@@ -4742,10 +4742,10 @@ MsgClaimUSDXMintingReward message type used to claim USDX minting rewards
 
 
 
-<a name="nemo.incentive.v1beta1.MsgClaimUSDXMintingRewardResponse"></a>
+<a name="nemo.incentive.v1beta1.MsgClaimUSDFMintingRewardResponse"></a>
 
-### MsgClaimUSDXMintingRewardResponse
-MsgClaimUSDXMintingRewardResponse defines the Msg/ClaimUSDXMintingReward response type.
+### MsgClaimUSDFMintingRewardResponse
+MsgClaimUSDFMintingRewardResponse defines the Msg/ClaimUSDFMintingReward response type.
 
 
 
@@ -4782,7 +4782,7 @@ Msg defines the incentive Msg service.
 
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `ClaimUSDXMintingReward` | [MsgClaimUSDXMintingReward](#nemo.incentive.v1beta1.MsgClaimUSDXMintingReward) | [MsgClaimUSDXMintingRewardResponse](#nemo.incentive.v1beta1.MsgClaimUSDXMintingRewardResponse) | ClaimUSDXMintingReward is a message type used to claim USDX minting rewards | |
+| `ClaimUSDFMintingReward` | [MsgClaimUSDFMintingReward](#nemo.incentive.v1beta1.MsgClaimUSDFMintingReward) | [MsgClaimUSDFMintingRewardResponse](#nemo.incentive.v1beta1.MsgClaimUSDFMintingRewardResponse) | ClaimUSDFMintingReward is a message type used to claim USDF minting rewards | |
 | `ClaimJinxReward` | [MsgClaimJinxReward](#nemo.incentive.v1beta1.MsgClaimJinxReward) | [MsgClaimJinxRewardResponse](#nemo.incentive.v1beta1.MsgClaimJinxRewardResponse) | ClaimJinxReward is a message type used to claim Jinx liquidity provider rewards | |
 | `ClaimDelegatorReward` | [MsgClaimDelegatorReward](#nemo.incentive.v1beta1.MsgClaimDelegatorReward) | [MsgClaimDelegatorRewardResponse](#nemo.incentive.v1beta1.MsgClaimDelegatorRewardResponse) | ClaimDelegatorReward is a message type used to claim delegator rewards | |
 | `ClaimSwapReward` | [MsgClaimSwapReward](#nemo.incentive.v1beta1.MsgClaimSwapReward) | [MsgClaimSwapRewardResponse](#nemo.incentive.v1beta1.MsgClaimSwapRewardResponse) | ClaimSwapReward is a message type used to claim swap rewards | |

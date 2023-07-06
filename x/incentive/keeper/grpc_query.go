@@ -14,7 +14,7 @@ import (
 
 const (
 	RewardTypeJinx        = "jinx"
-	RewardTypeUSDXMinting = "usdx_minting"
+	RewardTypeUSDFMinting = "usdf_minting"
 	RewardTypeDelegator   = "delegator"
 	RewardTypeSwap        = "swap"
 	RewardTypeSavings     = "savings"
@@ -96,9 +96,9 @@ func (s queryServer) RewardFactors(
 
 	sdkCtx := sdk.UnwrapSDKContext(ctx)
 
-	var usdxFactors types.RewardIndexes
-	s.keeper.IterateUSDXMintingRewardFactors(sdkCtx, func(collateralType string, factor sdk.Dec) (stop bool) {
-		usdxFactors = usdxFactors.With(collateralType, factor)
+	var usdfFactors types.RewardIndexes
+	s.keeper.IterateUSDFMintingRewardFactors(sdkCtx, func(collateralType string, factor sdk.Dec) (stop bool) {
+		usdfFactors = usdfFactors.With(collateralType, factor)
 		return false
 	})
 
@@ -139,7 +139,7 @@ func (s queryServer) RewardFactors(
 	})
 
 	return &types.QueryRewardFactorsResponse{
-		UsdxMintingRewardFactors: usdxFactors,
+		UsdfMintingRewardFactors: usdfFactors,
 		JinxSupplyRewardFactors:  supplyFactors,
 		JinxBorrowRewardFactors:  borrowFactors,
 		DelegatorRewardFactors:   delegatorFactors,
@@ -211,15 +211,15 @@ func (s queryServer) queryRewards(
 		return status.Errorf(codes.InvalidArgument, "invalid reward type for owner %s: %s", owner, rewardType)
 	}
 
-	if isAllRewards || rewardType == RewardTypeUSDXMinting {
+	if isAllRewards || rewardType == RewardTypeUSDFMinting {
 		if hasOwner {
-			usdxMintingClaim, foundUsdxMintingClaim := s.keeper.GetUSDXMintingClaim(ctx, owner)
-			if foundUsdxMintingClaim {
-				res.USDXMintingClaims = append(res.USDXMintingClaims, usdxMintingClaim)
+			usdfMintingClaim, foundUsdfMintingClaim := s.keeper.GetUSDFMintingClaim(ctx, owner)
+			if foundUsdfMintingClaim {
+				res.USDFMintingClaims = append(res.USDFMintingClaims, usdfMintingClaim)
 			}
 		} else {
-			usdxMintingClaims := s.keeper.GetAllUSDXMintingClaims(ctx)
-			res.USDXMintingClaims = append(res.USDXMintingClaims, usdxMintingClaims...)
+			usdfMintingClaims := s.keeper.GetAllUSDFMintingClaims(ctx)
+			res.USDFMintingClaims = append(res.USDFMintingClaims, usdfMintingClaims...)
 		}
 	}
 
@@ -292,8 +292,8 @@ func (s queryServer) synchronizeRewards(
 	res *types.QueryRewardsResponse,
 ) error {
 	// Synchronize all non-empty rewards
-	for i, claim := range res.USDXMintingClaims {
-		res.USDXMintingClaims[i] = s.keeper.SimulateUSDXMintingSynchronization(ctx, claim)
+	for i, claim := range res.USDFMintingClaims {
+		res.USDFMintingClaims[i] = s.keeper.SimulateUSDFMintingSynchronization(ctx, claim)
 	}
 
 	for i, claim := range res.JinxLiquidityProviderClaims {
@@ -334,7 +334,7 @@ func (s queryServer) synchronizeRewards(
 func rewardTypeIsValid(rewardType string) bool {
 	return rewardType == "" ||
 		rewardType == RewardTypeJinx ||
-		rewardType == RewardTypeUSDXMinting ||
+		rewardType == RewardTypeUSDFMinting ||
 		rewardType == RewardTypeDelegator ||
 		rewardType == RewardTypeSwap ||
 		rewardType == RewardTypeSavings ||

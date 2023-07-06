@@ -58,14 +58,14 @@ func (suite *Suite) SetupTest() {
 	pricefeedGS := pricefeedtypes.GenesisState{
 		Params: pricefeedtypes.Params{
 			Markets: []pricefeedtypes.Market{
-				{MarketID: "usdx:usd", BaseAsset: "usdx", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
+				{MarketID: "usdf:usd", BaseAsset: "usdf", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 				{MarketID: "nemo:usd", BaseAsset: "nemo", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 				{MarketID: "bnb:usd", BaseAsset: "bnb", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 			},
 		},
 		PostedPrices: []pricefeedtypes.PostedPrice{
 			{
-				MarketID:      "usdx:usd",
+				MarketID:      "usdf:usd",
 				OracleAddress: sdk.AccAddress{},
 				Price:         sdk.MustNewDecFromStr("1.00"),
 				Expiry:        time.Now().Add(100 * time.Hour),
@@ -88,13 +88,13 @@ func (suite *Suite) SetupTest() {
 	jinxGS := jinxtypes.NewGenesisState(jinxtypes.NewParams(
 		jinxtypes.MoneyMarkets{
 			jinxtypes.NewMoneyMarket(
-				"usdx",
+				"usdf",
 				jinxtypes.NewBorrowLimit(
 					true,
 					sdk.MustNewDecFromStr("20000000"),
 					sdk.MustNewDecFromStr("1"),
 				),
-				"usdx:usd",
+				"usdf:usd",
 				sdkmath.NewInt(1000000),
 				jinxtypes.NewInterestRateModel(
 					sdk.MustNewDecFromStr("0.05"),
@@ -157,7 +157,7 @@ func (suite *Suite) SetupTest() {
 			[]string{
 				"ufury",
 				"busd",
-				"usdx",
+				"usdf",
 				TestBnemoDenoms[0],
 				TestBnemoDenoms[1],
 				TestBnemoDenoms[2],

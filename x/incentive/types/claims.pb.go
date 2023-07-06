@@ -258,24 +258,24 @@ func (m *MultiRewardIndexesProto) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MultiRewardIndexesProto proto.InternalMessageInfo
 
-// USDXMintingClaim is for USDX minting rewards
-type USDXMintingClaim struct {
+// USDFMintingClaim is for USDF minting rewards
+type USDFMintingClaim struct {
 	BaseClaim     `protobuf:"bytes,1,opt,name=base_claim,json=baseClaim,proto3,embedded=base_claim" json:"base_claim"`
 	RewardIndexes RewardIndexes `protobuf:"bytes,2,rep,name=reward_indexes,json=rewardIndexes,proto3,castrepeated=RewardIndexes" json:"reward_indexes"`
 }
 
-func (m *USDXMintingClaim) Reset()         { *m = USDXMintingClaim{} }
-func (m *USDXMintingClaim) String() string { return proto.CompactTextString(m) }
-func (*USDXMintingClaim) ProtoMessage()    {}
-func (*USDXMintingClaim) Descriptor() ([]byte, []int) {
+func (m *USDFMintingClaim) Reset()         { *m = USDFMintingClaim{} }
+func (m *USDFMintingClaim) String() string { return proto.CompactTextString(m) }
+func (*USDFMintingClaim) ProtoMessage()    {}
+func (*USDFMintingClaim) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3fc6f4fc185c025a, []int{6}
 }
-func (m *USDXMintingClaim) XXX_Unmarshal(b []byte) error {
+func (m *USDFMintingClaim) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *USDXMintingClaim) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *USDFMintingClaim) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_USDXMintingClaim.Marshal(b, m, deterministic)
+		return xxx_messageInfo_USDFMintingClaim.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -285,17 +285,17 @@ func (m *USDXMintingClaim) XXX_Marshal(b []byte, deterministic bool) ([]byte, er
 		return b[:n], nil
 	}
 }
-func (m *USDXMintingClaim) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_USDXMintingClaim.Merge(m, src)
+func (m *USDFMintingClaim) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_USDFMintingClaim.Merge(m, src)
 }
-func (m *USDXMintingClaim) XXX_Size() int {
+func (m *USDFMintingClaim) XXX_Size() int {
 	return m.Size()
 }
-func (m *USDXMintingClaim) XXX_DiscardUnknown() {
-	xxx_messageInfo_USDXMintingClaim.DiscardUnknown(m)
+func (m *USDFMintingClaim) XXX_DiscardUnknown() {
+	xxx_messageInfo_USDFMintingClaim.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_USDXMintingClaim proto.InternalMessageInfo
+var xxx_messageInfo_USDFMintingClaim proto.InternalMessageInfo
 
 // JinxLiquidityProviderClaim stores the jinx liquidity provider rewards that can be claimed by owner
 type JinxLiquidityProviderClaim struct {
@@ -500,7 +500,7 @@ func init() {
 	proto.RegisterType((*RewardIndexesProto)(nil), "nemo.incentive.v1beta1.RewardIndexesProto")
 	proto.RegisterType((*MultiRewardIndex)(nil), "nemo.incentive.v1beta1.MultiRewardIndex")
 	proto.RegisterType((*MultiRewardIndexesProto)(nil), "nemo.incentive.v1beta1.MultiRewardIndexesProto")
-	proto.RegisterType((*USDXMintingClaim)(nil), "nemo.incentive.v1beta1.USDXMintingClaim")
+	proto.RegisterType((*USDFMintingClaim)(nil), "nemo.incentive.v1beta1.USDFMintingClaim")
 	proto.RegisterType((*JinxLiquidityProviderClaim)(nil), "nemo.incentive.v1beta1.JinxLiquidityProviderClaim")
 	proto.RegisterType((*DelegatorClaim)(nil), "nemo.incentive.v1beta1.DelegatorClaim")
 	proto.RegisterType((*SwapClaim)(nil), "nemo.incentive.v1beta1.SwapClaim")
@@ -802,7 +802,7 @@ func (m *MultiRewardIndexesProto) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
-func (m *USDXMintingClaim) Marshal() (dAtA []byte, err error) {
+func (m *USDFMintingClaim) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -812,12 +812,12 @@ func (m *USDXMintingClaim) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *USDXMintingClaim) MarshalTo(dAtA []byte) (int, error) {
+func (m *USDFMintingClaim) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *USDXMintingClaim) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *USDFMintingClaim) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1207,7 +1207,7 @@ func (m *MultiRewardIndexesProto) Size() (n int) {
 	return n
 }
 
-func (m *USDXMintingClaim) Size() (n int) {
+func (m *USDFMintingClaim) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1955,7 +1955,7 @@ func (m *MultiRewardIndexesProto) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *USDXMintingClaim) Unmarshal(dAtA []byte) error {
+func (m *USDFMintingClaim) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1978,10 +1978,10 @@ func (m *USDXMintingClaim) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: USDXMintingClaim: wiretype end group for non-group")
+			return fmt.Errorf("proto: USDFMintingClaim: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: USDXMintingClaim: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: USDFMintingClaim: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:

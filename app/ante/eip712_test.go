@@ -173,13 +173,13 @@ func (suite *EIP712TestSuite) SetupTest() {
 	feemarketGenesis.Params.NoBaseFee = false
 
 	cdpGenState := cdptypes.DefaultGenesisState()
-	cdpGenState.Params.GlobalDebtLimit = sdk.NewInt64Coin("usdx", 53000000000000)
+	cdpGenState.Params.GlobalDebtLimit = sdk.NewInt64Coin("usdf", 53000000000000)
 	cdpGenState.Params.CollateralParams = cdptypes.CollateralParams{
 		{
 			Denom:                            USDCCoinDenom,
 			Type:                             USDCCDPType,
 			LiquidationRatio:                 sdk.MustNewDecFromStr("1.01"),
-			DebtLimit:                        sdk.NewInt64Coin("usdx", 500000000000),
+			DebtLimit:                        sdk.NewInt64Coin("usdf", 500000000000),
 			StabilityFee:                     sdk.OneDec(),
 			AuctionSize:                      sdkmath.NewIntFromUint64(10000000000),
 			LiquidationPenalty:               sdk.MustNewDecFromStr("0.05"),
@@ -194,13 +194,13 @@ func (suite *EIP712TestSuite) SetupTest() {
 	jinxGenState := jinxtypes.DefaultGenesisState()
 	jinxGenState.Params.MoneyMarkets = []jinxtypes.MoneyMarket{
 		{
-			Denom: "usdx",
+			Denom: "usdf",
 			BorrowLimit: jinxtypes.BorrowLimit{
 				HasMaxLimit:  true,
 				MaximumLimit: sdk.MustNewDecFromStr("100000000000"),
 				LoanToValue:  sdk.MustNewDecFromStr("1"),
 			},
-			SpotMarketID:     "usdx:usd",
+			SpotMarketID:     "usdf:usd",
 			ConversionFactor: sdkmath.NewInt(1_000_000),
 			InterestRateModel: jinxtypes.InterestRateModel{
 				BaseRateAPY:    sdk.MustNewDecFromStr("0.05"),
@@ -216,8 +216,8 @@ func (suite *EIP712TestSuite) SetupTest() {
 	pricefeedGenState := pricefeedtypes.DefaultGenesisState()
 	pricefeedGenState.Params.Markets = []pricefeedtypes.Market{
 		{
-			MarketID:   "usdx:usd",
-			BaseAsset:  "usdx",
+			MarketID:   "usdf:usd",
+			BaseAsset:  "usdf",
 			QuoteAsset: "usd",
 			Oracles:    []sdk.AccAddress{},
 			Active:     true,
@@ -239,7 +239,7 @@ func (suite *EIP712TestSuite) SetupTest() {
 	}
 	pricefeedGenState.PostedPrices = []pricefeedtypes.PostedPrice{
 		{
-			MarketID:      "usdx:usd",
+			MarketID:      "usdf:usd",
 			OracleAddress: sdk.AccAddress{},
 			Price:         sdk.MustNewDecFromStr("1.00"),
 			Expiry:        time.Now().Add(1 * time.Hour),
@@ -474,7 +474,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 	testcases := []struct {
 		name           string
 		usdcDepositAmt int64
-		usdxToMintAmt  int64
+		usdfToMintAmt  int64
 		updateTx       func(txBuilder client.TxBuilder, msgs []sdk.Msg) client.TxBuilder
 		updateMsgs     func(msgs []sdk.Msg) []sdk.Msg
 		expectedCode   uint32
@@ -484,24 +484,24 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 		{
 			name:           "processes deposit eip712 messages successfully",
 			usdcDepositAmt: 100,
-			usdxToMintAmt:  99,
+			usdfToMintAmt:  99,
 		},
 		{
 			name:           "fails when convertion more erc20 usdc than balance",
 			usdcDepositAmt: 51_000,
-			usdxToMintAmt:  100,
+			usdfToMintAmt:  100,
 			errMsg:         "transfer amount exceeds balance",
 		},
 		{
-			name:           "fails when minting more usdx than allowed",
+			name:           "fails when minting more usdf than allowed",
 			usdcDepositAmt: 100,
-			usdxToMintAmt:  100,
+			usdfToMintAmt:  100,
 			errMsg:         "proposed collateral ratio is below liquidation ratio",
 		},
 		{
 			name:           "fails when trying to convert usdc for another address",
 			usdcDepositAmt: 100,
-			usdxToMintAmt:  90,
+			usdfToMintAmt:  90,
 			errMsg:         "unauthorized",
 			failCheckTx:    true,
 			updateMsgs: func(msgs []sdk.Msg) []sdk.Msg {
@@ -518,7 +518,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 		{
 			name:           "fails when trying to convert erc20 for non-whitelisted contract",
 			usdcDepositAmt: 100,
-			usdxToMintAmt:  90,
+			usdfToMintAmt:  90,
 			errMsg:         "ERC20 token not enabled to convert to sdk.Coin",
 			updateMsgs: func(msgs []sdk.Msg) []sdk.Msg {
 				convertMsg := evmutiltypes.NewMsgConvertERC20ToCoin(
@@ -534,7 +534,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 		{
 			name:           "fails when signer tries to send messages with invalid signature",
 			usdcDepositAmt: 100,
-			usdxToMintAmt:  90,
+			usdfToMintAmt:  90,
 			failCheckTx:    true,
 			errMsg:         "tx intended signer does not match the given signer",
 			updateTx: func(txBuilder client.TxBuilder, msgs []sdk.Msg) client.TxBuilder {
@@ -552,7 +552,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 		{
 			name:           "fails when insufficient gas fees are provided",
 			usdcDepositAmt: 100,
-			usdxToMintAmt:  90,
+			usdfToMintAmt:  90,
 			errMsg:         "insufficient funds",
 			updateTx: func(txBuilder client.TxBuilder, msgs []sdk.Msg) client.TxBuilder {
 				bk := suite.tApp.GetBankKeeper()
@@ -564,7 +564,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 		{
 			name:           "fails when invalid chain id is provided",
 			usdcDepositAmt: 100,
-			usdxToMintAmt:  90,
+			usdfToMintAmt:  90,
 			failCheckTx:    true,
 			errMsg:         "invalid chain-id",
 			updateTx: func(txBuilder client.TxBuilder, msgs []sdk.Msg) client.TxBuilder {
@@ -577,7 +577,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 		{
 			name:           "fails when invalid fee payer is provided",
 			usdcDepositAmt: 100,
-			usdxToMintAmt:  90,
+			usdfToMintAmt:  90,
 			failCheckTx:    true,
 			errMsg:         "invalid pubkey",
 			updateTx: func(txBuilder client.TxBuilder, msgs []sdk.Msg) client.TxBuilder {
@@ -601,16 +601,16 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 				suite.usdcEVMAddr,
 				usdcAmt,
 			)
-			usdxAmt := sdkmath.NewInt(1_000_000).Mul(sdkmath.NewInt(tc.usdxToMintAmt))
+			usdfAmt := sdkmath.NewInt(1_000_000).Mul(sdkmath.NewInt(tc.usdfToMintAmt))
 			mintMsg := cdptypes.NewMsgCreateCDP(
 				suite.testAddr,
 				sdk.NewCoin(USDCCoinDenom, usdcAmt),
-				sdk.NewCoin(cdptypes.DefaultStableDenom, usdxAmt),
+				sdk.NewCoin(cdptypes.DefaultStableDenom, usdfAmt),
 				USDCCDPType,
 			)
 			lendMsg := jinxtypes.NewMsgDeposit(
 				suite.testAddr,
-				sdk.NewCoins(sdk.NewCoin(cdptypes.DefaultStableDenom, usdxAmt)),
+				sdk.NewCoins(sdk.NewCoin(cdptypes.DefaultStableDenom, usdfAmt)),
 			)
 			msgs := []sdk.Msg{
 				&convertMsg,
@@ -663,13 +663,13 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 				suite.Require().True(found)
 				suite.Require().Equal(suite.testAddr, cdp.Owner)
 				suite.Require().Equal(sdk.NewCoin(USDCCoinDenom, suite.getEVMAmount(100)), cdp.Collateral)
-				suite.Require().Equal(sdk.NewCoin("usdx", sdkmath.NewInt(99_000_000)), cdp.Principal)
+				suite.Require().Equal(sdk.NewCoin("usdf", sdkmath.NewInt(99_000_000)), cdp.Principal)
 
 				// validate jinx
 				jinxDeposit, found := suite.tApp.GetJinxKeeper().GetDeposit(suite.ctx, suite.testAddr)
 				suite.Require().True(found)
 				suite.Require().Equal(suite.testAddr, jinxDeposit.Depositor)
-				suite.Require().Equal(sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(99_000_000))), jinxDeposit.Amount)
+				suite.Require().Equal(sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(99_000_000))), jinxDeposit.Amount)
 			} else {
 				suite.Require().NotEqual(resDeliverTx.Code, uint32(0), resCheckTx.Log)
 				suite.Require().Contains(resDeliverTx.Log, tc.errMsg)
@@ -689,16 +689,16 @@ func (suite *EIP712TestSuite) TestEIP712Tx_DepositAndWithdraw() {
 		suite.usdcEVMAddr,
 		usdcAmt,
 	)
-	usdxAmt := sdkmath.NewInt(1_000_000).Mul(sdkmath.NewInt(99))
+	usdfAmt := sdkmath.NewInt(1_000_000).Mul(sdkmath.NewInt(99))
 	mintMsg := cdptypes.NewMsgCreateCDP(
 		suite.testAddr,
 		sdk.NewCoin(USDCCoinDenom, usdcAmt),
-		sdk.NewCoin(cdptypes.DefaultStableDenom, usdxAmt),
+		sdk.NewCoin(cdptypes.DefaultStableDenom, usdfAmt),
 		USDCCDPType,
 	)
 	lendMsg := jinxtypes.NewMsgDeposit(
 		suite.testAddr,
-		sdk.NewCoins(sdk.NewCoin(cdptypes.DefaultStableDenom, usdxAmt)),
+		sdk.NewCoins(sdk.NewCoin(cdptypes.DefaultStableDenom, usdfAmt)),
 	)
 	depositMsgs := []sdk.Msg{
 		&convertMsg,
@@ -724,7 +724,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx_DepositAndWithdraw() {
 	jinxDeposit, found := suite.tApp.GetJinxKeeper().GetDeposit(suite.ctx, suite.testAddr)
 	suite.Require().True(found)
 	suite.Require().Equal(suite.testAddr, jinxDeposit.Depositor)
-	suite.Require().Equal(sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(99_000_000))), jinxDeposit.Amount)
+	suite.Require().Equal(sdk.NewCoins(sdk.NewCoin("usdf", sdkmath.NewInt(99_000_000))), jinxDeposit.Amount)
 
 	// validate erc20 balance
 	coinBal, err := suite.evmutilKeeper.QueryERC20BalanceOf(suite.ctx, suite.usdcEVMAddr, suite.testEVMAddr)
@@ -740,11 +740,11 @@ func (suite *EIP712TestSuite) TestEIP712Tx_DepositAndWithdraw() {
 	cdpWithdrawMsg := cdptypes.NewMsgRepayDebt(
 		suite.testAddr,
 		USDCCDPType,
-		sdk.NewCoin(cdptypes.DefaultStableDenom, usdxAmt),
+		sdk.NewCoin(cdptypes.DefaultStableDenom, usdfAmt),
 	)
 	jinxWithdrawMsg := jinxtypes.NewMsgWithdraw(
 		suite.testAddr,
-		sdk.NewCoins(sdk.NewCoin(cdptypes.DefaultStableDenom, usdxAmt)),
+		sdk.NewCoins(sdk.NewCoin(cdptypes.DefaultStableDenom, usdfAmt)),
 	)
 	withdrawMsgs := []sdk.Msg{
 		&jinxWithdrawMsg,

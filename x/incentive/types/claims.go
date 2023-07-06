@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	USDXMintingClaimType           = "usdx_minting"
+	USDFMintingClaimType           = "usdf_minting"
 	JinxLiquidityProviderClaimType = "jinx_liquidity_provider"
 	DelegatorClaimType             = "delegator_claim"
 	SwapClaimType                  = "swap"
@@ -57,9 +57,9 @@ func (c BaseMultiClaim) Validate() error {
 	return nil
 }
 
-// NewUSDXMintingClaim returns a new USDXMintingClaim
-func NewUSDXMintingClaim(owner sdk.AccAddress, reward sdk.Coin, rewardIndexes RewardIndexes) USDXMintingClaim {
-	return USDXMintingClaim{
+// NewUSDFMintingClaim returns a new USDFMintingClaim
+func NewUSDFMintingClaim(owner sdk.AccAddress, reward sdk.Coin, rewardIndexes RewardIndexes) USDFMintingClaim {
+	return USDFMintingClaim{
 		BaseClaim: BaseClaim{
 			Owner:  owner,
 			Reward: reward,
@@ -69,16 +69,16 @@ func NewUSDXMintingClaim(owner sdk.AccAddress, reward sdk.Coin, rewardIndexes Re
 }
 
 // GetType returns the claim's type
-func (c USDXMintingClaim) GetType() string { return USDXMintingClaimType }
+func (c USDFMintingClaim) GetType() string { return USDFMintingClaimType }
 
 // GetReward returns the claim's reward coin
-func (c USDXMintingClaim) GetReward() sdk.Coin { return c.Reward }
+func (c USDFMintingClaim) GetReward() sdk.Coin { return c.Reward }
 
 // GetOwner returns the claim's owner
-func (c USDXMintingClaim) GetOwner() sdk.AccAddress { return c.Owner }
+func (c USDFMintingClaim) GetOwner() sdk.AccAddress { return c.Owner }
 
 // Validate performs a basic check of a Claim fields
-func (c USDXMintingClaim) Validate() error {
+func (c USDFMintingClaim) Validate() error {
 	if err := c.RewardIndexes.Validate(); err != nil {
 		return err
 	}
@@ -87,7 +87,7 @@ func (c USDXMintingClaim) Validate() error {
 }
 
 // HasRewardIndex check if a claim has a reward index for the input collateral type
-func (c USDXMintingClaim) HasRewardIndex(collateralType string) (int64, bool) {
+func (c USDFMintingClaim) HasRewardIndex(collateralType string) (int64, bool) {
 	for index, ri := range c.RewardIndexes {
 		if ri.CollateralType == collateralType {
 			return int64(index), true
@@ -96,12 +96,12 @@ func (c USDXMintingClaim) HasRewardIndex(collateralType string) (int64, bool) {
 	return 0, false
 }
 
-// USDXMintingClaims slice of USDXMintingClaim
-type USDXMintingClaims []USDXMintingClaim
+// USDFMintingClaims slice of USDFMintingClaim
+type USDFMintingClaims []USDFMintingClaim
 
 // Validate checks if all the claims are valid and there are no duplicated
 // entries.
-func (cs USDXMintingClaims) Validate() error {
+func (cs USDFMintingClaims) Validate() error {
 	for _, c := range cs {
 		if err := c.Validate(); err != nil {
 			return err

@@ -21,7 +21,7 @@ func (suite *genesisTestSuite) Test_InitGenesis_ValidationPanic() {
 		types.Params{
 			AllowedVaults: types.AllowedVaults{
 				types.NewAllowedVault(
-					"usdx", types.StrategyTypes{types.STRATEGY_TYPE_JINX},
+					"usdf", types.StrategyTypes{types.STRATEGY_TYPE_JINX},
 					false,
 					nil,
 				),
@@ -53,7 +53,7 @@ func (suite *genesisTestSuite) Test_InitAndExportGenesis() {
 		types.Params{
 			AllowedVaults: types.AllowedVaults{
 				types.NewAllowedVault(
-					"usdx",
+					"usdf",
 					types.StrategyTypes{types.STRATEGY_TYPE_JINX},
 					false,
 					nil,
@@ -71,21 +71,21 @@ func (suite *genesisTestSuite) Test_InitAndExportGenesis() {
 				TotalShares: types.NewVaultShare("ufury", sdk.NewDec(3800000)),
 			},
 			types.VaultRecord{
-				TotalShares: types.NewVaultShare("usdx", sdk.NewDec(1000000)),
+				TotalShares: types.NewVaultShare("usdf", sdk.NewDec(1000000)),
 			},
 		},
 		types.VaultShareRecords{
 			types.VaultShareRecord{
 				Depositor: depositor_1,
 				Shares: types.NewVaultShares(
-					types.NewVaultShare("usdx", sdk.NewDec(500000)),
+					types.NewVaultShare("usdf", sdk.NewDec(500000)),
 					types.NewVaultShare("ufury", sdk.NewDec(1900000)),
 				),
 			},
 			types.VaultShareRecord{
 				Depositor: depositor_2,
 				Shares: types.NewVaultShares(
-					types.NewVaultShare("usdx", sdk.NewDec(500000)),
+					types.NewVaultShare("usdf", sdk.NewDec(500000)),
 					types.NewVaultShare("ufury", sdk.NewDec(1900000)),
 				),
 			},
@@ -96,7 +96,7 @@ func (suite *genesisTestSuite) Test_InitAndExportGenesis() {
 	suite.Equal(state.Params, suite.Keeper.GetParams(suite.Ctx))
 
 	vaultRecord1, _ := suite.Keeper.GetVaultRecord(suite.Ctx, "ufury")
-	vaultRecord2, _ := suite.Keeper.GetVaultRecord(suite.Ctx, "usdx")
+	vaultRecord2, _ := suite.Keeper.GetVaultRecord(suite.Ctx, "usdf")
 	suite.Equal(state.VaultRecords[0], vaultRecord1)
 	suite.Equal(state.VaultRecords[1], vaultRecord2)
 
@@ -121,7 +121,7 @@ func (suite *genesisTestSuite) Test_Marshall() {
 		types.Params{
 			AllowedVaults: types.AllowedVaults{
 				types.NewAllowedVault(
-					"usdx",
+					"usdf",
 					types.StrategyTypes{types.STRATEGY_TYPE_JINX},
 					false,
 					nil,
@@ -139,21 +139,21 @@ func (suite *genesisTestSuite) Test_Marshall() {
 				TotalShares: types.NewVaultShare("ufury", sdk.NewDec(3800000)),
 			},
 			types.VaultRecord{
-				TotalShares: types.NewVaultShare("usdx", sdk.NewDec(1000000)),
+				TotalShares: types.NewVaultShare("usdf", sdk.NewDec(1000000)),
 			},
 		},
 		types.VaultShareRecords{
 			types.VaultShareRecord{
 				Depositor: depositor_1,
 				Shares: types.NewVaultShares(
-					types.NewVaultShare("usdx", sdk.NewDec(500000)),
+					types.NewVaultShare("usdf", sdk.NewDec(500000)),
 					types.NewVaultShare("ufury", sdk.NewDec(1900000)),
 				),
 			},
 			types.VaultShareRecord{
 				Depositor: depositor_2,
 				Shares: types.NewVaultShares(
-					types.NewVaultShare("usdx", sdk.NewDec(500000)),
+					types.NewVaultShare("usdf", sdk.NewDec(500000)),
 					types.NewVaultShare("ufury", sdk.NewDec(1900000)),
 				),
 			},

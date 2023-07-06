@@ -12,7 +12,7 @@ import (
 // RegisterLegacyAminoCodec registers all the necessary types and interfaces for the
 // governance module.
 func RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
-	cdc.RegisterConcrete(&MsgClaimUSDXMintingReward{}, "incentive/MsgClaimUSDXMintingReward", nil)
+	cdc.RegisterConcrete(&MsgClaimUSDFMintingReward{}, "incentive/MsgClaimUSDFMintingReward", nil)
 	cdc.RegisterConcrete(&MsgClaimJinxReward{}, "incentive/MsgClaimJinxReward", nil)
 	cdc.RegisterConcrete(&MsgClaimDelegatorReward{}, "incentive/MsgClaimDelegatorReward", nil)
 	cdc.RegisterConcrete(&MsgClaimSwapReward{}, "incentive/MsgClaimSwapReward", nil)
@@ -22,7 +22,7 @@ func RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
 
 func RegisterInterfaces(registry types.InterfaceRegistry) {
 	registry.RegisterImplementations((*sdk.Msg)(nil),
-		&MsgClaimUSDXMintingReward{},
+		&MsgClaimUSDFMintingReward{},
 		&MsgClaimJinxReward{},
 		&MsgClaimDelegatorReward{},
 		&MsgClaimSwapReward{},

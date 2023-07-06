@@ -20,10 +20,10 @@ func (k Keeper) SetParams(ctx sdk.Context, params types.Params) {
 	k.paramSubspace.SetParamSet(ctx, &params)
 }
 
-// GetUSDXMintingRewardPeriod returns the reward period with the specified collateral type if it's found in the params
-func (k Keeper) GetUSDXMintingRewardPeriod(ctx sdk.Context, collateralType string) (types.RewardPeriod, bool) {
+// GetUSDFMintingRewardPeriod returns the reward period with the specified collateral type if it's found in the params
+func (k Keeper) GetUSDFMintingRewardPeriod(ctx sdk.Context, collateralType string) (types.RewardPeriod, bool) {
 	params := k.GetParams(ctx)
-	for _, rp := range params.USDXMintingRewardPeriods {
+	for _, rp := range params.USDFMintingRewardPeriods {
 		if rp.CollateralType == collateralType {
 			return rp, true
 		}

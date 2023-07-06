@@ -29,7 +29,7 @@ func InitGenesis(
 		panic(fmt.Sprintf("failed to validate %s genesis state: %s", types.ModuleName, err))
 	}
 
-	for _, rp := range gs.Params.USDXMintingRewardPeriods {
+	for _, rp := range gs.Params.USDFMintingRewardPeriods {
 		if _, found := cdpKeeper.GetCollateral(ctx, rp.CollateralType); !found {
 			panic(fmt.Sprintf("incentive params contain collateral not found in cdp params: %s", rp.CollateralType))
 		}
@@ -38,22 +38,22 @@ func InitGenesis(
 
 	k.SetParams(ctx, gs.Params)
 
-	// USDX Minting
-	for _, claim := range gs.USDXMintingClaims {
-		k.SetUSDXMintingClaim(ctx, claim)
+	// USDF Minting
+	for _, claim := range gs.USDFMintingClaims {
+		k.SetUSDFMintingClaim(ctx, claim)
 	}
-	for _, gat := range gs.USDXRewardState.AccumulationTimes {
+	for _, gat := range gs.USDFRewardState.AccumulationTimes {
 		if err := ValidateAccumulationTime(gat.PreviousAccumulationTime); err != nil {
 			panic(err.Error())
 		}
-		k.SetPreviousUSDXMintingAccrualTime(ctx, gat.CollateralType, gat.PreviousAccumulationTime)
+		k.SetPreviousUSDFMintingAccrualTime(ctx, gat.CollateralType, gat.PreviousAccumulationTime)
 	}
-	for _, mri := range gs.USDXRewardState.MultiRewardIndexes {
-		factor, found := mri.RewardIndexes.Get(types.USDXMintingRewardDenom)
+	for _, mri := range gs.USDFRewardState.MultiRewardIndexes {
+		factor, found := mri.RewardIndexes.Get(types.USDFMintingRewardDenom)
 		if !found || len(mri.RewardIndexes) != 1 {
-			panic(fmt.Sprintf("USDX Minting reward factors must only have denom %s", types.USDXMintingRewardDenom))
+			panic(fmt.Sprintf("USDF Minting reward factors must only have denom %s", types.USDFMintingRewardDenom))
 		}
-		k.SetUSDXMintingRewardFactor(ctx, mri.CollateralType, factor)
+		k.SetUSDFMintingRewardFactor(ctx, mri.CollateralType, factor)
 	}
 
 	// Jinx Supply / Borrow
@@ -140,8 +140,8 @@ func InitGenesis(
 func ExportGenesis(ctx sdk.Context, k keeper.Keeper) types.GenesisState {
 	params := k.GetParams(ctx)
 
-	usdxClaims := k.GetAllUSDXMintingClaims(ctx)
-	usdxRewardState := getUSDXMintingGenesisRewardState(ctx, k)
+	usdfClaims := k.GetAllUSDFMintingClaims(ctx)
+	usdfRewardState := getUSDFMintingGenesisRewardState(ctx, k)
 
 	jinxClaims := k.GetAllJinxLiquidityProviderClaims(ctx)
 	jinxSupplyRewardState := getJinxSupplyGenesisRewardState(ctx, k)
@@ -162,26 +162,26 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) types.GenesisState {
 	return types.NewGenesisState(
 		params,
 		// Reward states
-		usdxRewardState, jinxSupplyRewardState, jinxBorrowRewardState, delegatorRewardState, swapRewardState, savingsRewardState, earnRewardState,
+		usdfRewardState, jinxSupplyRewardState, jinxBorrowRewardState, delegatorRewardState, swapRewardState, savingsRewardState, earnRewardState,
 		// Claims
-		usdxClaims, jinxClaims, delegatorClaims, swapClaims, savingsClaims, earnClaims,
+		usdfClaims, jinxClaims, delegatorClaims, swapClaims, savingsClaims, earnClaims,
 	)
 }
 
-func getUSDXMintingGenesisRewardState(ctx sdk.Context, keeper keeper.Keeper) types.GenesisRewardState {
+func getUSDFMintingGenesisRewardState(ctx sdk.Context, keeper keeper.Keeper) types.GenesisRewardState {
 	var ats types.AccumulationTimes
-	keeper.IterateUSDXMintingAccrualTimes(ctx, func(ctype string, accTime time.Time) bool {
+	keeper.IterateUSDFMintingAccrualTimes(ctx, func(ctype string, accTime time.Time) bool {
 		ats = append(ats, types.NewAccumulationTime(ctype, accTime))
 		return false
 	})
 
 	var mris types.MultiRewardIndexes
-	keeper.IterateUSDXMintingRewardFactors(ctx, func(ctype string, factor sdk.Dec) bool {
+	keeper.IterateUSDFMintingRewardFactors(ctx, func(ctype string, factor sdk.Dec) bool {
 		mris = append(
 			mris,
 			types.NewMultiRewardIndex(
 				ctype,
-				types.RewardIndexes{types.NewRewardIndex(types.USDXMintingRewardDenom, factor)},
+				types.RewardIndexes{types.NewRewardIndex(types.USDFMintingRewardDenom, factor)},
 			),
 		)
 		return false

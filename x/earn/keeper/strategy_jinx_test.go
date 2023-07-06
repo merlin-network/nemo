@@ -33,7 +33,7 @@ func (suite *strategyJinxTestSuite) TestGetStrategyType() {
 }
 
 func (suite *strategyJinxTestSuite) TestDeposit_SingleAcc() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 
@@ -58,7 +58,7 @@ func (suite *strategyJinxTestSuite) TestDeposit_SingleAcc() {
 }
 
 func (suite *strategyJinxTestSuite) TestDeposit_SingleAcc_MultipleDeposits() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 
@@ -88,7 +88,7 @@ func (suite *strategyJinxTestSuite) TestDeposit_SingleAcc_MultipleDeposits() {
 }
 
 func (suite *strategyJinxTestSuite) TestDeposit_MultipleAcc_MultipleDeposits() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 
@@ -124,7 +124,7 @@ func (suite *strategyJinxTestSuite) TestDeposit_MultipleAcc_MultipleDeposits() {
 }
 
 func (suite *strategyJinxTestSuite) TestGetVaultTotalValue_Empty() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 
 	suite.CreateVault(vaultDenom, types.StrategyTypes{types.STRATEGY_TYPE_JINX}, false, nil)
 
@@ -136,10 +136,10 @@ func (suite *strategyJinxTestSuite) TestGetVaultTotalValue_Empty() {
 }
 
 func (suite *strategyJinxTestSuite) TestGetVaultTotalValue_NoDenomDeposit() {
-	// 2 Vaults usdx, busd
+	// 2 Vaults usdf, busd
 	// 1st vault has deposits
 	// 2nd vault has no deposits
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	vaultDenomBusd := "busd"
 
 	suite.CreateVault(vaultDenom, types.StrategyTypes{types.STRATEGY_TYPE_JINX}, false, nil)
@@ -167,7 +167,7 @@ func (suite *strategyJinxTestSuite) TestGetVaultTotalValue_NoDenomDeposit() {
 // Withdraw
 
 func (suite *strategyJinxTestSuite) TestWithdraw() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 
@@ -203,7 +203,7 @@ func (suite *strategyJinxTestSuite) TestWithdraw() {
 }
 
 func (suite *strategyJinxTestSuite) TestWithdraw_OnlyWithdrawOwnSupply() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 
@@ -233,7 +233,7 @@ func (suite *strategyJinxTestSuite) TestWithdraw_OnlyWithdrawOwnSupply() {
 }
 
 func (suite *strategyJinxTestSuite) TestWithdraw_WithAccumulatedJinx() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 
@@ -290,11 +290,11 @@ func (suite *strategyJinxTestSuite) TestWithdraw_WithAccumulatedJinx() {
 		"account should be deleted when all shares withdrawn but has %s value still",
 		accValue,
 	)
-	suite.Require().Equal("account vault share record for usdx not found", err.Error())
+	suite.Require().Equal("account vault share record for usdf not found", err.Error())
 }
 
 func (suite *strategyJinxTestSuite) TestAccountShares() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 	err := suite.App.FundModuleAccount(suite.Ctx, types.ModuleName, sdk.NewCoins(sdk.NewInt64Coin(vaultDenom, 1000)))
@@ -371,7 +371,7 @@ func (suite *strategyJinxTestSuite) TestAccountShares() {
 }
 
 func (suite *strategyJinxTestSuite) TestWithdraw_AccumulatedAmount() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 	err := suite.App.FundModuleAccount(suite.Ctx, types.ModuleName, sdk.NewCoins(sdk.NewInt64Coin(vaultDenom, 1000)))
@@ -410,7 +410,7 @@ func (suite *strategyJinxTestSuite) TestWithdraw_AccumulatedAmount() {
 }
 
 func (suite *strategyJinxTestSuite) TestWithdraw_AccumulatedTruncated() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 	err := suite.App.FundModuleAccount(suite.Ctx, types.ModuleName, sdk.NewCoins(sdk.NewInt64Coin(vaultDenom, 1000)))
@@ -442,7 +442,7 @@ func (suite *strategyJinxTestSuite) TestWithdraw_AccumulatedTruncated() {
 
 	accBal, err := suite.Keeper.GetVaultAccountValue(suite.Ctx, vaultDenom, acc1)
 	suite.Require().NoError(err)
-	suite.Equal(depositAmount.AddAmount(sdkmath.NewInt(5)), accBal, "acc1 should have 105 usdx")
+	suite.Equal(depositAmount.AddAmount(sdkmath.NewInt(5)), accBal, "acc1 should have 105 usdf")
 
 	// 3. Withdraw all from acc1 - including accumulated amount
 	_, err = suite.Keeper.Withdraw(suite.Ctx, acc1, depositAmount.AddAmount(sdkmath.NewInt(5)), types.STRATEGY_TYPE_JINX)
@@ -456,7 +456,7 @@ func (suite *strategyJinxTestSuite) TestWithdraw_AccumulatedTruncated() {
 }
 
 func (suite *strategyJinxTestSuite) TestWithdraw_ExpensiveShares() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 	err := suite.App.FundModuleAccount(suite.Ctx, types.ModuleName, sdk.NewCoins(sdk.NewInt64Coin(vaultDenom, 2000)))
@@ -476,14 +476,14 @@ func (suite *strategyJinxTestSuite) TestWithdraw_ExpensiveShares() {
 	suite.Equal(sdk.NewDec(100), acc1Shares.AmountOf(vaultDenom), "initial deposit 1:1 shares")
 
 	// 2. Direct jinx deposit from module account to increase vault value
-	// Total value: 100 -> 2000, shares now 10usdx each
+	// Total value: 100 -> 2000, shares now 10usdf each
 	macc := suite.AccountKeeper.GetModuleAccount(suite.Ctx, types.ModuleName)
 	err = suite.JinxKeeper.Deposit(suite.Ctx, macc.GetAddress(), sdk.NewCoins(sdk.NewInt64Coin(vaultDenom, 1900)))
 	suite.Require().NoError(err)
 
 	accBal, err := suite.Keeper.GetVaultAccountValue(suite.Ctx, vaultDenom, acc1)
 	suite.Require().NoError(err)
-	suite.Equal(sdkmath.NewInt(2000), accBal.Amount, "acc1 should have 2000 usdx")
+	suite.Equal(sdkmath.NewInt(2000), accBal.Amount, "acc1 should have 2000 usdf")
 
 	// 3. Withdraw all from acc1 - including accumulated amount
 	_, err = suite.Keeper.Withdraw(suite.Ctx, acc1, sdk.NewInt64Coin(vaultDenom, 2000), types.STRATEGY_TYPE_JINX)

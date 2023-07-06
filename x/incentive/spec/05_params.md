@@ -8,7 +8,7 @@ The incentive module contains the following parameters:
 
 | Key                      | Type               | Example                | Description                                  |
 | ------------------------ | ------------------ | ---------------------- | -------------------------------------------- |
-| USDXMintingRewardPeriods | RewardPeriods      | [{see below}]          | USDX minting reward periods                  |
+| USDFMintingRewardPeriods | RewardPeriods      | [{see below}]          | USDF minting reward periods                  |
 | JinxSupplyRewardPeriods  | MultiRewardPeriods | [{see below}]          | Jinx supply reward periods                   |
 | JinxBorrowRewardPeriods  | MultiRewardPeriods | [{see below}]          | Jinx borrow reward periods                   |
 | DelegatorRewardPeriods   | MultiRewardPeriods | [{see below}]          | Delegator reward periods                     |

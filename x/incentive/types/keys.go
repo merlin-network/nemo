@@ -19,9 +19,9 @@ const (
 
 // Key Prefixes
 var (
-	USDXMintingClaimKeyPrefix                     = []byte{0x01} // prefix for keys that store USDX minting claims
-	USDXMintingRewardFactorKeyPrefix              = []byte{0x02} // prefix for key that stores USDX minting reward factors
-	PreviousUSDXMintingRewardAccrualTimeKeyPrefix = []byte{0x03} // prefix for key that stores the blocktime
+	USDFMintingClaimKeyPrefix                     = []byte{0x01} // prefix for keys that store USDF minting claims
+	USDFMintingRewardFactorKeyPrefix              = []byte{0x02} // prefix for key that stores USDF minting reward factors
+	PreviousUSDFMintingRewardAccrualTimeKeyPrefix = []byte{0x03} // prefix for key that stores the blocktime
 	JinxLiquidityClaimKeyPrefix                   = []byte{0x04} // prefix for keys that store Jinx liquidity claims
 	JinxSupplyRewardIndexesKeyPrefix              = []byte{0x05} // prefix for key that stores Jinx supply reward indexes
 	PreviousJinxSupplyRewardAccrualTimeKeyPrefix  = []byte{0x06} // prefix for key that stores the previous time Jinx supply rewards accrued

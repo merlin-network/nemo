@@ -22,7 +22,7 @@ func NewMsgServerImpl(keeper Keeper) types.MsgServer {
 
 var _ types.MsgServer = msgServer{}
 
-func (k msgServer) ClaimUSDXMintingReward(goCtx context.Context, msg *types.MsgClaimUSDXMintingReward) (*types.MsgClaimUSDXMintingRewardResponse, error) {
+func (k msgServer) ClaimUSDFMintingReward(goCtx context.Context, msg *types.MsgClaimUSDFMintingReward) (*types.MsgClaimUSDFMintingRewardResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	sender, err := sdk.AccAddressFromBech32(msg.Sender)
@@ -30,12 +30,12 @@ func (k msgServer) ClaimUSDXMintingReward(goCtx context.Context, msg *types.MsgC
 		return nil, err
 	}
 
-	err = k.keeper.ClaimUSDXMintingReward(ctx, sender, sender, msg.MultiplierName)
+	err = k.keeper.ClaimUSDFMintingReward(ctx, sender, sender, msg.MultiplierName)
 	if err != nil {
 		return nil, err
 	}
 
-	return &types.MsgClaimUSDXMintingRewardResponse{}, nil
+	return &types.MsgClaimUSDFMintingRewardResponse{}, nil
 }
 
 func (k msgServer) ClaimJinxReward(goCtx context.Context, msg *types.MsgClaimJinxReward) (*types.MsgClaimJinxRewardResponse, error) {

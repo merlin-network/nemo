@@ -148,8 +148,8 @@ func (suite *IntegrationTester) DeliverIncentiveMsg(msg sdk.Msg) error {
 		_, err = msgServer.ClaimJinxReward(sdk.WrapSDKContext(suite.Ctx), msg)
 	case *types.MsgClaimSwapReward:
 		_, err = msgServer.ClaimSwapReward(sdk.WrapSDKContext(suite.Ctx), msg)
-	case *types.MsgClaimUSDXMintingReward:
-		_, err = msgServer.ClaimUSDXMintingReward(sdk.WrapSDKContext(suite.Ctx), msg)
+	case *types.MsgClaimUSDFMintingReward:
+		_, err = msgServer.ClaimUSDFMintingReward(sdk.WrapSDKContext(suite.Ctx), msg)
 	case *types.MsgClaimDelegatorReward:
 		_, err = msgServer.ClaimDelegatorReward(sdk.WrapSDKContext(suite.Ctx), msg)
 	case *types.MsgClaimEarnReward:
@@ -426,8 +426,8 @@ func (suite *IntegrationTester) JinxRewardEquals(owner sdk.AccAddress, expected 
 	suite.Equalf(expected, claim.Reward, "expected delegator claim reward to be %s, but got %s", expected, claim.Reward)
 }
 
-func (suite *IntegrationTester) USDXRewardEquals(owner sdk.AccAddress, expected sdk.Coin) {
-	claim, found := suite.App.GetIncentiveKeeper().GetUSDXMintingClaim(suite.Ctx, owner)
+func (suite *IntegrationTester) USDFRewardEquals(owner sdk.AccAddress, expected sdk.Coin) {
+	claim, found := suite.App.GetIncentiveKeeper().GetUSDFMintingClaim(suite.Ctx, owner)
 	suite.Require().Truef(found, "expected delegator claim to be found for %s", owner)
 	suite.Equalf(expected, claim.Reward, "expected delegator claim reward to be %s, but got %s", expected, claim.Reward)
 }

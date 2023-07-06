@@ -74,7 +74,7 @@ func (s QueryServer) TotalPrincipal(c context.Context, req *types.QueryTotalPrin
 	var collateralPrincipals types.TotalPrincipals
 
 	for _, queryType := range queryCollateralTypes {
-		// Jinxcoded to default USDX
+		// Jinxcoded to default USDF
 		principalAmount := s.keeper.GetTotalPrincipal(ctx, queryType, types.DefaultStableDenom)
 		// Wrap it in an sdk.Coin
 		totalAmountCoin := sdk.NewCoin(types.DefaultStableDenom, principalAmount)

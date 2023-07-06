@@ -26,7 +26,7 @@ func TestVaultShareTestSuite(t *testing.T) {
 }
 
 func (suite *vaultShareTestSuite) TestConvertToShares() {
-	vaultDenom := "usdx"
+	vaultDenom := "usdf"
 
 	tests := []struct {
 		name          string

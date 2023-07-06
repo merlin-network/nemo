@@ -11,30 +11,30 @@ import (
 	"github.com/merlin-network/nemo/x/incentive/types"
 )
 
-// usdxRewardsUnitTester contains common methods for running unit tests for keeper methods related to the USDX minting rewards
-type usdxRewardsUnitTester struct {
+// usdfRewardsUnitTester contains common methods for running unit tests for keeper methods related to the USDF minting rewards
+type usdfRewardsUnitTester struct {
 	unitTester
 }
 
-func (suite *usdxRewardsUnitTester) storeGlobalUSDXIndexes(indexes types.RewardIndexes) {
+func (suite *usdfRewardsUnitTester) storeGlobalUSDFIndexes(indexes types.RewardIndexes) {
 	for _, ri := range indexes {
-		suite.keeper.SetUSDXMintingRewardFactor(suite.ctx, ri.CollateralType, ri.RewardFactor)
+		suite.keeper.SetUSDFMintingRewardFactor(suite.ctx, ri.CollateralType, ri.RewardFactor)
 	}
 }
 
-func (suite *usdxRewardsUnitTester) storeClaim(claim types.USDXMintingClaim) {
-	suite.keeper.SetUSDXMintingClaim(suite.ctx, claim)
+func (suite *usdfRewardsUnitTester) storeClaim(claim types.USDFMintingClaim) {
+	suite.keeper.SetUSDFMintingClaim(suite.ctx, claim)
 }
 
-type InitializeUSDXMintingClaimTests struct {
-	usdxRewardsUnitTester
+type InitializeUSDFMintingClaimTests struct {
+	usdfRewardsUnitTester
 }
 
-func TestInitializeUSDXMintingClaims(t *testing.T) {
-	suite.Run(t, new(InitializeUSDXMintingClaimTests))
+func TestInitializeUSDFMintingClaims(t *testing.T) {
+	suite.Run(t, new(InitializeUSDFMintingClaimTests))
 }
 
-func (suite *InitializeUSDXMintingClaimTests) TestClaimIndexIsSetWhenClaimDoesNotExist() {
+func (suite *InitializeUSDFMintingClaimTests) TestClaimIndexIsSetWhenClaimDoesNotExist() {
 	collateralType := "bnb-a"
 
 	cdp := NewCDPBuilder(arbitraryAddress(), collateralType).Build()
@@ -43,19 +43,19 @@ func (suite *InitializeUSDXMintingClaimTests) TestClaimIndexIsSetWhenClaimDoesNo
 		CollateralType: collateralType,
 		RewardFactor:   d("0.2"),
 	}}
-	suite.storeGlobalUSDXIndexes(globalIndexes)
+	suite.storeGlobalUSDFIndexes(globalIndexes)
 
-	suite.keeper.InitializeUSDXMintingClaim(suite.ctx, cdp)
+	suite.keeper.InitializeUSDFMintingClaim(suite.ctx, cdp)
 
-	syncedClaim, f := suite.keeper.GetUSDXMintingClaim(suite.ctx, cdp.Owner)
+	syncedClaim, f := suite.keeper.GetUSDFMintingClaim(suite.ctx, cdp.Owner)
 	suite.True(f)
 	suite.Equal(globalIndexes, syncedClaim.RewardIndexes)
 }
 
-func (suite *InitializeUSDXMintingClaimTests) TestClaimIndexIsSetWhenClaimExists() {
+func (suite *InitializeUSDFMintingClaimTests) TestClaimIndexIsSetWhenClaimExists() {
 	collateralType := "bnb-a"
 
-	claim := types.USDXMintingClaim{
+	claim := types.USDFMintingClaim{
 		BaseClaim: types.BaseClaim{
 			Owner: arbitraryAddress(),
 		},
@@ -70,54 +70,54 @@ func (suite *InitializeUSDXMintingClaimTests) TestClaimIndexIsSetWhenClaimExists
 		CollateralType: collateralType,
 		RewardFactor:   d("0.2"),
 	}}
-	suite.storeGlobalUSDXIndexes(globalIndexes)
+	suite.storeGlobalUSDFIndexes(globalIndexes)
 
 	cdp := NewCDPBuilder(claim.Owner, collateralType).Build()
 
-	suite.keeper.InitializeUSDXMintingClaim(suite.ctx, cdp)
+	suite.keeper.InitializeUSDFMintingClaim(suite.ctx, cdp)
 
-	syncedClaim, _ := suite.keeper.GetUSDXMintingClaim(suite.ctx, cdp.Owner)
+	syncedClaim, _ := suite.keeper.GetUSDFMintingClaim(suite.ctx, cdp.Owner)
 	suite.Equal(globalIndexes, syncedClaim.RewardIndexes)
 }
 
-type SynchronizeUSDXMintingRewardTests struct {
-	usdxRewardsUnitTester
+type SynchronizeUSDFMintingRewardTests struct {
+	usdfRewardsUnitTester
 }
 
-func TestSynchronizeUSDXMintingReward(t *testing.T) {
-	suite.Run(t, new(SynchronizeUSDXMintingRewardTests))
+func TestSynchronizeUSDFMintingReward(t *testing.T) {
+	suite.Run(t, new(SynchronizeUSDFMintingRewardTests))
 }
 
-func (suite *SynchronizeUSDXMintingRewardTests) TestRewardUnchangedWhenGlobalIndexesUnchanged() {
+func (suite *SynchronizeUSDFMintingRewardTests) TestRewardUnchangedWhenGlobalIndexesUnchanged() {
 	unchangingRewardIndexes := nonEmptyRewardIndexes
 	collateralType := extractFirstCollateralType(unchangingRewardIndexes)
 
-	claim := types.USDXMintingClaim{
+	claim := types.USDFMintingClaim{
 		BaseClaim: types.BaseClaim{
 			Owner:  arbitraryAddress(),
-			Reward: c(types.USDXMintingRewardDenom, 0),
+			Reward: c(types.USDFMintingRewardDenom, 0),
 		},
 		RewardIndexes: unchangingRewardIndexes,
 	}
 	suite.storeClaim(claim)
 
-	suite.storeGlobalUSDXIndexes(unchangingRewardIndexes)
+	suite.storeGlobalUSDFIndexes(unchangingRewardIndexes)
 
 	cdp := NewCDPBuilder(claim.Owner, collateralType).WithSourceShares(1e12).Build()
 
-	suite.keeper.SynchronizeUSDXMintingReward(suite.ctx, cdp)
+	suite.keeper.SynchronizeUSDFMintingReward(suite.ctx, cdp)
 
-	syncedClaim, _ := suite.keeper.GetUSDXMintingClaim(suite.ctx, claim.Owner)
+	syncedClaim, _ := suite.keeper.GetUSDFMintingClaim(suite.ctx, claim.Owner)
 	suite.Equal(claim.Reward, syncedClaim.Reward)
 }
 
-func (suite *SynchronizeUSDXMintingRewardTests) TestRewardIsIncrementedWhenGlobalIndexIncreased() {
+func (suite *SynchronizeUSDFMintingRewardTests) TestRewardIsIncrementedWhenGlobalIndexIncreased() {
 	collateralType := "bnb-a"
 
-	claim := types.USDXMintingClaim{
+	claim := types.USDFMintingClaim{
 		BaseClaim: types.BaseClaim{
 			Owner:  arbitraryAddress(),
-			Reward: c(types.USDXMintingRewardDenom, 0),
+			Reward: c(types.USDFMintingRewardDenom, 0),
 		},
 		RewardIndexes: types.RewardIndexes{
 			{
@@ -134,38 +134,38 @@ func (suite *SynchronizeUSDXMintingRewardTests) TestRewardIsIncrementedWhenGloba
 			RewardFactor:   d("0.2"),
 		},
 	}
-	suite.storeGlobalUSDXIndexes(globalIndexes)
+	suite.storeGlobalUSDFIndexes(globalIndexes)
 
 	cdp := NewCDPBuilder(claim.Owner, collateralType).WithSourceShares(1e12).Build()
 
-	suite.keeper.SynchronizeUSDXMintingReward(suite.ctx, cdp)
+	suite.keeper.SynchronizeUSDFMintingReward(suite.ctx, cdp)
 
-	syncedClaim, _ := suite.keeper.GetUSDXMintingClaim(suite.ctx, claim.Owner)
+	syncedClaim, _ := suite.keeper.GetUSDFMintingClaim(suite.ctx, claim.Owner)
 	// reward is ( new index - old index ) * cdp.TotalPrincipal
-	suite.Equal(c(types.USDXMintingRewardDenom, 1e11), syncedClaim.Reward)
+	suite.Equal(c(types.USDFMintingRewardDenom, 1e11), syncedClaim.Reward)
 }
 
-func (suite *SynchronizeUSDXMintingRewardTests) TestClaimIndexIsUpdatedWhenGlobalIndexIncreased() {
+func (suite *SynchronizeUSDFMintingRewardTests) TestClaimIndexIsUpdatedWhenGlobalIndexIncreased() {
 	claimsRewardIndexes := nonEmptyRewardIndexes
 	collateralType := extractFirstCollateralType(claimsRewardIndexes)
 
-	claim := types.USDXMintingClaim{
+	claim := types.USDFMintingClaim{
 		BaseClaim: types.BaseClaim{
 			Owner:  arbitraryAddress(),
-			Reward: c(types.USDXMintingRewardDenom, 0),
+			Reward: c(types.USDFMintingRewardDenom, 0),
 		},
 		RewardIndexes: claimsRewardIndexes,
 	}
 	suite.storeClaim(claim)
 
 	globalIndexes := increaseRewardFactors(claimsRewardIndexes)
-	suite.storeGlobalUSDXIndexes(globalIndexes)
+	suite.storeGlobalUSDFIndexes(globalIndexes)
 
 	cdp := NewCDPBuilder(claim.Owner, collateralType).Build()
 
-	suite.keeper.SynchronizeUSDXMintingReward(suite.ctx, cdp)
+	suite.keeper.SynchronizeUSDFMintingReward(suite.ctx, cdp)
 
-	syncedClaim, _ := suite.keeper.GetUSDXMintingClaim(suite.ctx, claim.Owner)
+	syncedClaim, _ := suite.keeper.GetUSDFMintingClaim(suite.ctx, claim.Owner)
 
 	// Only the claim's index for `collateralType` should have been changed
 	i, _ := globalIndexes.Get(collateralType)
@@ -173,7 +173,7 @@ func (suite *SynchronizeUSDXMintingRewardTests) TestClaimIndexIsUpdatedWhenGloba
 	suite.Equal(expectedIndexes, syncedClaim.RewardIndexes)
 }
 
-func (suite *SynchronizeUSDXMintingRewardTests) TestClaimIndexIsUpdatedWhenNewRewardAddedAndClaimAlreadyExists() {
+func (suite *SynchronizeUSDFMintingRewardTests) TestClaimIndexIsUpdatedWhenNewRewardAddedAndClaimAlreadyExists() {
 	claimsRewardIndexes := types.RewardIndexes{
 		{
 			CollateralType: "bnb-a",
@@ -186,10 +186,10 @@ func (suite *SynchronizeUSDXMintingRewardTests) TestClaimIndexIsUpdatedWhenNewRe
 	}
 	newRewardIndex := types.NewRewardIndex("xrp-a", d("0.0001"))
 
-	claim := types.USDXMintingClaim{
+	claim := types.USDFMintingClaim{
 		BaseClaim: types.BaseClaim{
 			Owner:  arbitraryAddress(),
-			Reward: c(types.USDXMintingRewardDenom, 0),
+			Reward: c(types.USDFMintingRewardDenom, 0),
 		},
 		RewardIndexes: claimsRewardIndexes,
 	}
@@ -197,25 +197,25 @@ func (suite *SynchronizeUSDXMintingRewardTests) TestClaimIndexIsUpdatedWhenNewRe
 
 	globalIndexes := increaseRewardFactors(claimsRewardIndexes)
 	globalIndexes = append(globalIndexes, newRewardIndex)
-	suite.storeGlobalUSDXIndexes(globalIndexes)
+	suite.storeGlobalUSDFIndexes(globalIndexes)
 
 	cdp := NewCDPBuilder(claim.Owner, newRewardIndex.CollateralType).Build()
 
-	suite.keeper.SynchronizeUSDXMintingReward(suite.ctx, cdp)
+	suite.keeper.SynchronizeUSDFMintingReward(suite.ctx, cdp)
 
-	syncedClaim, _ := suite.keeper.GetUSDXMintingClaim(suite.ctx, claim.Owner)
+	syncedClaim, _ := suite.keeper.GetUSDFMintingClaim(suite.ctx, claim.Owner)
 
 	// Only the claim's index for `collateralType` should have been changed
 	expectedIndexes := claimsRewardIndexes.With(newRewardIndex.CollateralType, newRewardIndex.RewardFactor)
 	suite.Equal(expectedIndexes, syncedClaim.RewardIndexes)
 }
 
-func (suite *SynchronizeUSDXMintingRewardTests) TestClaimIsUnchangedWhenGlobalFactorMissing() {
+func (suite *SynchronizeUSDFMintingRewardTests) TestClaimIsUnchangedWhenGlobalFactorMissing() {
 	claimsRewardIndexes := nonEmptyRewardIndexes
-	claim := types.USDXMintingClaim{
+	claim := types.USDFMintingClaim{
 		BaseClaim: types.BaseClaim{
 			Owner:  arbitraryAddress(),
-			Reward: c(types.USDXMintingRewardDenom, 0),
+			Reward: c(types.USDFMintingRewardDenom, 0),
 		},
 		RewardIndexes: claimsRewardIndexes,
 	}
@@ -225,9 +225,9 @@ func (suite *SynchronizeUSDXMintingRewardTests) TestClaimIsUnchangedWhenGlobalFa
 	// create a cdp with collateral type that doesn't exist in the claim's indexes, and does not have a corresponding global factor
 	cdp := NewCDPBuilder(claim.Owner, "unrewardedcollateral").WithSourceShares(1e12).Build()
 
-	suite.keeper.SynchronizeUSDXMintingReward(suite.ctx, cdp)
+	suite.keeper.SynchronizeUSDFMintingReward(suite.ctx, cdp)
 
-	syncedClaim, _ := suite.keeper.GetUSDXMintingClaim(suite.ctx, claim.Owner)
+	syncedClaim, _ := suite.keeper.GetUSDFMintingClaim(suite.ctx, claim.Owner)
 	suite.Equal(claim.RewardIndexes, syncedClaim.RewardIndexes)
 	suite.Equal(claim.Reward, syncedClaim.Reward)
 }

@@ -179,7 +179,7 @@ func (m *QueryRewardsRequest) GetUnsynchronized() bool {
 
 // QueryRewardsResponse is the response type for the Query/Rewards RPC method.
 type QueryRewardsResponse struct {
-	USDXMintingClaims           USDXMintingClaims           `protobuf:"bytes,1,rep,name=usdx_minting_claims,json=usdxMintingClaims,proto3,castrepeated=USDXMintingClaims" json:"usdx_minting_claims"`
+	USDFMintingClaims           USDFMintingClaims           `protobuf:"bytes,1,rep,name=usdf_minting_claims,json=usdfMintingClaims,proto3,castrepeated=USDFMintingClaims" json:"usdf_minting_claims"`
 	JinxLiquidityProviderClaims JinxLiquidityProviderClaims `protobuf:"bytes,2,rep,name=jinx_liquidity_provider_claims,json=jinxLiquidityProviderClaims,proto3,castrepeated=JinxLiquidityProviderClaims" json:"jinx_liquidity_provider_claims"`
 	DelegatorClaims             DelegatorClaims             `protobuf:"bytes,3,rep,name=delegator_claims,json=delegatorClaims,proto3,castrepeated=DelegatorClaims" json:"delegator_claims"`
 	SwapClaims                  SwapClaims                  `protobuf:"bytes,4,rep,name=swap_claims,json=swapClaims,proto3,castrepeated=SwapClaims" json:"swap_claims"`
@@ -220,9 +220,9 @@ func (m *QueryRewardsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_QueryRewardsResponse proto.InternalMessageInfo
 
-func (m *QueryRewardsResponse) GetUSDXMintingClaims() USDXMintingClaims {
+func (m *QueryRewardsResponse) GetUSDFMintingClaims() USDFMintingClaims {
 	if m != nil {
-		return m.USDXMintingClaims
+		return m.USDFMintingClaims
 	}
 	return nil
 }
@@ -301,7 +301,7 @@ var xxx_messageInfo_QueryRewardFactorsRequest proto.InternalMessageInfo
 
 // QueryRewardFactorsResponse is the response type for the Query/RewardFactors RPC method.
 type QueryRewardFactorsResponse struct {
-	UsdxMintingRewardFactors RewardIndexes      `protobuf:"bytes,1,rep,name=usdx_minting_reward_factors,json=usdxMintingRewardFactors,proto3,castrepeated=RewardIndexes" json:"usdx_minting_reward_factors"`
+	UsdfMintingRewardFactors RewardIndexes      `protobuf:"bytes,1,rep,name=usdf_minting_reward_factors,json=usdfMintingRewardFactors,proto3,castrepeated=RewardIndexes" json:"usdf_minting_reward_factors"`
 	JinxSupplyRewardFactors  MultiRewardIndexes `protobuf:"bytes,2,rep,name=jinx_supply_reward_factors,json=jinxSupplyRewardFactors,proto3,castrepeated=MultiRewardIndexes" json:"jinx_supply_reward_factors"`
 	JinxBorrowRewardFactors  MultiRewardIndexes `protobuf:"bytes,3,rep,name=jinx_borrow_reward_factors,json=jinxBorrowRewardFactors,proto3,castrepeated=MultiRewardIndexes" json:"jinx_borrow_reward_factors"`
 	DelegatorRewardFactors   MultiRewardIndexes `protobuf:"bytes,4,rep,name=delegator_reward_factors,json=delegatorRewardFactors,proto3,castrepeated=MultiRewardIndexes" json:"delegator_reward_factors"`
@@ -343,9 +343,9 @@ func (m *QueryRewardFactorsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_QueryRewardFactorsResponse proto.InternalMessageInfo
 
-func (m *QueryRewardFactorsResponse) GetUsdxMintingRewardFactors() RewardIndexes {
+func (m *QueryRewardFactorsResponse) GetUsdfMintingRewardFactors() RewardIndexes {
 	if m != nil {
-		return m.UsdxMintingRewardFactors
+		return m.UsdfMintingRewardFactors
 	}
 	return nil
 }
@@ -939,10 +939,10 @@ func (m *QueryRewardsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 			dAtA[i] = 0x12
 		}
 	}
-	if len(m.USDXMintingClaims) > 0 {
-		for iNdEx := len(m.USDXMintingClaims) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.USDFMintingClaims) > 0 {
+		for iNdEx := len(m.USDFMintingClaims) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.USDXMintingClaims[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.USDFMintingClaims[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -1083,10 +1083,10 @@ func (m *QueryRewardFactorsResponse) MarshalToSizedBuffer(dAtA []byte) (int, err
 			dAtA[i] = 0x12
 		}
 	}
-	if len(m.UsdxMintingRewardFactors) > 0 {
-		for iNdEx := len(m.UsdxMintingRewardFactors) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.UsdfMintingRewardFactors) > 0 {
+		for iNdEx := len(m.UsdfMintingRewardFactors) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.UsdxMintingRewardFactors[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.UsdfMintingRewardFactors[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -1217,8 +1217,8 @@ func (m *QueryRewardsResponse) Size() (n int) {
 	}
 	var l int
 	_ = l
-	if len(m.USDXMintingClaims) > 0 {
-		for _, e := range m.USDXMintingClaims {
+	if len(m.USDFMintingClaims) > 0 {
+		for _, e := range m.USDFMintingClaims {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -1271,8 +1271,8 @@ func (m *QueryRewardFactorsResponse) Size() (n int) {
 	}
 	var l int
 	_ = l
-	if len(m.UsdxMintingRewardFactors) > 0 {
-		for _, e := range m.UsdxMintingRewardFactors {
+	if len(m.UsdfMintingRewardFactors) > 0 {
+		for _, e := range m.UsdfMintingRewardFactors {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -1644,7 +1644,7 @@ func (m *QueryRewardsResponse) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field USDXMintingClaims", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field USDFMintingClaims", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1671,8 +1671,8 @@ func (m *QueryRewardsResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.USDXMintingClaims = append(m.USDXMintingClaims, USDXMintingClaim{})
-			if err := m.USDXMintingClaims[len(m.USDXMintingClaims)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.USDFMintingClaims = append(m.USDFMintingClaims, USDFMintingClaim{})
+			if err := m.USDFMintingClaims[len(m.USDFMintingClaims)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -1948,7 +1948,7 @@ func (m *QueryRewardFactorsResponse) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field UsdxMintingRewardFactors", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field UsdfMintingRewardFactors", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1975,8 +1975,8 @@ func (m *QueryRewardFactorsResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.UsdxMintingRewardFactors = append(m.UsdxMintingRewardFactors, RewardIndex{})
-			if err := m.UsdxMintingRewardFactors[len(m.UsdxMintingRewardFactors)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.UsdfMintingRewardFactors = append(m.UsdfMintingRewardFactors, RewardIndex{})
+			if err := m.UsdfMintingRewardFactors[len(m.UsdfMintingRewardFactors)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

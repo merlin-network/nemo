@@ -12,7 +12,7 @@ import (
 
 const (
 	TestInitiatorModuleName = "liquidator"
-	TestLotDenom            = "usdx"
+	TestLotDenom            = "usdf"
 	TestLotAmount           = 100
 	TestBidDenom            = "nemo"
 	TestBidAmount           = 20

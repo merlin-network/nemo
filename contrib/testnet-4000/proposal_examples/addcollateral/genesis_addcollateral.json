@@ -54,7 +54,7 @@
                         "debt_limit": [
                             {
                                 "amount": "1000000000000",
-                                "denom": "usdx"
+                                "denom": "usdf"
                             }
                         ],
                         "denom": "btc",
@@ -73,17 +73,17 @@
                         "debt_limit": [
                             {
                                 "amount": "2000000000000",
-                                "denom": "usdx"
+                                "denom": "usdf"
                             }
                         ],
-                        "denom": "usdx",
+                        "denom": "usdf",
                         "reference_asset": "usd"
                     }
                 ],
                 "global_debt_limit": [
                     {
                         "amount": "2000000000000",
-                        "denom": "usdx"
+                        "denom": "usdf"
                     }
                 ],
                 "surplus_auction_threshold": "1000000000"
